@@ -37,9 +37,15 @@ def make_dict(all_tagged_words):
 def NERtagger(text):
 
 	tagger = ner.SocketNER(host='localhost', port=8080)
-	entitites = tagger.get_entities(text)
 
-	return entitites
+	entities = tagger.get_entities(text)
+
+	organizations = set(entities['ORGANIZATION'])
+	locations = set(entities['LOCATION'])
+	people = set(entities['PERSON'])
+
+	return organizations, locations, people
+
 
 ####  Most common POS
 
@@ -52,11 +58,12 @@ def most_common_pos(tagged_words):
 def main():
 
 	text = file_reader.read_file('sample.txt')
-	prepro = preprocess(text)
+	#prepro = preprocess(text)
 	#print most_common_pos(prepro)
-	#ner = NERtagger(text)
-	dictionary = make_dict(prepro)
-	print len(dictionary.keys())
+	ner = NERtagger(text)
+	print ner
+	# dictionary = make_dict(prepro)
+	# print len(dictionary.keys())
 
 	
 if __name__ == "__main__":

@@ -34,17 +34,25 @@ def get_wiki_data(title, target_lang):
 		langcode = lang_dict['lang']
 		equivalent = lang_dict['*']
 
-		return langcode, equivalent, wiki_id
+		return wiki_id, title, langcode, equivalent
 
 	else:
 		return False
 	 
 
+def get_entity_info(namelist, target_lang):
+	
+	entity_dict = {}
+	for i in namelist:
+		entity_dict[i] = get_wiki_data(i, target_lang)
+	return  entity_dict
+
+
+
 def main():
 	namelist = ["New York", "Barack Obama", "Earthquake", "President Obama", "North Carolina Board of Elections"]
 	
-	for i in namelist:
-		print get_wiki_data(i, "fr")
+	get_entity_info(namelist, 'fr')
 
 
 

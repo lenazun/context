@@ -17,7 +17,7 @@ def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
 
-@app.route("/")
+@app.route('/')
 def index():
     return render_template("upload.html")
 
@@ -41,14 +41,28 @@ def upload_file():
 		return render_template("upload.html")
 
 
-@app.route("/basic_process")
+@app.route('/basic_process')
 def basic_process():
 	filepath = session['filepath']
-	targetlang = session['targetlang']
+
 	text = file_reader.read_file(filepath)
 	simplecount = len(text)
 
 	return render_template("basic_process.html", simple=simplecount)
+
+@app.route('/entities')
+def entities():
+	filepath = session['filepath']
+	target_lang = session['targetlang']
+	text = file_reader.read_file(filepath)
+	organizations, locations, people = text_processing.NERtagger(text)
+
+	orglist = wikipedia_linker.get_entity_info(organizations, target_lang)
+	loclist = wikipedia_linker.get_entity_info(locations, target_lang)
+	peoplelist = wikipedia_linker.get_entity_info(people, target_lang)
+
+
+	return render_template("entities.html", entities=entities, organizations=orglist, locations=loclist, people=peoplelist)
 
 
 
