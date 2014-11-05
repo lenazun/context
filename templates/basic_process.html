@@ -4,8 +4,6 @@
 <p>
 I'mma process your file
 <strong>{{ session.filename }}</strong>
-for target language 
-<strong>{{session.targetlang}}</strong>
 on the path
 <strong>{{session.filepath}}</strong>
 </p>
@@ -18,8 +16,28 @@ The simple word count is {{ simple }}
 But there's a lot more I want to show you here.  
 </p>
 <p>
-For now let's go take a look at your <a href= "{{  url_for('entities') }}"> entities</a>.
+For now let's go take a look at your entities.  
+What target language do you want to explore?
 </p>
+
+<div class="form-group">
+<form class="form" method="GET" action="/entities">
+    <label for="target_lang">Target language</label>
+    <select id="target_lang" class="form-control" name="target_lang">
+  		<option>es</option>
+  		<option>fr</option>
+ 		<option>de</option>
+  		<option>it</option>
+  		<option>pt</option>
+  		<option>ar</option>
+	</select>
+	<br>
+	 <button class="btn btn-primary btn-lg" type="submit">Go</button>
+</div>
+</form>
+
+
+
 
 
 

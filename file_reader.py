@@ -44,11 +44,26 @@ def clean_html(raw):
 	return text
 
 
+#########################################
+### Write a file with clean plain text ###
+#########################################
+
+def write_file(text):
+
+	text = text.encode('ascii', 'replace').decode('utf8')
+	file = open("./uploads/newfile.txt", "w")
+	file.write(text)
+	file.close()
+
+def read_url_all(url):
+	write_file(clean_html(read_url(url)))
+
+
 def main():
 
 	#read_file('sample.txt')
 	output = read_url('http://www.sfchronicle.com/bayarea/article/Throngs-of-fans-already-packing-Civic-Center-5860820.php')
-	print clean_html(output)
+	write_file(clean_html(output))
 
 if __name__ == "__main__":
     main()

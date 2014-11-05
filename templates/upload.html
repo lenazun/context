@@ -4,23 +4,17 @@
 
 <form class="form" method="POST" enctype="multipart/form-data" action='/upload_file'>
 <div class="form-group">
-    <h2 class="form-signin-heading">Upload your txt file</h2>
-    <input id="input-1" type="file" class="file" name="filename">
+    <h2 class="form-signin-heading">Choose your source</h2>
+
+    <label for="input-file">Upload a .txt File</label>
+    <input id="input-file" type="file" class="file" name="filename">
     <br>
-    <p>Target language</p>
-    <select class="form-control" name="targetlang">
-  		<option>es</option>
-  		<option>fr</option>
- 		<option>de</option>
-  		<option>it</option>
-  		<option>pt</option>
-  		<option>ar</option>
-	</select>
-	<br>
+    <label for="exampleInputURL">OR choose a source URL</label>
+    <input id="url" type="url" class="form-control" name="url" placeholder="Don't make it huge, I'm fragile">
+    <br>
     <button class="btn btn-primary btn-lg" type="submit">Go</button>
 </div>
 </form>
-
 
 
 

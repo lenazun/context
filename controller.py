@@ -25,19 +25,31 @@ def index():
 @app.route('/upload_file', methods=['POST'])
 def upload_file():
 
-	targetlang = request.form.get("targetlang")
-	file = request.files['filename']
-	if file and allowed_file(file.filename):
-		filename = secure_filename(file.filename)
-		file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
-		session['filename'] = filename
-		session['filepath'] = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-		session['targetlang'] = targetlang
+	if request.files['filename']:
+		file = request.files['filename']
+		if file and allowed_file(file.filename):
+			filename = secure_filename(file.filename)
+			file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+
+			session['filename'] = filename
+			session['filepath'] = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+			
+			return redirect(url_for('basic_process'))
+		else:
+			flash ("Make sure you're uploading a txt file")
+			return render_template("upload.html")
+
+	elif request.form.get("url"):
+		url = request.form.get('url')
+		file_reader.read_url_all(url)
+		session['filename'] = 'newfile.txt'
+		session['filepath'] = os.path.join(app.config['UPLOAD_FOLDER'], 'newfile.txt')
 		
 		return redirect(url_for('basic_process'))
+
 	else:
-		flash ("Make sure you're uploading a txt file")
+		flash ("Enter a source file or URL")
 		return render_template("upload.html")
 
 
@@ -46,14 +58,22 @@ def basic_process():
 	filepath = session['filepath']
 
 	text = file_reader.read_file(filepath)
+
 	simplecount = len(text)
 
 	return render_template("basic_process.html", simple=simplecount)
 
-@app.route('/entities')
+
+
+@app.route('/entities', methods=["GET"])
 def entities():
+
 	filepath = session['filepath']
-	target_lang = session['targetlang']
+
+	target_lang = request.args.get("target_lang")
+	print target_lang
+
+
 	text = file_reader.read_file(filepath)
 	organizations, locations, people = text_processing.NERtagger(text)
 	nouns = text_processing.nouns_only(text_processing.make_dict(text_processing.preprocess(text)))
@@ -64,7 +84,7 @@ def entities():
 	nounlist = wikipedia_linker.get_entity_info(nouns, target_lang)
 
 
-	return render_template("entities.html", entities=entities, organizations=orglist, locations=loclist, people=peoplelist, nouns=nounlist)
+	return render_template("entities.html", entities=entities, organizations=orglist, locations=loclist, people=peoplelist, nouns=nounlist, target_lang=target_lang)
 
 
 if __name__ == "__main__":
