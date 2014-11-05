@@ -56,14 +56,15 @@ def entities():
 	target_lang = session['targetlang']
 	text = file_reader.read_file(filepath)
 	organizations, locations, people = text_processing.NERtagger(text)
+	nouns = text_processing.nouns_only(text_processing.make_dict(text_processing.preprocess(text)))
 
 	orglist = wikipedia_linker.get_entity_info(organizations, target_lang)
 	loclist = wikipedia_linker.get_entity_info(locations, target_lang)
 	peoplelist = wikipedia_linker.get_entity_info(people, target_lang)
+	nounlist = wikipedia_linker.get_entity_info(nouns, target_lang)
 
 
-	return render_template("entities.html", entities=entities, organizations=orglist, locations=loclist, people=peoplelist)
-
+	return render_template("entities.html", entities=entities, organizations=orglist, locations=loclist, people=peoplelist, nouns=nounlist)
 
 
 if __name__ == "__main__":

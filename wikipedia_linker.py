@@ -28,9 +28,12 @@ def get_wiki_data(title, target_lang):
 	wiki_id = str([key for key in json['query']['pages'].keys()])
 	wiki_id = wiki_id.strip("['']")	
 
-	if 'langlinks' in json['query']['pages'][wiki_id]:
-		lang_dict = json['query']['pages'][wiki_id]['langlinks'][0]
+	if '-1' in json['query']['pages']:
+		return "NA"
 
+	elif 'langlinks' in json['query']['pages'][wiki_id]:
+
+		lang_dict = json['query']['pages'][wiki_id]['langlinks'][0]
 		langcode = lang_dict['lang']
 		equivalent = lang_dict['*']
 
@@ -45,6 +48,11 @@ def get_entity_info(namelist, target_lang):
 	entity_dict = {}
 	for i in namelist:
 		entity_dict[i] = get_wiki_data(i, target_lang)
+
+	#Removes the values where there's no original wikipedia article
+	entity_dict = {key: value for key, value in entity_dict.items() 
+             if value is not "NA"}
+
 	return  entity_dict
 
 
@@ -52,7 +60,7 @@ def get_entity_info(namelist, target_lang):
 def main():
 	namelist = ["New York", "Barack Obama", "Earthquake", "President Obama", "North Carolina Board of Elections"]
 	
-	get_entity_info(namelist, 'fr')
+	print get_entity_info(namelist, 'fr')
 
 
 

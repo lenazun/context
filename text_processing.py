@@ -26,11 +26,22 @@ def preprocess(text):
 	#returns a list of tuples (word, pos)
 	return all_tagged_words
 
+### makes a dictionary out of the whole word list
+
 def make_dict(all_tagged_words):	
 
-	#makes a dictionary out of the whole word list
 	main_dict = dict(all_tagged_words)
 	return main_dict
+
+### creates a dictionary of nouns only ###
+
+def nouns_only(main_dict):
+
+	nouns_dict = {key: value for key, value in main_dict.items() 
+             if value in ('NN','NNS') and len(key) > 2 }
+
+	return  list(nouns_dict.keys())
+
 
 #### NER tagger ####
 
@@ -58,12 +69,13 @@ def most_common_pos(tagged_words):
 def main():
 
 	text = file_reader.read_file('sample.txt')
-	#prepro = preprocess(text)
+	prepro = preprocess(text)
 	#print most_common_pos(prepro)
-	ner = NERtagger(text)
-	print ner
-	# dictionary = make_dict(prepro)
-	# print len(dictionary.keys())
+	#ner = NERtagger(text)
+	#print ner
+	dictionary = make_dict(prepro)
+	print nouns_only(dictionary)
+	#print dictionary
 
 	
 if __name__ == "__main__":

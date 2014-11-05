@@ -11,8 +11,9 @@ def read_file(input_file):
     text = open(input_file, 'rU')
     raw = text.read()
     #corpus = passage.split()
+    text = raw.decode('utf8').encode('ascii', 'replace')
 
-    return raw
+    return text
 
 ###########################
 ### Open and read a URL ###
