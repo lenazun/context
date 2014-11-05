@@ -23,8 +23,14 @@ def preprocess(text):
 		for wordpair in i:
 			all_tagged_words.append(wordpair)
 
-	#returns a single list of all word and POS pairs
+	#returns a list of tuples (word, pos)
 	return all_tagged_words
+
+def make_dict(all_tagged_words):	
+
+	#makes a dictionary out of the whole word list
+	main_dict = dict(all_tagged_words)
+	return main_dict
 
 #### NER tagger ####
 
@@ -46,10 +52,11 @@ def most_common_pos(tagged_words):
 def main():
 
 	text = file_reader.read_file('sample.txt')
-	#prepro = preprocess(text)
+	prepro = preprocess(text)
 	#print most_common_pos(prepro)
-	ner = NERtagger(text)
-	print ner
+	#ner = NERtagger(text)
+	dictionary = make_dict(prepro)
+	print len(dictionary.keys())
 
 	
 if __name__ == "__main__":

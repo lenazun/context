@@ -3,10 +3,21 @@
 
 
 <form class="form" method="POST" enctype="multipart/form-data" action='/upload_file'>
+<div class="form-group">
     <h2 class="form-signin-heading">Upload your txt file</h2>
     <input id="input-1" type="file" class="file" name="filename">
     <br>
+    <p>Target language</p>
+    <select class="form-control" name="targetlang">
+  		<option>es</option>
+  		<option>fr</option>
+ 		<option>de</option>
+  		<option>it</option>
+  		<option>pt</option>
+	</select>
+	<br>
     <button class="btn btn-primary btn-lg" type="submit">Go</button>
+</div>
 </form>
 
 

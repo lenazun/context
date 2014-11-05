@@ -1,9 +1,18 @@
 {% extends 'base.html' %}
 {% block body %}
 
+<p>
+I'mma process your file
+<strong>{{ session.filename }}</strong>
+for target language 
+<strong>{{session.targetlang}}</strong>
+on the path
+<strong>{{session.filepath}}</strong>
+</p>
 
-Hello now I'mma process your file
-{{ filename }}
+<p>
+The simple word count is {{ simple }}
+</p>
 
 
 

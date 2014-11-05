@@ -25,21 +25,30 @@ def index():
 @app.route('/upload_file', methods=['POST'])
 def upload_file():
 
-    file = request.files['filename']
-    if file and allowed_file(file.filename):
-        filename = secure_filename(file.filename)
-        file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-        return render_template("basic_process.html", filename=filename)
-    else:
-        flash ("Make sure you're uploading a txt file")
-        return render_template("upload.html")
+	targetlang = request.form.get("targetlang")
+	file = request.files['filename']
+	if file and allowed_file(file.filename):
+		filename = secure_filename(file.filename)
+		file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+
+		session['filename'] = filename
+		session['filepath'] = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+		session['targetlang'] = targetlang
+		
+		return redirect(url_for('basic_process'))
+	else:
+		flash ("Make sure you're uploading a txt file")
+		return render_template("upload.html")
 
 
 @app.route("/basic_process")
-def basic_process(filename):
-    return render_template("basic_process.html")
+def basic_process():
+	filepath = session['filepath']
+	targetlang = session['targetlang']
+	text = file_reader.read_file(filepath)
+	simplecount = len(text)
 
-
+	return render_template("basic_process.html", simple=simplecount)
 
 
 
