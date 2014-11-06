@@ -11,18 +11,17 @@ def get_wiki_data(title, target_lang):
 
 	url = 'http://en.wikipedia.org/w/api.php'
 
-	values = {'action' : 'query',
+	langvalues = {'action' : 'query',
 	          'prop' : 'langlinks',
 	          'lllang': target_lang,
 	          'titles' : title,
 	          'redirects': '',
 	          'format' : 'json'}
 
-	data = urllib.urlencode(values)
+	data = urllib.urlencode(langvalues)
 	req = urllib2.Request(url, data)
 	response = urllib2.urlopen(req)
 	json = response.read()
-
 	json = simplejson.loads(json)
 
 	wiki_id = str([key for key in json['query']['pages'].keys()])
@@ -37,7 +36,42 @@ def get_wiki_data(title, target_lang):
 		langcode = lang_dict['lang']
 		equivalent = lang_dict['*']
 
-		return wiki_id, title, langcode, equivalent
+		#gets the thumbnail
+		thumbnail = get_wiki_thumbnail(title)
+
+		return [wiki_id, title, langcode, equivalent, thumbnail]
+
+	else:
+		return False
+
+def get_wiki_thumbnail(title):
+
+	url = 'http://en.wikipedia.org/w/api.php'
+
+	imgvalues = {'action' : 'query',
+	          'prop' : 'pageimages',
+	          'titles' : title,
+	          'redirects': '',
+	          'format' : 'json', 
+	          'pithumbsize': '100'}
+
+	data = urllib.urlencode(imgvalues)
+	req = urllib2.Request(url, data)
+	response = urllib2.urlopen(req)
+	json = response.read()
+	json = simplejson.loads(json)
+
+	wiki_id = str([key for key in json['query']['pages'].keys()])
+	wiki_id = wiki_id.strip("['']")	
+
+	if '-1' in json['query']['pages']:
+		return "NA"
+
+	elif 'thumbnail' in json['query']['pages'][wiki_id]:
+
+		thumbnail = json['query']['pages'][wiki_id]['thumbnail']['source']
+
+		return thumbnail
 
 	else:
 		return False
@@ -49,12 +83,12 @@ def get_entity_info(namelist, target_lang):
 	for i in namelist:
 		entity_dict[i] = get_wiki_data(i, target_lang)
 
+
 	#Removes the values where there's no original wikipedia article
 	entity_dict = {key: value for key, value in entity_dict.items() 
              if value is not "NA"}
 
 	return  entity_dict
-
 
 
 def main():
