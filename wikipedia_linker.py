@@ -5,34 +5,36 @@ import urllib2
 import simplejson
 from pprint import pprint
 
-
+URL = 'http://en.wikipedia.org/w/api.php'
 
 def get_wiki_data(title, target_lang):
-
-	url = 'http://en.wikipedia.org/w/api.php'
+	""" Gets wiki language data from the wikipedia API """
 
 	langvalues = {'action' : 'query',
-	          'prop' : 'langlinks',
-	          'lllang': target_lang,
-	          'titles' : title,
-	          'redirects': '',
-	          'format' : 'json'}
+			'prop' : 'langlinks',
+			'lllang': target_lang,
+			'titles' : title,
+			'redirects': '',
+			'format' : 'json'}
 
 	data = urllib.urlencode(langvalues)
-	req = urllib2.Request(url, data)
+	req = urllib2.Request(URL, data)
 	response = urllib2.urlopen(req)
-	json = response.read()
-	json = simplejson.loads(json)
+	json_file = response.read()            
+	json_file = simplejson.loads(json_file)
 
-	wiki_id = str([key for key in json['query']['pages'].keys()])
+	#gets the wiki id from the json file
+	wiki_id = str([key for key in json_file['query']['pages'].keys()])
 	wiki_id = wiki_id.strip("['']")	
 
-	if '-1' in json['query']['pages']:
+	#if the article doesn't exist in English, returns NA
+	if '-1' in json_file['query']['pages']:
 		return "NA"
 
-	elif 'langlinks' in json['query']['pages'][wiki_id]:
+	#if the article has language links, extracts the equivalent titles
+	elif 'langlinks' in json_file['query']['pages'][wiki_id]:
 
-		lang_dict = json['query']['pages'][wiki_id]['langlinks'][0]
+		lang_dict = json_file['query']['pages'][wiki_id]['langlinks'][0]
 		langcode = lang_dict['lang']
 		equivalent = lang_dict['*']
 
@@ -45,8 +47,7 @@ def get_wiki_data(title, target_lang):
 		return False
 
 def get_wiki_thumbnail(title):
-
-	url = 'http://en.wikipedia.org/w/api.php'
+	""" Gets wiki thumbnail from the wikipedia API"""
 
 	imgvalues = {'action' : 'query',
 	          'prop' : 'pageimages',
@@ -56,20 +57,23 @@ def get_wiki_thumbnail(title):
 	          'pithumbsize': '100'}
 
 	data = urllib.urlencode(imgvalues)
-	req = urllib2.Request(url, data)
+	req = urllib2.Request(URL, data)
 	response = urllib2.urlopen(req)
-	json = response.read()
-	json = simplejson.loads(json)
+	json_file = response.read()
+	json_file = simplejson.loads(json_file)
 
-	wiki_id = str([key for key in json['query']['pages'].keys()])
+	#gets the wiki id from the json file
+	wiki_id = str([key for key in json_file['query']['pages'].keys()])
 	wiki_id = wiki_id.strip("['']")	
 
-	if '-1' in json['query']['pages']:
+	#if the article doesn't exist in English, returns NA
+	if '-1' in json_file['query']['pages']:
 		return "NA"
 
-	elif 'thumbnail' in json['query']['pages'][wiki_id]:
+	#if the article has a thumbnail, extracts the URL
+	elif 'thumbnail' in json_file['query']['pages'][wiki_id]:
 
-		thumbnail = json['query']['pages'][wiki_id]['thumbnail']['source']
+		thumbnail = json_file['query']['pages'][wiki_id]['thumbnail']['source']
 
 		return thumbnail
 
@@ -78,11 +82,12 @@ def get_wiki_thumbnail(title):
 	 
 
 def get_entity_info(namelist, target_lang):
+	""" Creates a dictionary with all entities in a list and their data from wikipedia"""
 	
 	entity_dict = {}
+
 	for i in namelist:
 		entity_dict[i] = get_wiki_data(i, target_lang)
-
 
 	#Removes the values where there's no original wikipedia article
 	entity_dict = {key: value for key, value in entity_dict.items() 
@@ -95,6 +100,8 @@ def main():
 	namelist = ["New York", "Barack Obama", "Earthquake", "President Obama", "North Carolina Board of Elections"]
 	
 	print get_entity_info(namelist, 'fr')
+
+	# FIXME : learn about assert
 
 
 
