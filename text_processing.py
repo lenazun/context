@@ -24,7 +24,6 @@ def preprocess(text):
 	return all_tagged_words
 
 
-
 def make_word_dict(all_tagged_words):
 	""" Makes a dictionary out of the whole word list"""	
 
@@ -49,6 +48,7 @@ def ner_tagger(text):
 
 	entities = tagger.get_entities(text)
 
+	#FIX ME need to intro conditionals in case there's none
 	organizations = set(entities['ORGANIZATION'])
 	locations = set(entities['LOCATION'])
 	people = set(entities['PERSON'])
@@ -66,12 +66,12 @@ def most_common_pos(tagged_words):
 def main():
 	""" Tests """
 
-	text = file_reader.read_file('sample.txt')
-	prepro = preprocess(text)
-	print prepro
+	text = file_reader.read_file('spanish_sample.txt')
+	#prepro = preprocess(text)
+	#print prepro
 	#print most_common_pos(prepro)
-	#ner = NERtagger(text)
-	#print ner
+	ner = ner_tagger(text)
+	print ner
 	#dictionary = make_word_dict(prepro)
 	#print nouns_only(dictionary)
 	#print dictionary

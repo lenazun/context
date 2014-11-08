@@ -8,7 +8,7 @@ import text_processing
 import wikipedia_linker
 
 
-UPLOAD_FOLDER = './uploads'
+UPLOAD_FOLDER = 'static/uploads'
 ALLOWED_EXTENSIONS = frozenset(['txt'])
 
 app = Flask(__name__)
@@ -106,6 +106,13 @@ def entities():
 		people=peoplelist, 
 		nouns=nounlist, 
 		target_lang=target_lang)
+
+
+@app.route('/editor')
+def editor():
+
+	path = session['filepath']
+	return render_template('editor.html', path=path)
 
 
 if __name__ == "__main__":

@@ -1,11 +1,13 @@
 import os 
 import urllib
 import tempfile
+import csv
 from bs4 import BeautifulSoup
 
 import nltk
 
-UPLOAD_FOLDER = './uploads'
+UPLOAD_FOLDER = './static/uploads'
+DOWNLOAD_FOLDER ='./static/downloads'
 
 def read_file(input_file):
 	""" Open and read a text file """
@@ -60,12 +62,28 @@ def read_url_all(url):
 
 		return write_file(clean_html(read_url(url)))
 
+def write_csv_file(dictionary):
+	
+	tempfile.tempdir = DOWNLOAD_FOLDER
+	temp_file = tempfile.NamedTemporaryFile(delete=False)
+
+	with open(temp_file.name, 'wb') as temp:
+		w = csv.writer(temp)
+		w.writerow(['wiki_id', 'title', 'targetlang', 'equiv_title', 'thumbnail'])
+		for key, value in dictionary.iteritems():
+			w.writerow([i.encode('ascii', 'replace').decode('utf8') for i in value])
+			
+	return temp.name
+
+
 def main():
 	""" Tests """
 	
 	#read_file('sample.txt')
 	output = read_url('http://www.sfchronicle.com/bayarea/article/Throngs-of-fans-already-packing-Civic-Center-5860820.php')
-	print write_file(clean_html(output))
+	#print write_file(clean_html(output))
+	dictionary = {'New York': ['8210131', 'New York', 'fr', u'\xc9tat de New York', 'http://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Flag_of_New_York.svg/100px-Flag_of_New_York.svg.png'], 'Barack Obama': ['534366', 'Barack Obama', 'fr', 'Barack Obama', 'http://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/President_Barack_Obama.jpg/80px-President_Barack_Obama.jpg'], 'Earthquake': ['10106', 'Earthquake', 'fr', u'S\xe9isme', 'http://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Quake_epicenters_1963-98.png/100px-Quake_epicenters_1963-98.png'], 'President Obama': ['534366', 'President Obama', 'fr', 'Barack Obama', 'http://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/President_Barack_Obama.jpg/80px-President_Barack_Obama.jpg']}
+	write_csv_file(dictionary)
 
 if __name__ == "__main__":
     main()

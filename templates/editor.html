@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6">
+
+    <div id="container1">
+        <h1>Your text</h1>
+        <div id= "text1" class="editable">
+            Etsy keffiyeh YOLO selfies, yr seitan wolf bitters fixie. Retro banh mi mustache dreamcatcher artisan hashtag hoodie vinyl. Four loko street art butcher, Truffaut wolf hella sustainable dreamcatcher Etsy. Readymade selfies seitan, hoodie biodiesel sartorial four loko hashtag banh mi. Pork belly Pitchfork Williamsburg, pop-up hashtag viral next level Wes Anderson locavore ennui tilde try-hard Neutra. Beard chillwave ethical you probably haven't heard of them leggings. Kitsch pour-over synth salvia before they sold out.
+
+
+			jean shorts, fap beard fingerstache Odd Future gentrify Bushwick craft beer. Quinoa Banksy put a bird on it asymmetrical irony lomo. Letterpress asymmetrical master cleanse, ethical Williamsburg Bushwick next level umami occupy iPhone mumblecore disrupt kale chips biodiesel stumptown. Chambray gastropub leggings craft beer small batch skateboard, biodiesel Tonx cliche yr tote bag hashtag roof party. Williamsburg mixtape master cleanse, vinyl post-ironic bicycle rights Echo Park ugh Blue Bottle Helvetica squid beard Marfa slow-carb banjo. Vice Helvetica yr, disrupt lomo beard Shoreditch ugh plaid Blue Bottle dreamcatcher cold-pressed.
+
+
+        </div>
+    </div>
+
+
+
+    </div>
+  	<div class="col-md-6">
+    <div id="container2">
+
+
+
+  	<!-- Nav tabs -->
+	<ul class="nav nav-tabs" role="tablist" id="myTab">
+	  <li role="presentation" class="active"><a href="#general" role="tab" data-toggle="tab">General</a></li>
+	  <li role="presentation"><a href="#places" role="tab" data-toggle="tab">Places</a></li>
+	  <li role="presentation"><a href="#people" role="tab" data-toggle="tab">People</a></li>
+	  <li role="presentation"><a href="#organizations" role="tab" data-toggle="tab">Organizations</a></li>
+	</ul>
+
+	<div class="tab-content">
+	  <div role="tabpanel" class="tab-pane active" id="general">hello</div>
+	  <div role="tabpanel" class="tab-pane" id="places">world</div>
+	  <div role="tabpanel" class="tab-pane" id="people">this</div>
+	  <div role="tabpanel" class="tab-pane" id="organizations">is me</div>
+	</div>
+
+
+    </div>
+  	</div>
+  </div>
+</div>
+
+
+<script>
+    // (move to context.js?)
+    var editor = new MediumEditor('.editable', {
+        buttonLabels: 'fontawesome'
+    });
+
+    var path_to_show = "{{ path }}";
+
+
+</script>
+
+
+
+
+{% endblock %}

@@ -1,3 +1,102 @@
+*:focus { 
+  outline: none; 
+  }
+
+.highlight { 
+  background-color: yellow; 
+}
+
+
+#container1 {
+    width: 400px;
+    margin: 30px auto;
+}
+
+#container2 {
+    width: 400px;
+    margin: 30px auto;
+}
+
+#container3 {
+    width: 350px;
+    margin: 30px auto;
+}
+
+h1 {
+    font-size: 30px;
+    text-align: left;
+    margin-bottom: 10px;
+    padding-bottom: 20px;
+    letter-spacing: -2px;
+    border-bottom: 1px solid #dbdbdb;
+}
+
+p {
+    margin-bottom: 10px;
+}
+
+blockquote {
+    display: block;
+    padding-left: 20px;
+    border-left: 6px solid #df0d32;
+}
+
+.editable,
+.secondEditable
+ {
+    outline: 0px solid transparent;
+    margin: 0 0 20px 0;
+    padding: 0 0 20px 0;
+    border-bottom: 1px solid #dbdbdb;
+
+}
+
+pre {
+    font-family: 'Menlo', monospace;
+    font-size: 15px;
+    background-color: #f0f0f0;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #666;
+}
+
+#container {
+    outline: 0px solid transparent;
+    width: 400px;
+    margin: 30px auto;
+}
+
+
+h3 {
+    font-size: 32px;
+    line-height: 42px;
+}
+
+h4 {
+    font-size: 26px;
+    line-height: 32px;
+}
+
+
+blockquote {
+    border-left: 5px solid #555;
+    margin-left: -15px;
+    padding-left: 15px;
+    font-style: italic;
+    color: #555;
+}
+
+
+
+
+
+
+
+
+
+/*Form stuff*/
+
 .form-signin {
   max-width: 330px;
   padding: 15px;
