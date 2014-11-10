@@ -32,7 +32,7 @@ h1 {
 }
 
 p {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 blockquote {
@@ -40,6 +40,7 @@ blockquote {
     padding-left: 20px;
     border-left: 6px solid #df0d32;
 }
+
 
 .editable,
 .secondEditable
@@ -86,8 +87,6 @@ blockquote {
     font-style: italic;
     color: #555;
 }
-
-
 
 
 

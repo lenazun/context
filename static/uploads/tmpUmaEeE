@@ -1,0 +1,1857 @@
+<!DOCTYPE html>
+<!-- hearst/article/article_header.tpl -->
+<html>
+ <head>
+  <!-- eid:article.5860820 -->
+  <!--[if IE 8]>
+        <meta http-equiv="x-ua-compatible" content="IE=7">
+<![endif]-->
+  <meta content="text/html; charset=ascii" http-equiv="content-type"/>
+  <script type="text/javascript">
+   (window.NREUM||(NREUM={})).loader_config={xpid:"UAcHUF9ACQcHVVRV"};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o?o:e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({QJf3ax:[function(t,e){function n(t){function e(e,n,a){t&&t(e,n,a),a||(a={});for(var c=s(e),f=c.length,u=i(a,o,r),d=0;f>d;d++)c[d].apply(u,n);return u}function a(t,e){f[t]=s(t).concat(e)}function s(t){return f[t]||[]}function c(){return n(e)}var f={};return{on:a,emit:e,create:c,listeners:s,_events:f}}function r(){return{}}var o="nr@context",i=t("gos");e.exports=n()},{gos:"7eSDFh"}],ee:[function(t,e){e.exports=t("QJf3ax")},{}],3:[function(t){function e(t,e,n,i,s){try{c?c-=1:r("err",[s||new UncaughtException(t,e,n)])}catch(f){try{r("ierr",[f,(new Date).getTime(),!0])}catch(u){}}return"function"==typeof a?a.apply(this,o(arguments)):!1}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function n(t){r("err",[t,(new Date).getTime()])}var r=t("handle"),o=t(5),i=t("ee"),a=window.onerror,s=!1,c=0;t("loader").features.err=!0,window.onerror=e,NREUM.noticeError=n;try{throw new Error}catch(f){"stack"in f&&(t(1),t(4),"addEventListener"in window&&t(2),window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&t(3),s=!0)}i.on("fn-start",function(){s&&(c+=1)}),i.on("fn-err",function(t,e,r){s&&(this.thrown=!0,n(r))}),i.on("fn-end",function(){s&&!this.thrown&&c>0&&(c-=1)}),i.on("internal-error",function(t){r("ierr",[t,(new Date).getTime(),!0])})},{1:8,2:5,3:9,4:7,5:20,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],4:[function(t){function e(){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var n=t("ee"),r=t("handle"),o=t(2);t("loader").features.stn=!0,t(1),n.on("fn-start",function(t){var e=t[0];e instanceof Event&&(this.bstStart=Date.now())}),n.on("fn-end",function(t,e){var n=t[0];n instanceof Event&&r("bst",[n,e,this.bstStart,Date.now()])}),o.on("fn-start",function(t,e,n){this.bstStart=Date.now(),this.bstType=n}),o.on("fn-end",function(t,e){r("bstTimer",[e,this.bstStart,Date.now(),this.bstType])}),n.on("pushState-start",function(){this.time=Date.now(),this.startPath=location.pathname+location.hash}),n.on("pushState-end",function(){r("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),"addEventListener"in window.performance&&(window.performance.addEventListener("webkitresourcetimingbufferfull",function(){r("bstResource",[window.performance.getEntriesByType("resource")]),window.performance.webkitClearResourceTimings()},!1),window.performance.addEventListener("resourcetimingbufferfull",function(){r("bstResource",[window.performance.getEntriesByType("resource")]),window.performance.clearResourceTimings()},!1)),document.addEventListener("scroll",e,!1),document.addEventListener("keypress",e,!1),document.addEventListener("click",e,!1)}},{1:6,2:8,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],5:[function(t,e){function n(t){i.inPlace(t,["addEventListener","removeEventListener"],"-",r)}function r(t){return t[1]}var o=(t(1),t("ee").create()),i=t(2)(o),a=t("gos");if(e.exports=o,n(window),"getPrototypeOf"in Object){for(var s=document;s&&!s.hasOwnProperty("addEventListener");)s=Object.getPrototypeOf(s);s&&n(s);for(var c=XMLHttpRequest.prototype;c&&!c.hasOwnProperty("addEventListener");)c=Object.getPrototypeOf(c);c&&n(c)}else XMLHttpRequest.prototype.hasOwnProperty("addEventListener")&&n(XMLHttpRequest.prototype);o.on("addEventListener-start",function(t){if(t[1]){var e=t[1];"function"==typeof e?this.wrapped=t[1]=a(e,"nr@wrapped",function(){return i(e,"fn-",null,e.name||"anonymous")}):"function"==typeof e.handleEvent&&i.inPlace(e,["handleEvent"],"fn-")}}),o.on("removeEventListener-start",function(t){var e=this.wrapped;e&&(t[1]=e)})},{1:20,2:21,ee:"QJf3ax",gos:"7eSDFh"}],6:[function(t,e){var n=(t(2),t("ee").create()),r=t(1)(n);e.exports=n,r.inPlace(window.history,["pushState"],"-")},{1:21,2:20,ee:"QJf3ax"}],7:[function(t,e){var n=(t(2),t("ee").create()),r=t(1)(n);e.exports=n,r.inPlace(window,["requestAnimationFrame","mozRequestAnimationFrame","webkitRequestAnimationFrame","msRequestAnimationFrame"],"raf-"),n.on("raf-start",function(t){t[0]=r(t[0],"fn-")})},{1:21,2:20,ee:"QJf3ax"}],8:[function(t,e){function n(t,e,n){var r=t[0];"string"==typeof r&&(r=new Function(r)),t[0]=o(r,"fn-",null,n)}var r=(t(2),t("ee").create()),o=t(1)(r);e.exports=r,o.inPlace(window,["setTimeout","setInterval","setImmediate"],"setTimer-"),r.on("setTimer-start",n)},{1:21,2:20,ee:"QJf3ax"}],9:[function(t,e){function n(){c.inPlace(this,d,"fn-")}function r(t,e){c.inPlace(e,["onreadystatechange"],"fn-")}function o(t,e){return e}var i=t("ee").create(),a=t(1),s=t(2),c=s(i),f=s(a),u=window.XMLHttpRequest,d=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"];e.exports=i,window.XMLHttpRequest=function(t){var e=new u(t);try{i.emit("new-xhr",[],e),f.inPlace(e,["addEventListener","removeEventListener"],"-",function(t,e){return e}),e.addEventListener("readystatechange",n,!1)}catch(r){try{i.emit("internal-error",[r])}catch(o){}}return e},window.XMLHttpRequest.prototype=u.prototype,c.inPlace(XMLHttpRequest.prototype,["open","send"],"-xhr-",o),i.on("send-xhr-start",r),i.on("open-xhr-start",r)},{1:5,2:21,ee:"QJf3ax"}],10:[function(t){function e(t){if("string"==typeof t&&t.length)return t.length;if("object"!=typeof t)return void 0;if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if("undefined"!=typeof FormData&&t instanceof FormData)return void 0;try{return JSON.stringify(t).length}catch(e){return void 0}}function n(t){var n=this.params,r=this.metrics;if(!this.ended){this.ended=!0;for(var i=0;c>i;i++)t.removeEventListener(s[i],this.listener,!1);if(!n.aborted){if(r.duration=(new Date).getTime()-this.startTime,4===t.readyState){n.status=t.status;var a=t.responseType,f="arraybuffer"===a||"blob"===a||"json"===a?t.response:t.responseText,u=e(f);if(u&&(r.rxSize=u),this.sameOrigin){var d=t.getResponseHeader("X-NewRelic-App-Data");d&&(n.cat=d.split(", ").pop())}}else n.status=0;r.cbTime=this.cbTime,o("xhr",[n,r,this.startTime])}}}function r(t,e){var n=i(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}if(window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&!/CriOS/.test(navigator.userAgent)){t("loader").features.xhr=!0;var o=t("handle"),i=t(2),a=t("ee"),s=["load","error","abort","timeout"],c=s.length,f=t(1);t(4),t(3),a.on("new-xhr",function(){this.totalCbs=0,this.called=0,this.cbTime=0,this.end=n,this.ended=!1,this.xhrGuids={}}),a.on("open-xhr-start",function(t){this.params={method:t[0]},r(this,t[1]),this.metrics={}}),a.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),a.on("send-xhr-start",function(t,n){var r=this.metrics,o=t[0],i=this;if(r&&o){var f=e(o);f&&(r.txSize=f)}this.startTime=(new Date).getTime(),this.listener=function(t){try{"abort"===t.type&&(i.params.aborted=!0),("load"!==t.type||i.called===i.totalCbs&&(i.onloadCalled||"function"!=typeof n.onload))&&i.end(n)}catch(e){try{a.emit("internal-error",[e])}catch(r){}}};for(var u=0;c>u;u++)n.addEventListener(s[u],this.listener,!1)}),a.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),a.on("xhr-load-added",function(t,e){var n=""+f(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),a.on("xhr-load-removed",function(t,e){var n=""+f(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),a.on("addEventListener-end",function(t,e){e instanceof XMLHttpRequest&&"load"===t[0]&&a.emit("xhr-load-added",[t[1],t[2]],e)}),a.on("removeEventListener-end",function(t,e){e instanceof XMLHttpRequest&&"load"===t[0]&&a.emit("xhr-load-removed",[t[1],t[2]],e)}),a.on("fn-start",function(t,e,n){e instanceof XMLHttpRequest&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=(new Date).getTime()))}),a.on("fn-end",function(t,e){this.xhrCbStart&&a.emit("xhr-cb-time",[(new Date).getTime()-this.xhrCbStart,this.onload,e],e)})}},{1:"XL7HBI",2:11,3:9,4:5,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],11:[function(t,e){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");return!r.port&&o[1]&&(r.port=o[1].split("/")[0].split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname),r.sameOrigin=!e.hostname||e.hostname===document.domain&&e.port===n.port&&e.protocol===n.protocol,r}},{}],gos:[function(t,e){e.exports=t("7eSDFh")},{}],"7eSDFh":[function(t,e){function n(t,e,n){if(r.call(t,e))return t[e];var o=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:o,writable:!0,enumerable:!1}),o}catch(i){}return t[e]=o,o}var r=Object.prototype.hasOwnProperty;e.exports=n},{}],D5DuLP:[function(t,e){function n(t,e,n){return r.listeners(t).length?r.emit(t,e,n):(o[t]||(o[t]=[]),void o[t].push(e))}var r=t("ee").create(),o={};e.exports=n,n.ee=r,r.q=o},{ee:"QJf3ax"}],handle:[function(t,e){e.exports=t("D5DuLP")},{}],XL7HBI:[function(t,e){function n(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:i(t,o,function(){return r++})}var r=1,o="nr@id",i=t("gos");e.exports=n},{gos:"7eSDFh"}],id:[function(t,e){e.exports=t("XL7HBI")},{}],loader:[function(t,e){e.exports=t("G9z0Bl")},{}],G9z0Bl:[function(t,e){function n(){var t=p.info=NREUM.info;if(t&&t.agent&&t.licenseKey&&t.applicationID&&c&&c.body){p.proto="https"===d.split(":")[0]||t.sslForHttp?"https://":"http://",a("mark",["onload",i()]);var e=c.createElement("script");e.src=p.proto+t.agent,c.body.appendChild(e)}}function r(){"complete"===c.readyState&&o()}function o(){a("mark",["domContent",i()])}function i(){return(new Date).getTime()}var a=t("handle"),s=window,c=s.document,f="addEventListener",u="attachEvent",d=(""+location).split("?")[0],p=e.exports={offset:i(),origin:d,features:{}};c[f]?(c[f]("DOMContentLoaded",o,!1),s[f]("load",n,!1)):(c[u]("onreadystatechange",r),s[u]("onload",n)),a("mark",["firstbyte",i()])},{handle:"D5DuLP"}],20:[function(t,e){function n(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(0>o?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=n},{}],21:[function(t,e){function n(t){return!(t&&"function"==typeof t&&t.apply&&!t[i])}var r=t("ee"),o=t(1),i="nr@wrapper",a=Object.prototype.hasOwnProperty;e.exports=function(t){function e(t,e,r,a){function nrWrapper(){var n,i,s,f;try{i=this,n=o(arguments),s=r&&r(n,i)||{}}catch(d){u([d,"",[n,i,a],s])}c(e+"start",[n,i,a],s);try{return f=t.apply(i,n)}catch(p){throw c(e+"err",[n,i,p],s),p}finally{c(e+"end",[n,i,f],s)}}return n(t)?t:(e||(e=""),nrWrapper[i]=!0,f(t,nrWrapper),nrWrapper)}function s(t,r,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<r.length;c++)s=r[c],a=t[s],n(a)||(t[s]=e(a,f?s+o:o,i,s,t))}function c(e,n,r){try{t.emit(e,n,r)}catch(o){u([o,e,n,r])}}function f(t,e){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){u([r])}for(var o in t)a.call(t,o)&&(e[o]=t[o]);return e}function u(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=r),e.inPlace=s,e.flag=i,e}},{1:20,ee:"QJf3ax"}]},{},["G9z0Bl",3,10,4]);
+  </script>
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"/>
+  <!-- generated at 2014-11-07 20:42:56 on prodWCM6 running vr6.0.0.4 -->
+  <meta content="initial-scale = 1.0, maximum-scale = 1.0, width = device-width" name="viewport"/>
+  <link href="/external/css/global.sharedmain.r6.0.0.4.css" media="all" rel="stylesheet" type="text/css"/>
+  <link href="/external/css/global.sharedpages.r6.0.0.4.css" media="all" rel="stylesheet" type="text/css"/>
+  <link href="/external/css/global.sharedmodules.r6.0.0.4.css" media="all" rel="stylesheet" type="text/css"/>
+  <link href="/external/css/global.sitemain.r6.0.0.4.css" media="all" rel="stylesheet" type="text/css"/>
+  <link href="/external/css/global.sitemodules.r6.0.0.4.css" media="all" rel="stylesheet" type="text/css"/>
+  <link href="/external/css/global.sitepages.r6.0.0.4.css" media="all" rel="stylesheet" type="text/css"/>
+  <link href="/external/css/global.article.r6.0.0.4.css" media="all" rel="stylesheet" type="text/css"/>
+  <link href="/external/css/global.ie8.r6.0.0.4.css" media="all" rel="stylesheet" type="text/css"/>
+  <script src="/js/jquery-1.8.1.min.js" type="text/javascript">
+  </script>
+  <script src="/external/js/global.header.r6.0.0.4.js" type="text/javascript">
+  </script>
+  <!-- hearst/common/omniture.tpl -->
+  <script type="text/javascript">
+   // <![CDATA[
+	// document.domain = "hearstnp.com";
+	var requestTime = new Date(1415414576 * 1000);
+
+								
+					
+					
+		
+		// bizobject variables
+		var omni_channelPath = "Sports";
+				var omni_title = "Confetti, rain fall on revelers at Giants World Series parade";
+				var omni_bizObjectId = "5860820";
+		var omni_className = "article";
+		var omni_publicationDate = "2014-11-01 04:15:17";
+		var omni_sourceSite="sfgate";
+
+        			// article specific variables
+			var omni_authorName = "BY JILL TUCKER";
+			var omni_authorTitle = "Sam Whiting";
+			var omni_pageNumber = "8";
+			var omni_breakingNewsFlag = "";
+			var omni_localNewsFlag = "1";
+			var omni_premiumStatus = "free";
+			var omni_premiumEndDate = "";
+            var omni_originalSource = "SF";
+        	        
+        var omni_paywallSite = "1";
+
+    	// ]]>
+  </script>
+  <!--[if IE 6]><script type="text/javascript" src="/js/hdn/utils/DD_belatedPNG_0.0.8a-min.js"></script><![endif]-->
+  <!-- e hearst/common/omniture.tpl -->
+  <script id="adPositionManagerScriptTag" src="http://aps.hearstnp.com/Scripts/loadAds.js" type="text/javascript">
+  </script>
+  <!--[if lt IE 9]>
+        <script src="/js/respond.min.js"></script>
+    <![endif]-->
+  <title>
+   Confetti, rain fall on revelers at Giants World Series parade - San Francisco Chronicle
+  </title>
+  <link href="/favicon.ico?v=2" rel="SHORTCUT ICON"/>
+  <link href="/apple-touch-icon-precomposed.png" rel="apple-touch-icon"/>
+  <link href="/apple-touch-icon-72x72-precomposed.png" rel="apple-touch-icon" sizes="72x72"/>
+  <link href="/apple-touch-icon-114x114-precomposed.png" rel="apple-touch-icon" sizes="114x114"/>
+  <link href="/apple-touch-icon-144x144-precomposed.png" rel="apple-touch-icon" sizes="144x144"/>
+  <link href="http://www.sfgate.com/sports/article/Throngs-of-fans-already-packing-Civic-Center-5860820.php" rel="canonical"/>
+  <meta content="Hundreds of thousands of Giants fans shrugged off gray and rainy skies &#8212; as well as any tendency to be spoiled by downpours of success &#8212; as they flooded the city Friday for yet another World Series victory party, crowding Market Street for a confetti-stuffed parade and packing Civic Center Plaza for a raucous celebration.  The true, the faithful and the die-hard arrived in droves, starting well before dawn, to claim prime spots along the parade route, braving the wet Halloween weather with scarves, ponchos, umbrellas and panda hats honoring Giants third baseman Pablo Sandoval.  [...] the players, who were carried along the parade route on double-decker tour buses tricked out in Giants trim, said the fan support was as heavy and heartfelt as earlier years.  All along the route, fans climbed on ledges, street signs and bus shelters for better views &#8212; one man even brought a ladder so his teenage sons wouldn&#8217;t miss a thing &#8212; and peered down from high-rise windows and balconies.  The players and their friends and family waved from the buses or open-backed trucks, a new tactic for this year&#8217;s parade to make them more visible to the crowds.  Bringing up the tail were team manager Bruce Bochy and the World Series trophy &#8212; along with its sister trophies from 2010 and 2012.  Madison Bumgarner, who had a truck to himself and was waving his Series MVP trophy over his head, was clearly the crowd favorite.  Riding among the players in convertibles and other vehicles were team officials, politicians, former players and a clutch of Bay Area celebrities, including Journey frontman and Giants super-fan Steve Perry and members of Metallica.  Orange and black ruled all along the parade route, although a few fans picked Halloween over the Giants and donned costumes instead.  At Powell and Market streets, where the crowds were among the thickest, opportunistic vendors sold T-shirts and buttons, plus some less traditional souvenirs like cigarette lighters and candy apples made to look like baseballs." name="description"/>
+  <meta content="By Jill Tucker, Sam Whiting, Hamed Aleaziz and Erin Allday" name="author.name"/>
+  <meta content="" name="author.title"/>
+  <meta content="2014/31/10" name="date.release"/>
+  <meta content="21:15" name="time.release"/>
+  <meta content="San Francisco Chronicle" name="publisher"/>
+  <meta content="Sports" name="sections"/>
+  <meta content="hunting,customs and tradition,flood,World Series,religious festival or holiday" name="subject"/>
+  <meta content="hunting,customs and tradition,flood,World Series,religious festival or holiday" name="news_keywords"/>
+  <meta content="37.7794978, -122.4176118" name="ICBM"/>
+  <!-- hearst/home/header_sailthru.tpl -->
+  <meta content="Confetti, rain fall on revelers at Giants World Series parade" property="sailthru.title"/>
+  <meta content="2014-10-31 21:15:00 -0700" name="sailthru.date"/>
+  <meta content="By Jill Tucker, Sam Whiting, Hamed Aleaziz and Erin Allday" name="sailthru.author"/>
+  <meta content="37.7794978, -122.4176118" property="sailthru.location"/>
+  <meta content="section-sports,giants-world-series,civic-center-plaza,kansas-city-royals,market-street,pablo-sandoval,madison-bumgarner,larry-baer,bill-stockman,ryan-vogelsong,parade,parade-route,giants,chronicle-staff,rain-fall,chronicle-staff-writers,fan,panda-hats-honoring,crowd,unofficial-team-luminary,team-manager,players,prime-spots,market-streets,team,fan-support,double-decker-tour-buses,cigarette-lighters,rain,signature-cheer,celebration,crowd-favorite,baseball,victory-party,team-officials,route,bathroom-break,team-game,trophy,sam-whiting,street-signs,family" name="sailthru.tags"/>
+  <meta content="http://ww3.hdnux.com/photos/33/00/23/7079126/15/sailthruImage.jpg" name="sailthru.image.thumb"/>
+  <!-- e hearst/home/header_sailthru.tpl -->
+  <meta content="Confetti, rain fall on revelers at Giants World Series parade" property="og:title"/>
+  <meta content='Hundreds of thousands of Giants fans shrugged off gray and rainy skies &#226;&#128;" as well as any tendency to be spoiled by downpours of success &#226;&#128;" as they flooded the city Friday for yet another World Series victory party, crowding Market Street for a confetti-stuffed parade and packing Civic Center Plaza for a raucous celebration.  The true, the faithful and the die-hard arrived in droves, starting well before dawn, to claim prime spots along the parade route, braving the wet Halloween weather with scarves, ponchos, umbrellas and panda hats honoring Giants third baseman Pablo Sandoval.  [...] the players, who were carried along the parade route on double-decker tour buses tricked out in Giants trim, said the fan support was as heavy and heartfelt as earlier years.  All along the route, fans climbed on ledges, street signs and bus shelters for better views &#226;&#128;" one man even brought a ladder so his teenage sons wouldn&#226;&#128;&#153;t miss a thing &#226;&#128;" and peered down from high-rise windows and balconies.  The players and their friends and family waved from the buses or open-backed trucks, a new tactic for this year&#226;&#128;&#153;s parade to make them more visible to the crowds.  Bringing up the tail were team manager Bruce Bochy and the World Series trophy &#226;&#128;" along with its sister trophies from 2010 and 2012.  Madison Bumgarner, who had a truck to himself and was waving his Series MVP trophy over his head, was clearly the crowd favorite.  Riding among the players in convertibles and other vehicles were team officials, politicians, former players and a clutch of Bay Area celebrities, including Journey frontman and Giants super-fan Steve Perry and members of Metallica.  Orange and black ruled all along the parade route, although a few fans picked Halloween over the Giants and donned costumes instead.  At Powell and Market streets, where the crowds were among the thickest, opportunistic vendors sold T-shirts and buttons, plus some less traditional souvenirs like cigarette lighters and candy apples made to look like baseballs.' property="og:description"/>
+  <meta content="article" property="og:type"/>
+  <meta content="http://www.sfchronicle.com/sports/article/Throngs-of-fans-already-packing-Civic-Center-5860820.php" property="og:url"/>
+  <meta content="http://ww3.hdnux.com/photos/33/00/23/7079126/15/rawImage.jpg" property="og:image"/>
+  <meta content="San Francisco Chronicle" property="og:site_name"/>
+  <meta content="37.7794978" property="og:latitude"/>
+  <meta content="-122.4176118" property="og:longitude"/>
+  <meta content="Civic Center Plaza, San Francisco, CA 94102, USA" property="og:street-address"/>
+  <meta content="San Francisco" property="og:locality"/>
+  <meta content="CA" property="og:region"/>
+  <meta content="94102" property="og:postal-code"/>
+  <meta content="US" property="og:country-name"/>
+  <!-- Twitter card metadata  -->
+  <meta content="summary_large_image" name="twitter:card"/>
+  <meta content="@sfchronicle" name="twitter:site"/>
+  <meta content="@jilltucker" name="twitter:creator"/>
+  <!-- /business/templates/hearst/home/header_fbpage.tpl-->
+  <meta content="537896802938133" property="fb:app_id"/>
+  <!-- e /business/templates/hearst/home/header_fbpage.tpl-->
+  <!-- templates/hearst/home/viafouraHeadMeta.tpl -->
+  <meta content="premiumsfgate-article-5860820" property="vf:unique_id"/>
+  <!-- e templates/hearst/home/viafouraHeadMeta.tpl -->
+  <script async="" id="_nw2e-js" src="http://launch.newsinc.com/js/embed.js" type="text/javascript">
+  </script>
+  <!-- CSS/JS Hotfix freeform -->
+  <!-- hearst/item/standalone.tpl -->
+  <!-- mid:freeform.14699 -->
+  <script type="text/javascript">
+   // turn off/on media and freeform objects from gallery [CPREM-1953]
+    HDN.skipGalleryMediaObjects = true;
+    HDN.skipGalleryFreeformObjects = true;
+  </script>
+  <style>
+   /* CPREM-1909 */
+.digital_pass_promo a {font-size: 16px;}
+
+.hc_sitefooter .hcsf_links .li-link:before {
+    background-size:48px 544px;
+}
+/*CPREM-2096*/
+.prem-exclusive .content h4.kicker,
+.prem-exclusive .content h4.kicker .byline {
+	color: #aaa;
+	font-size: 10px;
+	line-height:1em;
+	font-family:"PopularMedium", serif;
+	margin-bottom:8px;
+}
+
+/*CPREM-2192 */
+@media screen and (min-width: 1280px){
+.prem_homepage_2 .digital_pass_promo {
+margin: -24px 0 20px 0;
+}
+}
+  </style>
+  <script>
+   $(window).load(function() {
+		var author = $('.auth_header h2.auth_name').text();
+		var authorFirst = author.charAt(0);
+		var authorLast = author.substr(author.indexOf(" ") + 1);
+		var mailto = 'mailto:'+authorFirst+authorLast+'@sfchronicle.com';
+		$('.auth_sidebar .social-links ul li.email a').attr({'href': mailto, 'onclick':'#'});
+	});
+  </script>
+  <!-- Bing Webmaster Tools verification -->
+  <meta content="9451CA04ABC9D1D5C6419C73B4C4F7B7" name="msvalidate.01"/>
+  <meta content="100006394927810" property="fb:admins"/>
+ </head>
+ <body class="sports" id="home">
+  <!-- ux/chron/tmpl/article_omniture.php -->
+  <script src="/js/omniture/atm_sfchronicle.js" type="text/javascript">
+  </script>
+  <!-- e ux/chron/tmpl/article_omniture.php -->
+  <div class="article_page" id="container">
+   <div id="header">
+    <!-- ux/premiumsfgate/templates/hearst/common/admin_bar.tpl -->
+    <div class="header-top">
+     <div class="lock1200">
+      <ul class="ht-links">
+       <li class="ht-link-item ht-branding">
+        <a href="http://www.sfgate.com/" target="_blank">
+        </a>
+       </li>
+       <li class="ht-link-item first">
+        <a href="http://www.sfgate.com/cars/" target="_blank">
+         Autos
+        </a>
+       </li>
+       <li class="ht-link-item">
+        <a href="http://www.sfgate.com/jobs/" target="_blank">
+         Jobs
+        </a>
+       </li>
+       <li class="ht-link-item">
+        <a href="http://www.sfgate.com/realestate/" target="_blank">
+         Real Estate
+        </a>
+       </li>
+       <li class="ht-weather">
+        <span>
+         <a class="weather-ico" href="http://weather.sfgate.com/US/CA/San_Francisco.html" target="_blank">
+         </a>
+         <a class="ht-temp" href="http://weather.sfgate.com/US/CA/San_Francisco.html" target="_blank">
+         </a>
+        </span>
+       </li>
+      </ul>
+      <!-- ux/premiumsfgate/templates/hearst/widgets/paywallLogin/main.tpl -->
+      <ul class="ht-right-links signed-in" style="display:none">
+       <li class="ht-ed">
+        <a href="/e-edition/">
+         e-edition
+        </a>
+       </li>
+       <li class="ht-user">
+        <a class="ht-expand" id="adminlink">
+         Account
+        </a>
+        <div class="hst-admin">
+         <div id="acctAdmin">
+          <ul class="form-list">
+           <li>
+            <a class="admin-profile" href="https://myaccount.sfchronicle.com/Login.aspx" target="_blank">
+             Edit Your Profile
+            </a>
+           </li>
+           <li>
+            <a class="admin-sub" href="https://myaccount.sfchronicle.com/Login.aspx" target="_blank">
+             Manage Your Subscription
+            </a>
+           </li>
+          </ul>
+          <input class="btn-submit" onclick="edbTokens.logout()" type="button" value="Sign Out"/>
+         </div>
+        </div>
+        <!-- /hst-admin -->
+       </li>
+      </ul>
+      <ul class="ht-right-links signed-out">
+       <li class="ht-ed">
+        <a href="/e-edition/">
+         e-edition
+        </a>
+       </li>
+       <li class="ht-saved">
+        <span>
+         <a href="https://myaccount.sfchronicle.com/dssSubscribe.aspx?pid=215&amp;return=http://www.sfchronicle.com/bayarea/article/Throngs-of-fans-already-packing-Civic-Center-5860820.php">
+          Subscribe
+         </a>
+        </span>
+       </li>
+       <li class="ht-user">
+        <span>
+         <a class="ht-expand" id="adminlink">
+          Sign In
+         </a>
+        </span>
+        <div class="hst-admin">
+         <div class="intro">
+          <form action="https://myaccount.sfchronicle.com/dssmatch.aspx" id="activate" method="get">
+           <a onclick="document.getElementById('activate').submit();">
+            <h3>
+             First time signing in to SFChronicle.com?
+            </h3>
+            <input name="return" type="hidden" value="http://www.sfchronicle.com/bayarea/article/Throngs-of-fans-already-packing-Civic-Center-5860820.php"/>
+            <p>
+             <span>
+              Click here
+             </span>
+             to confirm your subscription &amp; sign in information.
+            </p>
+           </a>
+           <input name="commit" type="hidden" value="Activate Account"/>
+          </form>
+         </div>
+         <div id="signIn">
+          <form action="https://edb.sfchronicle.com/WCMPaywall/GetTokensByEmail" method="post" name="aw-login">
+           <fieldset>
+            <ul class="form-list">
+             <li>
+              <input autocapitalize="off" class="form-input email-aw useremail" id="aw-email" name="EmailAddress" onfocus="if(this.value == 'Email Address') { this.value = ''; }" onkeypress="javascript: if (window.event.keyCode === 35) { return false; }" type="email" value=""/>
+             </li>
+             <li id="pw-li">
+              <input class="form-input password-aw" id="password" name="Password" type="password" value=""/>
+             </li>
+             <li>
+              <div class="checkbox-rm checked" id="checkremem">
+               <input checked="true" id="remember_me" name="RememberMe" type="checkbox" value="1"/>
+               <label for="remember_me">
+                Stay signed in
+               </label>
+              </div>
+             </li>
+            </ul>
+           </fieldset>
+           <input name="SignInError" type="hidden" value="header"/>
+           <input class="btn-submit" name="commit" type="submit" value="Sign In"/>
+           <p class="forgot">
+            <a href="https://myaccount.sfchronicle.com/ForgotPassword.aspx" target="_blank">
+             Forgot Your Password?
+            </a>
+           </p>
+          </form>
+          <div class="signin-dis">
+           By logging in, you agree to the
+           <a href="/terms_of_use/" target="_blank">
+            Terms and Conditions
+           </a>
+           and
+           <a href="/privacy_policy/" target="_blank">
+            Privacy Policy
+           </a>
+           .
+          </div>
+         </div>
+        </div>
+        <!-- /hst-admin -->
+       </li>
+      </ul>
+      <script>
+       $('.email-aw').watermark('Email Address');
+    $('.password-aw').watermark('Password');
+    if (edbTokens.productToken == null) {
+        $('ul.signed-in').remove();
+        $('ul.signed-out').show();
+        if (edbTokens.errorMessage && edbTokens.signInError == 'header') {
+            $('#signIn').prepend('<div class="error-wrap error-back-light" style="display: block; "><span class="error-text error-text-light">'+
+            edbTokens.errorMessage+
+            '</span><img src="/img/utils/error_dark.png"/></div>');
+            if(edbTokens.emailForPrompt){
+                $("input.useremail").val(edbTokens.emailForPrompt);
+            }
+        }
+    } else {
+        $('ul.signed-out').remove();
+        $('ul.signed-in').show();
+    }
+      </script>
+      <!-- e ux/premiumsfgate/templates/hearst/widgets/paywallLogin/main.tpl -->
+     </div>
+    </div>
+    <!-- e ux/premiumsfgate/templates/hearst/common/admin_bar.tpl -->
+    <div class="lock1200">
+     <div class="header-branding">
+      <a class="logo-link" href="/">
+       <img class="print-only" src="/img/modules/siteheader/logos/logo_section_medium.png"/>
+      </a>
+      <h1 class="section-title">
+       <a class="color-link" href="/sports/">
+        Sports
+       </a>
+      </h1>
+     </div>
+     <!-- business/templates/hearst/home/HNavigation.tpl -->
+     <!-- hearst/home/navigation.tpl -->
+     <!-- ux/premiumsfgate/templates/hearst/home/navigation_main.tpl -->
+     <div class="header-nav">
+      <div class="wide-sections horizontal-menu">
+       <ul class="sections-list" id="wide-nav">
+        <li class="nav-item first" id="Ho-link">
+         <a href="/">
+          Home
+         </a>
+        </li>
+        <li class="nav-item " data-url="/local/" id="Lo-link">
+         <a href="javascript:void(0);">
+          Local
+         </a>
+        </li>
+        <li class="nav-item " data-url="/us-world/" id="US-link">
+         <a href="javascript:void(0);">
+          US &amp; World
+         </a>
+        </li>
+        <li class="nav-item current currentsection " data-url="/sports/" id="Sp-link">
+         <a href="javascript:void(0);">
+          Sports
+         </a>
+        </li>
+        <li class="nav-item " data-url="/business/" id="Bi-link">
+         <a href="javascript:void(0);">
+          Biz &amp; Tech
+         </a>
+        </li>
+        <li class="nav-item " data-url="/opinion/" id="Op-link">
+         <a href="javascript:void(0);">
+          Opinion
+         </a>
+        </li>
+        <li class="nav-item " data-url="/style/" id="St-link">
+         <a href="javascript:void(0);">
+          Style
+         </a>
+        </li>
+        <li class="nav-item " data-url="/foodandhome/" id="Fo-link">
+         <a href="javascript:void(0);">
+          Food+Home
+         </a>
+        </li>
+        <li class="nav-item " data-url="/entertainment/" id="Ar-link">
+         <a href="javascript:void(0);">
+          A&amp;E
+         </a>
+        </li>
+        <li class="nav-item " data-url="/lifestyle/" id="Li-link">
+         <a href="javascript:void(0);">
+          Lifestyle
+         </a>
+        </li>
+        <li class="nav-item last " data-url="http://www.sfchronicle.com/membership/" id="Me-link">
+         <a href="javascript:void(0);">
+          Membership
+         </a>
+        </li>
+        <li class="search">
+         <a href="javascript:void(0);">
+          <div class="search-open">
+          </div>
+         </a>
+        </li>
+       </ul>
+       <ul class="search-menu">
+        <li class="nav-item">
+         <a class="menu-collapsed-horizontal" href="javascript:toggleSearch();">
+          Sections
+         </a>
+        </li>
+        <li class="search search-icon">
+         <a href="javascript:toggleSearch();">
+          <div class="toggle-btn search-close">
+          </div>
+         </a>
+        </li>
+        <li class="search search-input">
+         <form action="/results/" method="get">
+          <input name="controllerName" type="hidden" value="search"/>
+          <input name="action" type="hidden" value="search"/>
+          <input name="searchindex" type="hidden" value="property"/>
+          <input name="view" type="hidden" value="premium"/>
+          <input name="sort" type="hidden" value="date"/>
+          <fieldset>
+           <input class="form-input" id="search" name="query" onfocus="if(this.value == 'Search') { this.value = ''; }" type="text" value="Search"/>
+           <input class="btn-dark search-btn" name="search" type="submit" value="Search"/>
+          </fieldset>
+         </form>
+        </li>
+       </ul>
+      </div>
+      <div class="narrow-sections horizontal-menu">
+       <ul class="sections-list">
+        <li class="nav-item">
+         <a class="menu-collapsed" href="javascript:void(0);" id="sections-link">
+          Sections
+         </a>
+        </li>
+        <li class="nav-item search">
+         <div class="search-narrow">
+          <form action="/results/" method="get">
+           <input name="controllerName" type="hidden" value="search"/>
+           <input name="action" type="hidden" value="search"/>
+           <input name="searchindex" type="hidden" value="property"/>
+           <input name="view" type="hidden" value="premium"/>
+           <input name="sort" type="hidden" value="date"/>
+           <fieldset>
+            <input class="form-input" id="search" name="query" onfocus="if(this.value == 'Search') { this.value = ''; }" type="text" value="Search"/>
+           </fieldset>
+          </form>
+          <a href="javascript:void(0);">
+           <div class="toggle-btn search-close">
+           </div>
+          </a>
+         </div>
+         <a href="javascript:void(0);">
+          <div class="toggle-btn search-open">
+          </div>
+         </a>
+        </li>
+       </ul>
+      </div>
+      <div id="sections-menu">
+       <div class="narrow-sections nav-links">
+        <ul class="sections-list">
+         <li class="nav-item first" id="Ho-link">
+          <a href="/">
+           Home
+          </a>
+         </li>
+         <li class="nav-item" data-url="/local/" id="Lo-link">
+          <a href="javascript:toggle_narrow_subsection('Lo');">
+           Local
+          </a>
+         </li>
+         <li class="nav-item" data-url="/us-world/" id="US-link">
+          <a href="javascript:toggle_narrow_subsection('US');">
+           US &amp; World
+          </a>
+         </li>
+         <li class="nav-item" data-url="/sports/" id="Sp-link">
+          <a href="javascript:toggle_narrow_subsection('Sp');">
+           Sports
+          </a>
+         </li>
+         <li class="nav-item" data-url="/business/" id="Bi-link">
+          <a href="javascript:toggle_narrow_subsection('Bi');">
+           Biz &amp; Tech
+          </a>
+         </li>
+         <li class="nav-item" data-url="/opinion/" id="Op-link">
+          <a href="javascript:toggle_narrow_subsection('Op');">
+           Opinion
+          </a>
+         </li>
+         <li class="nav-item" data-url="/style/" id="St-link">
+          <a href="javascript:toggle_narrow_subsection('St');">
+           Style
+          </a>
+         </li>
+         <li class="nav-item" data-url="/foodandhome/" id="Fo-link">
+          <a href="javascript:toggle_narrow_subsection('Fo');">
+           Food+Home
+          </a>
+         </li>
+         <li class="nav-item" data-url="/entertainment/" id="Ar-link">
+          <a href="javascript:toggle_narrow_subsection('Ar');">
+           A&amp;E
+          </a>
+         </li>
+         <li class="nav-item" data-url="/lifestyle/" id="Li-link">
+          <a href="javascript:toggle_narrow_subsection('Li');">
+           Lifestyle
+          </a>
+         </li>
+         <li class="nav-item last" data-url="http://www.sfchronicle.com/membership/" id="Me-link">
+          <a href="javascript:toggle_narrow_subsection('Me');">
+           Membership
+          </a>
+         </li>
+        </ul>
+       </div>
+       <div class="nav-links nav-pulldown" id="Lo">
+        <ul class="subsections-list">
+         <li class="nav-item current first">
+          <a href="/local/sanfrancisco/">
+           San Francisco
+          </a>
+         </li>
+         <li class="nav-item current">
+          <a href="/local/bayarea/">
+           Bay Area
+          </a>
+         </li>
+         <li class="nav-item current">
+          <a href="/local/crime/">
+           Crime
+          </a>
+         </li>
+         <li class="nav-item current">
+          <a href="/local/environment/">
+           Environment
+          </a>
+         </li>
+         <li class="nav-item current">
+          <a href="/local/politics-policy/">
+           Politics &amp; Policy
+          </a>
+         </li>
+         <li class="nav-item current">
+          <a href="/lifestyle/health/">
+           Health
+          </a>
+         </li>
+         <li class="nav-item current">
+          <a class="externallink" href="http://www.legacy.com/obituaries/sfgate/" target="_blank">
+           Obituaries
+          </a>
+         </li>
+         <li class="nav-item current last">
+          <a href="/local/columnists/">
+           Columnists
+          </a>
+         </li>
+        </ul>
+       </div>
+       <div class="nav-links nav-pulldown" id="US">
+        <ul class="subsections-list">
+         <li class="nav-item current first">
+          <a href="/us-world/us/">
+           US
+          </a>
+         </li>
+         <li class="nav-item current">
+          <a href="/us-world/world/">
+           World
+          </a>
+         </li>
+         <li class="nav-item current">
+          <a href="/us-world/politics-policy/">
+           Politics &amp; Policy
+          </a>
+         </li>
+         <li class="nav-item current">
+          <a href="/us-world/environment/">
+           Environment
+          </a>
+         </li>
+         <li class="nav-item current last">
+          <a href="/us-world/science/">
+           Science
+          </a>
+         </li>
+        </ul>
+       </div>
+       <div class="nav-links nav-pulldown" id="Sp">
+        <ul class="subsections-list">
+         <li class="nav-item current niners first">
+          <a href="/sports/49ers/">
+           49ers
+          </a>
+         </li>
+         <li class="nav-item current raiders">
+          <a href="/sports/raiders/">
+           Raiders
+          </a>
+         </li>
+         <li class="nav-item current giants">
+          <a href="/sports/giants/">
+           Giants
+          </a>
+         </li>
+         <li class="nav-item current as">
+          <a href="/sports/athletics/">
+           A's
+          </a>
+         </li>
+         <li class="nav-item current warriors">
+          <a href="/sports/warriors/">
+           Warriors
+          </a>
+         </li>
+         <li class="nav-item current college">
+          <a href="/sports/college/">
+           College
+          </a>
+         </li>
+         <li class="nav-item current sharks">
+          <a href="/sports/sharks/">
+           Sharks
+          </a>
+         </li>
+         <li class="nav-item current earthquakes">
+          <a href="/sports/earthquakes/">
+           Earthquakes
+          </a>
+         </li>
+         <li class="nav-item current highschool">
+          <a href="/sports/high-school/">
+           High School
+          </a>
+         </li>
+         <li class="nav-item current moresports last">
+          <a href="/sports/other/">
+           More Sports
+          </a>
+         </li>
+        </ul>
+       </div>
+       <div class="nav-links nav-pulldown" id="Bi">
+        <ul class="subsections-list">
+         <li class="nav-item current first">
+          <a href="/business/technology/">
+           Technology
+          </a>
+         </li>
+         <li class="nav-item current">
+          <a href="/business/realestate/">
+           Real Estate
+          </a>
+         </li>
+         <li class="nav-item current">
+          <a href="/business/markets/">
+           Markets
+          </a>
+         </li>
+         <li class="nav-item current last">
+          <a class="externallink" href="http://markets.sfgate.com/" target="_blank">
+           Stocks Watchlist
+          </a>
+         </li>
+        </ul>
+       </div>
+       <div class="nav-links nav-pulldown" id="Op">
+        <ul class="subsections-list">
+         <li class="nav-item current first">
+          <a href="/opinion/editorials/">
+           Editorials
+          </a>
+         </li>
+         <li class="nav-item current">
+          <a href="/opinion/letters-editor/">
+           Letters to the editor
+          </a>
+         </li>
+         <li class="nav-item current">
+          <a href="/opinion/op-ed-columns/">
+           Op-ed columns
+          </a>
+         </li>
+         <li class="nav-item current">
+          <a href="/opinion/insight/">
+           Insight
+          </a>
+         </li>
+         <li class="nav-item current last">
+          <a href="/city-on-the-edge/">
+           City on the Edge
+          </a>
+         </li>
+        </ul>
+       </div>
+       <div class="nav-links nav-pulldown" id="St">
+        <ul class="subsections-list">
+         <li class="nav-item current first">
+          <a href="/style/scene/">
+           Scene
+          </a>
+         </li>
+         <li class="nav-item current">
+          <a href="/style/fashion/">
+           Fashion
+          </a>
+         </li>
+         <li class="nav-item current">
+          <a href="/style/shopping/">
+           Shopping
+          </a>
+         </li>
+         <li class="nav-item current last">
+          <a href="/style/weddings/">
+           Weddings
+          </a>
+         </li>
+        </ul>
+       </div>
+       <div class="nav-links nav-pulldown" id="Fo">
+        <ul class="subsections-list">
+         <li class="nav-item current first">
+          <a href="/foodandhome/restaurants/">
+           Restaurants
+          </a>
+         </li>
+         <li class="nav-item current">
+          <a href="/foodandhome/wine/">
+           Wine
+          </a>
+         </li>
+         <li class="nav-item current">
+          <a href="/foodandhome/recipes/">
+           Recipes
+          </a>
+         </li>
+         <li class="nav-item current">
+          <a class="externallink" href="http://www.sfchronicle.com/top-100-restaurants" target="_blank">
+           Top 100 Restaurants
+          </a>
+         </li>
+         <li class="nav-item current">
+          <a class="externallink" href="http://www.sfchronicle.com/top100-wines-2013/" target="_blank">
+           Top 100 Wines
+          </a>
+         </li>
+         <li class="nav-item current">
+          <a class="externallink" href="http://www.sfchronicle.com/food/bargain/" target="_blank">
+           Bargain Bites
+          </a>
+         </li>
+         <li class="nav-item current">
+          <a href="/foodandhome/home-design/">
+           Home Design
+          </a>
+         </li>
+         <li class="nav-item current last">
+          <a href="/foodandhome/gardening/">
+           Gardening
+          </a>
+         </li>
+        </ul>
+       </div>
+       <div class="nav-links nav-pulldown" id="Ar">
+        <ul class="subsections-list">
+         <li class="nav-item current first">
+          <a href="/entertainment/movies-tv/">
+           Movies &amp; TV
+          </a>
+         </li>
+         <li class="nav-item current">
+          <a href="/entertainment/arts-theater/">
+           Arts &amp; Theater
+          </a>
+         </li>
+         <li class="nav-item current">
+          <a href="/entertainment/music/">
+           Music
+          </a>
+         </li>
+         <li class="nav-item current">
+          <a href="/entertainment/books/">
+           Books
+          </a>
+         </li>
+         <li class="nav-item current">
+          <a href="/badreporter/">
+           Bad Reporter
+          </a>
+         </li>
+         <li class="nav-item current">
+          <a class="externallink" href="http://www.sfgate.com/horoscope/" target="_blank">
+           Horoscopes
+          </a>
+         </li>
+         <li class="nav-item current">
+          <a class="externallink" href="http://www.sfchronicle.com/comics/" target="_blank">
+           Comics
+          </a>
+         </li>
+         <li class="nav-item current">
+          <a class="externallink" href="http://www.sfgate.com/games" target="_blank">
+           Games
+          </a>
+         </li>
+         <li class="nav-item current last">
+          <a class="externallink" href="http://www.sfgate.com/cgi-bin/movies/listings/search" target="_blank">
+           Movie Listings
+          </a>
+         </li>
+        </ul>
+       </div>
+       <div class="nav-links nav-pulldown" id="Li">
+        <ul class="subsections-list">
+         <li class="nav-item current first">
+          <a class="externallink" href="http://www.sfchronicle.com/style" target="_blank">
+           Style
+          </a>
+         </li>
+         <li class="nav-item current">
+          <a href="/lifestyle/health/">
+           Health
+          </a>
+         </li>
+         <li class="nav-item current">
+          <a href="/lifestyle/outdoors/">
+           Outdoors
+          </a>
+         </li>
+         <li class="nav-item current last">
+          <a href="/lifestyle/travel/">
+           Travel
+          </a>
+         </li>
+        </ul>
+       </div>
+       <div class="nav-links nav-pulldown" id="Me">
+        <ul class="subsections-list">
+         <li class="nav-item current first">
+          <a href="/membership/faq/">
+           About Membership
+          </a>
+         </li>
+         <li class="nav-item current">
+          <a class="externallink" href="http://www.sfchronicle.com/membership/#offers" target="_blank">
+           Exclusive offers
+          </a>
+         </li>
+         <li class="nav-item current">
+          <a class="externallink" href="https://myaccount.sfchronicle.com/dsssubscribe.aspx?pid=1249&amp;z=00000" target="_blank">
+           Join Now
+          </a>
+         </li>
+         <li class="nav-item current">
+          <a class="externallink" href="https://myaccount.sfchronicle.com/Login.aspx" target="_blank">
+           Manage my account
+          </a>
+         </li>
+         <li class="nav-item current last">
+          <a class="externallink" href="http://www.sfchronicle.com/archive/" target="_blank">
+           Archive
+          </a>
+         </li>
+        </ul>
+       </div>
+      </div>
+      <!-- triple rule -->
+      <div class="solo_triple">
+      </div>
+     </div>
+    </div>
+   </div>
+   <!--e ux/premiumsfgate/templates/hearst/home/navigation_main.tpl -->
+   <!-- e hearst/home/navigation.tpl -->
+   <!-- e business/templates/hearst/home/HNavigation.tpl -->
+   <!-- end hearst/article/types/article_header.tpl -->
+   <!-- design/article/premium_story_page.tpl -->
+   <div id="content">
+    <div class="article-wrap">
+     <!-- ux/premiumsfgate/templates/hearst/article/premium_share_alertbox.tpl -->
+     <!-- e ux/premiumsfgate/templates/hearst/article/premium_share_alertbox.tpl -->
+     <div class="zone zone-1">
+      <div class="article-body">
+       <!-- article/types/premium_story_header.tpl -->
+       <h2 class="headline">
+        Confetti, rain fall on revelers at Giants World Series parade
+       </h2>
+       <div class="wide-only">
+        <!-- hearst/common/author_name.tpl -->
+        <p class="byline">
+         By Jill Tucker, Sam Whiting, Hamed Aleaziz
+         <a href="/author/erin-allday/">
+          and Erin Allday
+         </a>
+        </p>
+        <!-- e hearst/common/author_name.tpl -->
+        <p class="datestamp">
+         <span class="published">
+          October 31, 2014
+         </span>
+         |
+         <span class="updated updated">
+          Updated: October 31, 2014 9:20pm
+         </span>
+        </p>
+       </div>
+       <div class="narrow-only">
+        <div class="a-sharebar">
+         <ul class="sharebar-list-p">
+          <li>
+           <h3>
+            <a class="menu-collapsed" href="javascript:toggle_share();" id="share-link">
+             Share
+            </a>
+           </h3>
+          </li>
+         </ul>
+         <div class="a-share-comments">
+          <a href="#comments">
+           Comments
+          </a>
+         </div>
+         <div class="narrow-only" id="share-menu">
+          <!-- hearst/article/premium_article_tools.tpl -->
+          <div class="social-links">
+           <h3 class="sharetitle">
+            Share
+           </h3>
+           <ul>
+            <li class="email">
+             <a data-hearst-galleria-social-uri-template="mailto:?body=Check out this image I found on SFChronicle.com: http%3A%2F%2Fwww.sfchronicle.com%2Fbayarea%2Farticle%2FThrongs-of-fans-already-packing-Civic-Center-5860820.php%3Fcmpid%3Demail-premium{currentImageId}%0A{caption}&amp;subject=Check out this image from SFChronicle.com" href="mailto:?body=Check out this article I found on SFChronicle.com: http%3A%2F%2Fwww.sfchronicle.com%2Fbayarea%2Farticle%2FThrongs-of-fans-already-packing-Civic-Center-5860820.php%3Fcmpid%3Demail-premium&amp;subject=Confetti%2C%20rain%20fall%20on%20revelers%20at%20Giants%20World%20Series%20parade - SFChronicle.com">
+              Email
+              <span class="hdn-analytics-data">
+               email_share|article-5860820|article-page-share-menu|1
+              </span>
+             </a>
+            </li>
+            <li class="reddit">
+             <a data-hearst-galleria-social-uri-template="http://www.reddit.com/submit?url=http%3A%2F%2Fwww.sfchronicle.com%2Fbayarea%2Farticle%2FThrongs-of-fans-already-packing-Civic-Center-5860820.php%3Fcmpid%3Dreddit-premium{currentImageId}&amp;title={caption}" href="http://www.reddit.com/submit?url=http%3A%2F%2Fwww.sfchronicle.com%2Fbayarea%2Farticle%2FThrongs-of-fans-already-packing-Civic-Center-5860820.php%3Fcmpid%3Dreddit-premium&amp;title=Confetti%2C%20rain%20fall%20on%20revelers%20at%20Giants%20World%20Series%20parade" onclick="return openWindow(this.href, 300, 450);" target="_blank">
+              Reddit
+              <span class="hdn-analytics-data">
+               reddit_share|article-5860820|article-page-share-menu|1
+              </span>
+             </a>
+            </li>
+            <li class="facebook">
+             <a data-hearst-galleria-social-uri-template="http://www.facebook.com/dialog/feed?app_id=537896802938133&amp;link=http%3A%2F%2Fwww.sfchronicle.com%2Fbayarea%2Farticle%2FThrongs-of-fans-already-packing-Civic-Center-5860820.php%3Fcmpid%3Dfb-premium{currentImageId}&amp;display=popup&amp;redirect_uri=http%3A%2F%2Fwww.sfchronicle.com%2Fwclose.html&amp;description={caption}&amp;picture={image}&amp;name=Confetti%2C%20rain%20fall%20on%20revelers%20at%20Giants%20World%20Series%20parade" href="http://www.facebook.com/dialog/feed?app_id=537896802938133&amp;link=http%3A%2F%2Fwww.sfchronicle.com%2Fbayarea%2Farticle%2FThrongs-of-fans-already-packing-Civic-Center-5860820.php%3Fcmpid%3Dfb-premium&amp;display=popup&amp;redirect_uri=http%3A%2F%2Fwww.sfchronicle.com%2Fwclose.html&amp;description=Hundreds%20of%20thousands%20of%20Giants%20fans%20shrugged%20off%20gray%20and%20rainy%20skies%20%E2%80%94%20as%20well%20as%20any%20tendency%20to%20be%20spoiled%20by%20downpours%20of%20success%20%E2%80%94%20as%20they%20flooded%20the%20city%20Friday%20for%20yet%20another%20World%20Series%20victory%20party%2C%20crowding%20Market%20Street%20for%20a%20confetti-stuffed%20parade%20and%20packing%20Civic%20Center%20Plaza%20for%20a%20raucous%20celebration.%20The%20true%2C%20the%20faithful%20and%20the%20die-hard%20arrived%20in%20droves%2C%20starting%20well%20before%20dawn%2C%20to%20claim%20prime%20spots%20along%20the%20parade%20route%2C%20braving%20the%20wet%20Halloween%20weather%20with%20scarves%2C%20ponchos%2C%20umbrellas%20and%20panda%20hats%20honoring%20Giants%20third%20baseman%20Pablo%20Sandoval.%20%5B...%5D%20the%20players%2C%20who%20were%20carried%20along%20the%20parade%20route%20on%20double-decker%20tour%20buses%20tricked%20out%20in%20Giants%20trim%2C%20said%20the%20fan%20support%20was%20as%20heavy%20and%20heartfelt%20as%20earlier%20years.&amp;picture=http%3A%2F%2Fww4.hdnux.com%2Fphotos%2F33%2F00%2F70%2F7081483%2F3%2Fcenterpiecewide.jpg&amp;name=Confetti%2C%20rain%20fall%20on%20revelers%20at%20Giants%20World%20Series%20parade" onclick="return openWindow(this.href, 400, 580);" target="_blank">
+              Facebook
+              <span class="hdn-analytics-data">
+               facebook_share|article-5860820|article-page-share-menu|1
+              </span>
+             </a>
+            </li>
+            <li class="twitter">
+             <a data-hearst-galleria-social-uri-template="http://twitter.com/intent/tweet?original_referer=&amp;url=http%3A%2F%2Fwww.sfchronicle.com%2Fbayarea%2Farticle%2FThrongs-of-fans-already-packing-Civic-Center-5860820.php%3Fcmpid%3Dtwitter-premium{currentImageId}&amp;text={caption}" href="http://twitter.com/intent/tweet?original_referer=&amp;url=http%3A%2F%2Fwww.sfchronicle.com%2Fbayarea%2Farticle%2FThrongs-of-fans-already-packing-Civic-Center-5860820.php%3Fcmpid%3Dtwitter-premium&amp;text=Confetti%2C%20rain%20fall%20on%20revelers%20at%20Giants%20World%20Series%20parade" onclick="return openWindow(this.href, 350, 500);" target="_blank">
+              Twitter
+              <span class="hdn-analytics-data">
+               twitter_share|article-5860820|article-page-share-menu|1
+              </span>
+             </a>
+            </li>
+            <li class="google">
+             <a data-hearst-galleria-social-uri-template="https://plus.google.com/share?hl=en&amp;url=http%3A%2F%2Fwww.sfchronicle.com%2Fbayarea%2Farticle%2FThrongs-of-fans-already-packing-Civic-Center-5860820.php%3Fcmpid%3Dgplus-premium{currentImageId}" href="https://plus.google.com/share?hl=en&amp;url=http%3A%2F%2Fwww.sfchronicle.com%2Fbayarea%2Farticle%2FThrongs-of-fans-already-packing-Civic-Center-5860820.php%3Fcmpid%3Dgplus-premium" onclick="return openWindow(this.href, 300, 450);" target="_blank">
+              Google +
+              <span class="hdn-analytics-data">
+               google_share|article-5860820|article-page-share-menu|1
+              </span>
+             </a>
+            </li>
+            <li class="pinterest">
+             <a data-hearst-galleria-social-uri-template="http://www.pinterest.com/pin/create/button/?url=http%3A%2F%2Fwww.sfchronicle.com%2Fbayarea%2Farticle%2FThrongs-of-fans-already-packing-Civic-Center-5860820.php%3Fcmpid%3Dpinterest-premium{currentImageId}&amp;media={image}&amp;description={caption}" href="http://www.pinterest.com/pin/create/button/?url=http%3A%2F%2Fwww.sfchronicle.com%2Fbayarea%2Farticle%2FThrongs-of-fans-already-packing-Civic-Center-5860820.php%3Fcmpid%3Dpinterest-premium&amp;media=http://ww3.hdnux.com/photos/33/00/23/7079126/15/rawImage.jpg&amp;description=Confetti%2C+rain+fall+on+revelers+at+Giants+World+Series+parade" onclick="return openWindow(this.href, 300, 700);" target="_blank">
+              Pinterest
+              <span class="hdn-analytics-data">
+               pinterest_share|article-5860820|article-page-share-menu|1
+              </span>
+             </a>
+            </li>
+            <li class="print">
+             <a href="#print" onclick="window.print(); return false;">
+              Print this Article
+             </a>
+            </li>
+            <li class="comments">
+             <a href="#comments">
+              Jump To Comments
+             </a>
+            </li>
+           </ul>
+          </div>
+          <script type="text/javascript">
+           var po = document.createElement('script');
+            po.type = 'text/javascript';
+            po.async = true;
+            po.src = 'https://apis.google.com/js/plusone.js';
+
+            var googleApiScript = document.getElementsByTagName('script')[0];
+            googleApiScript.parentNode.insertBefore(po, googleApiScript);
+
+            function openWindow(url, height, width)
+            {
+                window.open(url, "_blank", "height=" + height + ",width=" + width);
+                return false;
+            }
+          </script>
+          <!-- end hearst/article/premium_article_tools.tpl -->
+         </div>
+        </div>
+       </div>
+       <!-- end premium_story_header.tpl -->
+       <div class="img-wrap featured-photo l-feature">
+        <div class="portrait-image">
+         <img alt="San Francisco Giants' Buster Posey during World Series Parade on Market Street in San Francisco. on Friday, October 31, 2014." src="http://ww4.hdnux.com/photos/33/00/70/7081483/3/784x2048.jpg"/>
+         <p class="photo-cred">
+          Scott Strazzante, The Chronicle
+         </p>
+         <p class="photo-caption">
+          San Francisco Giants' Buster Posey during World Series Parade on Market Street in San Francisco. on Friday, October 31, 2014.
+         </p>
+        </div>
+       </div>
+       <!-- article/types/premium_story.tpl -->
+       <div class="article-text">
+        <div class="narrow-only">
+         <!-- hearst/common/author_name.tpl -->
+         <p class="byline">
+          By Jill Tucker, Sam Whiting, Hamed Aleaziz
+          <a href="/author/erin-allday/">
+           and Erin Allday
+          </a>
+         </p>
+         <!-- e hearst/common/author_name.tpl -->
+         <p class="datestamp">
+          <span class="published">
+           October 31, 2014
+          </span>
+          |
+          <span class="updated updated">
+           Updated: October 31, 2014 9:20pm
+          </span>
+         </p>
+        </div>
+        Hundreds of thousands of Giants fans shrugged off gray and rainy skies &#8212; as well as any tendency to be spoiled by downpours of success &#8212; as they flooded the city Friday for yet another World Series victory party, crowding Market Street for a confetti-stuffed parade and packing Civic Center Plaza for a raucous celebration.
+        <p>
+        </p>
+       </div>
+       <!-- templates/hearst/common/premium_login.tpl -->
+       <div class="pw-content signin_form_container">
+        <div class="subscrib_msg hello">
+         <p class="bold-italic">
+          To continue reading this story, you will need to be a digital subscriber to SFChronicle.com.
+         </p>
+        </div>
+        <div class="pw-blocks pw-block-3 pw-block-last">
+         <div class="form-wrap" id="article-signin">
+          <h2 id="signInHeader">
+           SIGN IN
+          </h2>
+          <form action="https://edb.sfchronicle.com/WCMPaywall/GetTokensByEmail" class="main_signin_form_submitter" method="post">
+           <ul class="form-list credential_section">
+            <li class="input-wrap txt-input first">
+             <input class="form-input email-pw useremail" id="email" name="EmailAddress" onfocus="if(this.value == 'Email Address') { this.value = ''; }" type="text" value=""/>
+            </li>
+            <li class="input-wrap txt-input">
+             <input class="form-input password-pw" id="password" name="Password" type="password" value=""/>
+            </li>
+            <li class="input-wrap primary_signin_btn">
+             <input name="SignInError" type="hidden" value="article"/>
+             <input class="btn-dark log_sign_in_btn" name="commit" type="submit" value="Sign In"/>
+            </li>
+           </ul>
+           <ul class="form-list secondary">
+            <li class="input-wrap first">
+             <div class="checkbox checked" id="article-check">
+              <input checked="true" id="article_remember_me" name="RememberMe" type="checkbox" value="1"/>
+              <label for="remember_me">
+               Stay signed in
+              </label>
+             </div>
+            </li>
+            <li class="input-wrap primary_forgot_pass">
+             <div class="forgotPass_wrap">
+              <span>
+               <a class="forgotPass" href="https://myaccount.sfchronicle.com/ForgotPassword.aspx" target="_blank">
+                Forgot Your Password?
+               </a>
+              </span>
+             </div>
+            </li>
+           </ul>
+           <div class="gray_line_wrapper">
+            <div class="gray_line">
+            </div>
+           </div>
+           <ul class="mobile_mode form-list secondary ">
+            <li class="input-wrap mobile_mode_a">
+             <input class="btn-dark" name="commit" type="submit" value="Sign In"/>
+            </li>
+            <li class="input-wrap mobile_mode_b">
+             <div class="forgotPass_wrap">
+              <span>
+               <a class="forgotPass" href="https://myaccount.sfchronicle.com/ForgotPassword.aspx" target="_blank">
+                Forgot Your Password?
+               </a>
+              </span>
+             </div>
+            </li>
+           </ul>
+          </form>
+          <!-- Already a subscriber  -->
+          <div class="activate_account_section">
+           <form action="https://myaccount.sfchronicle.com/dssmatch.aspx" method="get">
+            <ul class="activate_account_items">
+             <li class="activate_item">
+              SF Chronicle subscribers have FREE access to all premium digital products.
+             </li>
+             <li class="activate_item">
+              <input name="return" type="hidden" value="http://www.sfchronicle.com/bayarea/article/Throngs-of-fans-already-packing-Civic-Center-5860820.php"/>
+              <input class="btn-dark" name="commit" type="submit" value="Activate Account"/>
+             </li>
+            </ul>
+           </form>
+          </div>
+          <!-- End of already a subscriber section -->
+          <p class="signin-dis signin_blurb ">
+           By logging in, you agree to the
+           <a href="/terms_of_use/">
+            Terms and Conditions
+           </a>
+           and
+           <a href="/privacy_policy/">
+            Privacy Policy
+           </a>
+           .
+          </p>
+          <script type="text/javascript">
+           $('.email-pw').watermark('Email Address');
+                $('.password-pw').watermark('Password');
+                if ( edbTokens.errorMessage && edbTokens.signInError=='article' ){
+                    window.location.hash = 'article-signin'; // set hashtag anchor to jump to article sign in
+                    $('#article-signin form.main_signin_form_submitter').prepend('<div class="error-wrap error-back-dark" style="display:block;"><ul><li class="form_err_text"><span class="error-text error-text-dark">'+
+                            edbTokens.errorMessage+
+                            '</span></li><li class="form_err_icon"><img src="/img/utils/error_dark.png"></li></ul></div>');
+                    if(edbTokens.emailForPrompt){
+                        $('input.useremail').val(edbTokens.emailForPrompt);
+                    }
+                }
+          </script>
+         </div>
+        </div>
+        <div class="signin_item pw-block-2">
+         <div class="form-wrap">
+          <ul class="subscribe_banner_section">
+           <li class="subscribe_item item_a">
+            <div class="offer_blurb">
+             <span class="blurb_highlight">
+              Click here
+             </span>
+             to subscribe now to get the best Bay Area news!
+            </div>
+           </li>
+           <li class="subscribe_item item_b">
+            <div class="subscribe_btn_wrap">
+             <div class="subscribe_btn">
+              <a href="https://myaccount.sfchronicle.com/dssSubscribe.aspx?pid=186&amp;return=http://www.sfchronicle.com/bayarea/article/Throngs-of-fans-already-packing-Civic-Center-5860820.php">
+               SUBSCRIBE
+              </a>
+             </div>
+             <div class="subscribe_btn_icon">
+             </div>
+            </div>
+           </li>
+          </ul>
+         </div>
+        </div>
+       </div>
+       <!-- /.pw-content signin_form_container -->
+       <!-- e templates/hearst/common/premium_login.tpl -->
+       <div class="solo_single narrow-only" style="margin:0">
+       </div>
+       <!-- END /hearst/article/types/premium_story.tpl -->
+       <div class="narrow-only">
+        <!-- hearst/article/relatedStories.tpl -->
+        <!-- end hearst/article/relatedStories.tpl -->
+       </div>
+      </div>
+     </div>
+     <!-- END Article Body-->
+     <!-- /zone 1-->
+     <div class="zone zone-2">
+      <div class="collection article-sidebar">
+       <div class="narrow-only">
+        <!-- hearst/article/premium_article_tools.tpl -->
+        <div class="social-links">
+         <h3 class="sharetitle">
+          Share
+         </h3>
+         <ul>
+          <li class="email">
+           <a data-hearst-galleria-social-uri-template="mailto:?body=Check out this image I found on SFChronicle.com: http%3A%2F%2Fwww.sfchronicle.com%2Fbayarea%2Farticle%2FThrongs-of-fans-already-packing-Civic-Center-5860820.php%3Fcmpid%3Demail-premium{currentImageId}%0A{caption}&amp;subject=Check out this image from SFChronicle.com" href="mailto:?body=Check out this article I found on SFChronicle.com: http%3A%2F%2Fwww.sfchronicle.com%2Fbayarea%2Farticle%2FThrongs-of-fans-already-packing-Civic-Center-5860820.php%3Fcmpid%3Demail-premium&amp;subject=Confetti%2C%20rain%20fall%20on%20revelers%20at%20Giants%20World%20Series%20parade - SFChronicle.com">
+            Email
+            <span class="hdn-analytics-data">
+             email_share|article-5860820|article-page-narrow|1
+            </span>
+           </a>
+          </li>
+          <li class="reddit">
+           <a data-hearst-galleria-social-uri-template="http://www.reddit.com/submit?url=http%3A%2F%2Fwww.sfchronicle.com%2Fbayarea%2Farticle%2FThrongs-of-fans-already-packing-Civic-Center-5860820.php%3Fcmpid%3Dreddit-premium{currentImageId}&amp;title={caption}" href="http://www.reddit.com/submit?url=http%3A%2F%2Fwww.sfchronicle.com%2Fbayarea%2Farticle%2FThrongs-of-fans-already-packing-Civic-Center-5860820.php%3Fcmpid%3Dreddit-premium&amp;title=Confetti%2C%20rain%20fall%20on%20revelers%20at%20Giants%20World%20Series%20parade" onclick="return openWindow(this.href, 300, 450);" target="_blank">
+            Reddit
+            <span class="hdn-analytics-data">
+             reddit_share|article-5860820|article-page-narrow|1
+            </span>
+           </a>
+          </li>
+          <li class="facebook">
+           <a data-hearst-galleria-social-uri-template="http://www.facebook.com/dialog/feed?app_id=537896802938133&amp;link=http%3A%2F%2Fwww.sfchronicle.com%2Fbayarea%2Farticle%2FThrongs-of-fans-already-packing-Civic-Center-5860820.php%3Fcmpid%3Dfb-premium{currentImageId}&amp;display=popup&amp;redirect_uri=http%3A%2F%2Fwww.sfchronicle.com%2Fwclose.html&amp;description={caption}&amp;picture={image}&amp;name=Confetti%2C%20rain%20fall%20on%20revelers%20at%20Giants%20World%20Series%20parade" href="http://www.facebook.com/dialog/feed?app_id=537896802938133&amp;link=http%3A%2F%2Fwww.sfchronicle.com%2Fbayarea%2Farticle%2FThrongs-of-fans-already-packing-Civic-Center-5860820.php%3Fcmpid%3Dfb-premium&amp;display=popup&amp;redirect_uri=http%3A%2F%2Fwww.sfchronicle.com%2Fwclose.html&amp;description=Hundreds%20of%20thousands%20of%20Giants%20fans%20shrugged%20off%20gray%20and%20rainy%20skies%20%E2%80%94%20as%20well%20as%20any%20tendency%20to%20be%20spoiled%20by%20downpours%20of%20success%20%E2%80%94%20as%20they%20flooded%20the%20city%20Friday%20for%20yet%20another%20World%20Series%20victory%20party%2C%20crowding%20Market%20Street%20for%20a%20confetti-stuffed%20parade%20and%20packing%20Civic%20Center%20Plaza%20for%20a%20raucous%20celebration.%20The%20true%2C%20the%20faithful%20and%20the%20die-hard%20arrived%20in%20droves%2C%20starting%20well%20before%20dawn%2C%20to%20claim%20prime%20spots%20along%20the%20parade%20route%2C%20braving%20the%20wet%20Halloween%20weather%20with%20scarves%2C%20ponchos%2C%20umbrellas%20and%20panda%20hats%20honoring%20Giants%20third%20baseman%20Pablo%20Sandoval.%20%5B...%5D%20the%20players%2C%20who%20were%20carried%20along%20the%20parade%20route%20on%20double-decker%20tour%20buses%20tricked%20out%20in%20Giants%20trim%2C%20said%20the%20fan%20support%20was%20as%20heavy%20and%20heartfelt%20as%20earlier%20years.&amp;picture=http%3A%2F%2Fww4.hdnux.com%2Fphotos%2F33%2F00%2F70%2F7081483%2F3%2Fcenterpiecewide.jpg&amp;name=Confetti%2C%20rain%20fall%20on%20revelers%20at%20Giants%20World%20Series%20parade" onclick="return openWindow(this.href, 400, 580);" target="_blank">
+            Facebook
+            <span class="hdn-analytics-data">
+             facebook_share|article-5860820|article-page-narrow|1
+            </span>
+           </a>
+          </li>
+          <li class="twitter">
+           <a data-hearst-galleria-social-uri-template="http://twitter.com/intent/tweet?original_referer=&amp;url=http%3A%2F%2Fwww.sfchronicle.com%2Fbayarea%2Farticle%2FThrongs-of-fans-already-packing-Civic-Center-5860820.php%3Fcmpid%3Dtwitter-premium{currentImageId}&amp;text={caption}" href="http://twitter.com/intent/tweet?original_referer=&amp;url=http%3A%2F%2Fwww.sfchronicle.com%2Fbayarea%2Farticle%2FThrongs-of-fans-already-packing-Civic-Center-5860820.php%3Fcmpid%3Dtwitter-premium&amp;text=Confetti%2C%20rain%20fall%20on%20revelers%20at%20Giants%20World%20Series%20parade" onclick="return openWindow(this.href, 350, 500);" target="_blank">
+            Twitter
+            <span class="hdn-analytics-data">
+             twitter_share|article-5860820|article-page-narrow|1
+            </span>
+           </a>
+          </li>
+          <li class="google">
+           <a data-hearst-galleria-social-uri-template="https://plus.google.com/share?hl=en&amp;url=http%3A%2F%2Fwww.sfchronicle.com%2Fbayarea%2Farticle%2FThrongs-of-fans-already-packing-Civic-Center-5860820.php%3Fcmpid%3Dgplus-premium{currentImageId}" href="https://plus.google.com/share?hl=en&amp;url=http%3A%2F%2Fwww.sfchronicle.com%2Fbayarea%2Farticle%2FThrongs-of-fans-already-packing-Civic-Center-5860820.php%3Fcmpid%3Dgplus-premium" onclick="return openWindow(this.href, 300, 450);" target="_blank">
+            Google +
+            <span class="hdn-analytics-data">
+             google_share|article-5860820|article-page-narrow|1
+            </span>
+           </a>
+          </li>
+          <li class="pinterest">
+           <a data-hearst-galleria-social-uri-template="http://www.pinterest.com/pin/create/button/?url=http%3A%2F%2Fwww.sfchronicle.com%2Fbayarea%2Farticle%2FThrongs-of-fans-already-packing-Civic-Center-5860820.php%3Fcmpid%3Dpinterest-premium{currentImageId}&amp;media={image}&amp;description={caption}" href="http://www.pinterest.com/pin/create/button/?url=http%3A%2F%2Fwww.sfchronicle.com%2Fbayarea%2Farticle%2FThrongs-of-fans-already-packing-Civic-Center-5860820.php%3Fcmpid%3Dpinterest-premium&amp;media=http://ww3.hdnux.com/photos/33/00/23/7079126/15/rawImage.jpg&amp;description=Confetti%2C+rain+fall+on+revelers+at+Giants+World+Series+parade" onclick="return openWindow(this.href, 300, 700);" target="_blank">
+            Pinterest
+            <span class="hdn-analytics-data">
+             pinterest_share|article-5860820|article-page-narrow|1
+            </span>
+           </a>
+          </li>
+          <li class="print">
+           <a href="#print" onclick="window.print(); return false;">
+            Print this Article
+           </a>
+          </li>
+          <li class="comments">
+           <a href="#comments">
+            Jump To Comments
+           </a>
+          </li>
+         </ul>
+        </div>
+        <script type="text/javascript">
+         var po = document.createElement('script');
+            po.type = 'text/javascript';
+            po.async = true;
+            po.src = 'https://apis.google.com/js/plusone.js';
+
+            var googleApiScript = document.getElementsByTagName('script')[0];
+            googleApiScript.parentNode.insertBefore(po, googleApiScript);
+
+            function openWindow(url, height, width)
+            {
+                window.open(url, "_blank", "height=" + height + ",width=" + width);
+                return false;
+            }
+        </script>
+        <!-- end hearst/article/premium_article_tools.tpl -->
+        <!-- hearst/article/premium_author_module.tpl -->
+        <div class="author-wrap">
+         <div class="authorinfo ">
+          <img alt="Jill Tucker" src="http://ww4.hdnux.com/photos/20/31/73/4300543/5/premium_author_module.jpg"/>
+          <h2 class="name">
+           <a href="/author/jill-tucker/">
+            Jill Tucker
+           </a>
+          </h2>
+          <p class="title">
+           Education Reporter
+          </p>
+         </div>
+         <div class="authorinfo ">
+          <img alt="Sam Whiting" src="http://ww1.hdnux.com/photos/20/27/51/4291164/7/premium_author_module.jpg"/>
+          <h2 class="name">
+           <a href="/author/sam-whiting/">
+            Sam Whiting
+           </a>
+          </h2>
+          <p class="title">
+           Features Reporter
+          </p>
+         </div>
+         <div class="authorinfo noborder last">
+          <img alt="Erin Allday" src="http://ww1.hdnux.com/photos/20/41/45/4331888/7/premium_author_module.jpg"/>
+          <h2 class="name">
+           <a href="/author/erin-allday/">
+            Erin Allday
+           </a>
+          </h2>
+          <p class="title">
+           Health Reporter
+          </p>
+         </div>
+        </div>
+        <!-- hearst/article/premium_author_module.tpl -->
+       </div>
+       <div class="wide-only">
+        <!-- hearst/article/premium_author_module.tpl -->
+        <div class="author-wrap">
+         <div class="authorinfo ">
+          <img alt="Jill Tucker" src="http://ww4.hdnux.com/photos/20/31/73/4300543/5/premium_author_module.jpg"/>
+          <h2 class="name">
+           <a href="/author/jill-tucker/">
+            Jill Tucker
+           </a>
+          </h2>
+          <p class="title">
+           Education Reporter
+          </p>
+         </div>
+         <div class="authorinfo ">
+          <img alt="Sam Whiting" src="http://ww1.hdnux.com/photos/20/27/51/4291164/7/premium_author_module.jpg"/>
+          <h2 class="name">
+           <a href="/author/sam-whiting/">
+            Sam Whiting
+           </a>
+          </h2>
+          <p class="title">
+           Features Reporter
+          </p>
+         </div>
+         <div class="authorinfo noborder last">
+          <img alt="Erin Allday" src="http://ww1.hdnux.com/photos/20/41/45/4331888/7/premium_author_module.jpg"/>
+          <h2 class="name">
+           <a href="/author/erin-allday/">
+            Erin Allday
+           </a>
+          </h2>
+          <p class="title">
+           Health Reporter
+          </p>
+         </div>
+        </div>
+        <!-- hearst/article/premium_author_module.tpl -->
+        <div class="scroll-section">
+         <div id="social">
+          <!-- hearst/article/premium_article_tools.tpl -->
+          <div class="social-links">
+           <h3 class="sharetitle">
+            Share
+           </h3>
+           <ul>
+            <li class="email">
+             <a data-hearst-galleria-social-uri-template="mailto:?body=Check out this image I found on SFChronicle.com: http%3A%2F%2Fwww.sfchronicle.com%2Fbayarea%2Farticle%2FThrongs-of-fans-already-packing-Civic-Center-5860820.php%3Fcmpid%3Demail-premium{currentImageId}%0A{caption}&amp;subject=Check out this image from SFChronicle.com" href="mailto:?body=Check out this article I found on SFChronicle.com: http%3A%2F%2Fwww.sfchronicle.com%2Fbayarea%2Farticle%2FThrongs-of-fans-already-packing-Civic-Center-5860820.php%3Fcmpid%3Demail-premium&amp;subject=Confetti%2C%20rain%20fall%20on%20revelers%20at%20Giants%20World%20Series%20parade - SFChronicle.com">
+              Email
+              <span class="hdn-analytics-data">
+               email_share|article-5860820|article-page-wide|1
+              </span>
+             </a>
+            </li>
+            <li class="reddit">
+             <a data-hearst-galleria-social-uri-template="http://www.reddit.com/submit?url=http%3A%2F%2Fwww.sfchronicle.com%2Fbayarea%2Farticle%2FThrongs-of-fans-already-packing-Civic-Center-5860820.php%3Fcmpid%3Dreddit-premium{currentImageId}&amp;title={caption}" href="http://www.reddit.com/submit?url=http%3A%2F%2Fwww.sfchronicle.com%2Fbayarea%2Farticle%2FThrongs-of-fans-already-packing-Civic-Center-5860820.php%3Fcmpid%3Dreddit-premium&amp;title=Confetti%2C%20rain%20fall%20on%20revelers%20at%20Giants%20World%20Series%20parade" onclick="return openWindow(this.href, 300, 450);" target="_blank">
+              Reddit
+              <span class="hdn-analytics-data">
+               reddit_share|article-5860820|article-page-wide|1
+              </span>
+             </a>
+            </li>
+            <li class="facebook">
+             <a data-hearst-galleria-social-uri-template="http://www.facebook.com/dialog/feed?app_id=537896802938133&amp;link=http%3A%2F%2Fwww.sfchronicle.com%2Fbayarea%2Farticle%2FThrongs-of-fans-already-packing-Civic-Center-5860820.php%3Fcmpid%3Dfb-premium{currentImageId}&amp;display=popup&amp;redirect_uri=http%3A%2F%2Fwww.sfchronicle.com%2Fwclose.html&amp;description={caption}&amp;picture={image}&amp;name=Confetti%2C%20rain%20fall%20on%20revelers%20at%20Giants%20World%20Series%20parade" href="http://www.facebook.com/dialog/feed?app_id=537896802938133&amp;link=http%3A%2F%2Fwww.sfchronicle.com%2Fbayarea%2Farticle%2FThrongs-of-fans-already-packing-Civic-Center-5860820.php%3Fcmpid%3Dfb-premium&amp;display=popup&amp;redirect_uri=http%3A%2F%2Fwww.sfchronicle.com%2Fwclose.html&amp;description=Hundreds%20of%20thousands%20of%20Giants%20fans%20shrugged%20off%20gray%20and%20rainy%20skies%20%E2%80%94%20as%20well%20as%20any%20tendency%20to%20be%20spoiled%20by%20downpours%20of%20success%20%E2%80%94%20as%20they%20flooded%20the%20city%20Friday%20for%20yet%20another%20World%20Series%20victory%20party%2C%20crowding%20Market%20Street%20for%20a%20confetti-stuffed%20parade%20and%20packing%20Civic%20Center%20Plaza%20for%20a%20raucous%20celebration.%20The%20true%2C%20the%20faithful%20and%20the%20die-hard%20arrived%20in%20droves%2C%20starting%20well%20before%20dawn%2C%20to%20claim%20prime%20spots%20along%20the%20parade%20route%2C%20braving%20the%20wet%20Halloween%20weather%20with%20scarves%2C%20ponchos%2C%20umbrellas%20and%20panda%20hats%20honoring%20Giants%20third%20baseman%20Pablo%20Sandoval.%20%5B...%5D%20the%20players%2C%20who%20were%20carried%20along%20the%20parade%20route%20on%20double-decker%20tour%20buses%20tricked%20out%20in%20Giants%20trim%2C%20said%20the%20fan%20support%20was%20as%20heavy%20and%20heartfelt%20as%20earlier%20years.&amp;picture=http%3A%2F%2Fww4.hdnux.com%2Fphotos%2F33%2F00%2F70%2F7081483%2F3%2Fcenterpiecewide.jpg&amp;name=Confetti%2C%20rain%20fall%20on%20revelers%20at%20Giants%20World%20Series%20parade" onclick="return openWindow(this.href, 400, 580);" target="_blank">
+              Facebook
+              <span class="hdn-analytics-data">
+               facebook_share|article-5860820|article-page-wide|1
+              </span>
+             </a>
+            </li>
+            <li class="twitter">
+             <a data-hearst-galleria-social-uri-template="http://twitter.com/intent/tweet?original_referer=&amp;url=http%3A%2F%2Fwww.sfchronicle.com%2Fbayarea%2Farticle%2FThrongs-of-fans-already-packing-Civic-Center-5860820.php%3Fcmpid%3Dtwitter-premium{currentImageId}&amp;text={caption}" href="http://twitter.com/intent/tweet?original_referer=&amp;url=http%3A%2F%2Fwww.sfchronicle.com%2Fbayarea%2Farticle%2FThrongs-of-fans-already-packing-Civic-Center-5860820.php%3Fcmpid%3Dtwitter-premium&amp;text=Confetti%2C%20rain%20fall%20on%20revelers%20at%20Giants%20World%20Series%20parade" onclick="return openWindow(this.href, 350, 500);" target="_blank">
+              Twitter
+              <span class="hdn-analytics-data">
+               twitter_share|article-5860820|article-page-wide|1
+              </span>
+             </a>
+            </li>
+            <li class="google">
+             <a data-hearst-galleria-social-uri-template="https://plus.google.com/share?hl=en&amp;url=http%3A%2F%2Fwww.sfchronicle.com%2Fbayarea%2Farticle%2FThrongs-of-fans-already-packing-Civic-Center-5860820.php%3Fcmpid%3Dgplus-premium{currentImageId}" href="https://plus.google.com/share?hl=en&amp;url=http%3A%2F%2Fwww.sfchronicle.com%2Fbayarea%2Farticle%2FThrongs-of-fans-already-packing-Civic-Center-5860820.php%3Fcmpid%3Dgplus-premium" onclick="return openWindow(this.href, 300, 450);" target="_blank">
+              Google +
+              <span class="hdn-analytics-data">
+               google_share|article-5860820|article-page-wide|1
+              </span>
+             </a>
+            </li>
+            <li class="pinterest">
+             <a data-hearst-galleria-social-uri-template="http://www.pinterest.com/pin/create/button/?url=http%3A%2F%2Fwww.sfchronicle.com%2Fbayarea%2Farticle%2FThrongs-of-fans-already-packing-Civic-Center-5860820.php%3Fcmpid%3Dpinterest-premium{currentImageId}&amp;media={image}&amp;description={caption}" href="http://www.pinterest.com/pin/create/button/?url=http%3A%2F%2Fwww.sfchronicle.com%2Fbayarea%2Farticle%2FThrongs-of-fans-already-packing-Civic-Center-5860820.php%3Fcmpid%3Dpinterest-premium&amp;media=http://ww3.hdnux.com/photos/33/00/23/7079126/15/rawImage.jpg&amp;description=Confetti%2C+rain+fall+on+revelers+at+Giants+World+Series+parade" onclick="return openWindow(this.href, 300, 700);" target="_blank">
+              Pinterest
+              <span class="hdn-analytics-data">
+               pinterest_share|article-5860820|article-page-wide|1
+              </span>
+             </a>
+            </li>
+            <li class="print">
+             <a href="#print" onclick="window.print(); return false;">
+              Print this Article
+             </a>
+            </li>
+            <li class="comments">
+             <a href="#comments">
+              Jump To Comments
+             </a>
+            </li>
+           </ul>
+          </div>
+          <script type="text/javascript">
+           var po = document.createElement('script');
+            po.type = 'text/javascript';
+            po.async = true;
+            po.src = 'https://apis.google.com/js/plusone.js';
+
+            var googleApiScript = document.getElementsByTagName('script')[0];
+            googleApiScript.parentNode.insertBefore(po, googleApiScript);
+
+            function openWindow(url, height, width)
+            {
+                window.open(url, "_blank", "height=" + height + ",width=" + width);
+                return false;
+            }
+          </script>
+          <!-- end hearst/article/premium_article_tools.tpl -->
+          <!-- hearst/article/relatedStories.tpl -->
+          <!-- end hearst/article/relatedStories.tpl -->
+          <!-- src/business/widgets/hearst/collection/widget.tpl -->
+          <div class="hide-rss-link hdnce-e hdnce-collection-20954-premium_article_recent_news">
+           <!-- collections/premium_article_recent_news.tpl -->
+           <!-- collection.premium_article_recent_news.20954 -->
+           <div class="header">
+            <h4 class="kicker-link">
+             Sports
+            </h4>
+           </div>
+           <div class="morenews">
+            <div class="clearfix" id="news-list-section">
+             <div id="newslistsection">
+             </div>
+             <script type="text/javascript">
+              // hide (article) item if we are looking at same (article) page
+             $(document).ready( function () {
+                 $('h2.headline a[href="'+window.location.pathname+'"]', $('ul.news-list')).hide();
+                 $('li.news-item:visible:gt(4)', $("ul.news-list")).hide();
+            }
+         );
+             </script>
+             <ul class="news-list">
+              <li class="news-item first">
+               <h2 class="headline">
+                <a href="/travel/article/In-Sonoma-a-vintage-view-from-the-air-5879123.php">
+                 In Sonoma, a vintage view from the air
+                </a>
+               </h2>
+               <!-- subitem_timestamp.tpl -->
+               <!-- e subitem_timestamp.tpl -->
+              </li>
+              <li class="news-item ">
+               <h2 class="headline">
+                <a href="/news/article/What-s-hot-for-week-ending-Nov-7-5879119.php">
+                 What&#8217;s hot for week ending Nov. 7
+                </a>
+               </h2>
+               <!-- subitem_timestamp.tpl -->
+               <!-- e subitem_timestamp.tpl -->
+              </li>
+              <li class="news-item ">
+               <h2 class="headline">
+                <a href="/opinion/reich/article/A-spirited-election-day-dream-5879118.php">
+                 A spirited election day dream
+                </a>
+               </h2>
+               <!-- subitem_timestamp.tpl -->
+               <!-- e subitem_timestamp.tpl -->
+              </li>
+              <li class="news-item ">
+               <h2 class="headline">
+                <a href="/opinion/article/Good-week-for-Jerry-Brown-bad-week-for-Chevron-5879110.php">
+                 Good week for Jerry Brown; bad week for Chevron
+                </a>
+               </h2>
+               <!-- subitem_timestamp.tpl -->
+               <!-- e subitem_timestamp.tpl -->
+              </li>
+              <li class="news-item ">
+               <h2 class="headline">
+                <a href="/bayarea/article/Drag-act-turned-Black-Cat-Cafe-into-gay-bar-in-5879015.php">
+                 Drag act turned Black Cat Cafe into gay bar in 2nd life
+                </a>
+               </h2>
+               <!-- subitem_timestamp.tpl -->
+               <!-- e subitem_timestamp.tpl -->
+              </li>
+             </ul>
+             <div class="footer">
+              <a class="continues " href="/sports/">
+               More in Sports
+              </a>
+             </div>
+            </div>
+           </div>
+           <!-- /morenews -->
+           <!-- e premium_article_recent_news.tpl -->
+          </div>
+          <!-- e src/business/widgets/hearst/collection/widget.tpl -->
+         </div>
+         <!-- /wide-only -->
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="zone zone-3">
+     </div>
+     <div class="zone zone-4 narrow-only">
+      <div class="article-sidebar">
+      </div>
+     </div>
+     <!-- /zone-4 -->
+    </div>
+    <div class="zone zone-5">
+     <!-- src/business/widgets/hearst/collection/widget.tpl -->
+     <div class="hide-rss-link hdnce-e hdnce-collection-20952-premium_article_featured_articles">
+      <!-- collections/premium_article_featured_articles.tpl -->
+      <!-- collection.premium_article_featured_articles.20952 -->
+      <div class="collection article-sections">
+       <div class="column-outer-wrap">
+        <div class="column-wrap ">
+         <div class="column odd firstcolumn">
+          <div class="header">
+           <h4 class="kicker-link">
+            <a href="http://www.sfchronicle.com/lifestyle/travel/">
+             Fall Ski Preview
+            </a>
+           </h4>
+          </div>
+          <!-- common/display_image.tpl -->
+          <a class="without_u " href="/travel/article/Ski-snowboarding-camps-schools-just-for-girls-5876913.php">
+           <img alt="Students learn to ski powder accessed by helicopter in CMH Powder 101 camps." border="0" src="http://ww2.hdnux.com/photos/32/76/33/7071477/5/premium_article_featured_articles.jpg"/>
+          </a>
+          <!-- e display_image.tpl -->
+          <h2 class="headline">
+           <a href="/travel/article/Ski-snowboarding-camps-schools-just-for-girls-5876913.php">
+            Ski, snowboarding camps, schools just for girls
+           </a>
+          </h2>
+         </div>
+         <div class="column even ">
+          <div class="header">
+           <h4 class="kicker-link">
+            <a href="">
+             Warriors
+            </a>
+           </h4>
+          </div>
+          <!-- common/display_image.tpl -->
+          <a class="without_u " href="/warriors/article/Warriors-Lee-s-absence-spotlights-lineup-5876769.php">
+           <img alt="David Lee was back on the court Wednesday, pressuring Blake Griffin, but he reinjured his hamstring. Draymond Green&#8217;s strong play creates the option of eventually having Lee ignite the second unit." border="0" src="http://ww1.hdnux.com/photos/33/06/73/7106300/25/premium_article_featured_articles.jpg"/>
+          </a>
+          <!-- e display_image.tpl -->
+          <h2 class="headline">
+           <a href="/warriors/article/Warriors-Lee-s-absence-spotlights-lineup-5876769.php">
+            Lee&#8217;s absence spotlights lineup options
+           </a>
+          </h2>
+         </div>
+        </div>
+        <div class="column-wrap column-wrap-last">
+         <div class="column odd ">
+          <div class="header">
+           <h4 class="kicker-link">
+            <a href="http://www.sfchronicle.com/local/">
+             Oakland
+            </a>
+           </h4>
+          </div>
+          <!-- common/display_image.tpl -->
+          <a class="without_u " href="/bayarea/article/Jean-Quan-says-she-s-proud-of-her-work-as-5876569.php">
+           <img alt="Mayor Jean Quan (left) and mayor-elect Libby Schaaf (right) talk about the upcoming period of transition at a press conference in the city council chambers at city hall in Oakland, Calif., on Thursday, November 6, 2014." border="0" src="http://ww4.hdnux.com/photos/33/07/50/7109163/7/premium_article_featured_articles.jpg"/>
+          </a>
+          <!-- e display_image.tpl -->
+          <h2 class="headline">
+           <a href="/bayarea/article/Jean-Quan-says-she-s-proud-of-her-work-as-5876569.php">
+            Jean Quan says she&#8217;s proud of her work as mayor
+           </a>
+          </h2>
+         </div>
+         <div class="column even lastcolumn">
+          <div class="header">
+           <h4 class="kicker-link">
+            <a href="http://www.sfchronicle.com/local/">
+             Higher Education
+            </a>
+           </h4>
+          </div>
+          <!-- common/display_image.tpl -->
+          <a class="without_u " href="/bayarea/article/UC-to-consider-5-percent-tuition-hikes-for-5-years-5875748.php">
+           <img alt="Students cross a grassy area near Chan Shun Auditorium at UC Berkeley on Nov. 6, 2014." border="0" src="http://ww2.hdnux.com/photos/33/07/54/7109405/11/premium_article_featured_articles.jpg"/>
+          </a>
+          <!-- e display_image.tpl -->
+          <h2 class="headline">
+           <a href="/bayarea/article/UC-to-consider-5-percent-tuition-hikes-for-5-years-5875748.php">
+            UC to consider raising tuition each year for five years
+           </a>
+          </h2>
+         </div>
+        </div>
+       </div>
+      </div>
+      <!-- end premium_article_featured_articles.tpl -->
+     </div>
+     <!-- e src/business/widgets/hearst/collection/widget.tpl -->
+    </div>
+    <!-- /zone-5 -->
+    <!-- END Section Highlights Collection -->
+   </div>
+   <div class="ad ad-wide">
+    <div class="ad-inner">
+     <div class="ad_deferrable" id="BP300">
+      <script type="text/javascript">
+       /*<![CDATA[*/ hearstPlaceAd("BP300"); /*]]>*/
+      </script>
+     </div>
+    </div>
+   </div>
+   <!-- end premium_story_page.tpl -->
+   <!-- src/business/templates/hearst/common/footer.tpl -->
+   <!-- templates/hearst/home/viafouraFooterJS.tpl -->
+   <script>
+    (function (v, s) {
+        v.type = 'text/javascript';
+        v.async = !0;
+        v.src = location.protocol !== 'https:' ? '//cdn.viafoura.net/vf.js' : '//api.viafoura.com/app/js/vf.js';
+        s.parentNode.insertBefore(v, s)
+    }(document.createElement('script'), document.getElementsByTagName('script')[0]));
+
+
+    $(document).ready(function () {
+        if ($('#hdn-vf-comments').length) {HDN.authOnReady('premium',false)}
+        HDN.getBlogCommentCount();
+    });
+   </script>
+   <!-- e templates/hearst/home/viafouraFooterJS.tpl -->
+   <!-- hearst/common/sailthruJS.tpl -->
+   <script src="http://ak.sail-horizon.com/horizon/v1.js" type="text/javascript">
+   </script>
+   <script type="text/javascript">
+    $(function() {
+        // Sailthru Concierge
+        if (window.Sailthru) {
+            Sailthru.setup({
+                domain: 'horizon.sfgate.com'
+            });
+        }
+    });
+   </script>
+   <!-- e hearst/common/sailthruJS.tpl -->
+   <!-- hearst/item/standalone.tpl -->
+   <!-- mid:freeform.14555 -->
+   <meta content="text/html; charset=ascii" http-equiv="Content-Type"/>
+   <div class="hc_sitefooter">
+    <div class="lock1200">
+     <div class="hcsf_header">
+      <a href="http://www.sfchronicle.com">
+       <img src="/img/modules/sitefooter/footer_logo.png"/>
+      </a>
+      <div class="toplink">
+       <a href="#container">
+        <span class="topLinkText">
+         Top
+        </span>
+       </a>
+      </div>
+     </div>
+     <ul class="hcsf_links">
+      <li class="hcsf_about">
+       <h3>
+        About
+       </h3>
+       <ul class="hcsf_linklist">
+        <li>
+         <a href="http://www.hearst.com/newspapers/san-francisco-chronicle.php">
+          Our Company
+         </a>
+        </li>
+        <li>
+         <a class="ad-choice" href="http://www.aboutads.info/choices/">
+          <span class="ad-link">
+          </span>
+          Ad Choices
+         </a>
+        </li>
+        <li>
+         <a href="http://www.sfgate.com/chronicle/hr/">
+          Careers
+         </a>
+        </li>
+        <li>
+         <a href="/terms_of_use/">
+          Terms of Use
+         </a>
+        </li>
+        <li>
+         <a href="http://extras.sfgate.com/chronicle/adsite/index.html">
+          Advertising
+         </a>
+        </li>
+        <li>
+         <a href="/privacy_policy">
+          Privacy Policy
+         </a>
+        </li>
+        <li>
+         <a href="/privacy_policy#your_rights">
+          Your Privacy Rights
+         </a>
+        </li>
+        <li>
+         <a href="/privacy_policy/#caprivacyrights">
+          Your California Privacy Rights
+         </a>
+        </li>
+       </ul>
+      </li>
+     </ul>
+     <ul class="hcsf_links">
+      <li class="hcsf_contact">
+       <h3>
+        Contact
+       </h3>
+       <ul class="hcsf_linklist">
+        <li>
+         <a href="/customer_service">
+          Customer Service
+         </a>
+        </li>
+        <li>
+         <a href="/faq">
+          Frequently Asked Questions
+         </a>
+        </li>
+        <li>
+         <a href="/newsroom_contacts">
+          Newsroom Contacts
+         </a>
+        </li>
+       </ul>
+      </li>
+     </ul>
+     <ul class="hcsf_links">
+      <li class="hcsf_connect desktop">
+       <h3>
+        Connect
+       </h3>
+       <ul class="hcsf_linklist">
+        <li>
+         <a class="fb-link" href="https://www.facebook.com/sanfranciscochronicle">
+          Facebook
+         </a>
+        </li>
+        <li>
+         <a class="twtr-link" href="https://twitter.com/sfchronicle">
+          Twitter
+         </a>
+        </li>
+        <li>
+         <a class="li-link" href="https://www.linkedin.com/company/san-francisco-chronicle">
+          LinkedIn
+         </a>
+        </li>
+        <li>
+         <a class="gplus-link" href="https://plus.google.com/+sfgate/posts">
+          Google+
+         </a>
+        </li>
+       </ul>
+      </li>
+      <li class="hcsf_connect mobile">
+       <h3>
+        Connect
+       </h3>
+       <ul class="hcsf_linklist">
+        <li>
+         <a class="fb-link" href="https://www.facebook.com/sanfranciscochronicle">
+         </a>
+        </li>
+        <li>
+         <a class="twtr-link" href="https://twitter.com/sfchronicle">
+         </a>
+        </li>
+        <li>
+         <a class="li-link" href="https://www.linkedin.com/company/san-francisco-chronicle">
+         </a>
+        </li>
+        <li>
+         <a class="gplus-link" href="https://plus.google.com/+sfgate/posts">
+         </a>
+        </li>
+       </ul>
+      </li>
+     </ul>
+     <div class="copyright-wrap">
+      <img src="/img/modules/sitefooter/hst_copy_logo.png"/>
+      <p class="copyright">
+       &#169;
+       <script>
+        document.write(new Date().getFullYear());
+       </script>
+       Hearst Corporation
+      </p>
+     </div>
+    </div>
+   </div>
+   <script type="text/javascript">
+    window.NREUM||(NREUM={});NREUM.info={"beacon":"beacon-3.newrelic.com","licenseKey":"3fd06eaac1","applicationID":"147157","transactionName":"MwQBZ0RXV0NTVhBdDgpONkFfGVBeVlAcGhEMEQ==","queueTime":0,"applicationTime":55,"ttGuid":"","agentToken":"","userAttributes":"","errorBeacon":"bam.nr-data.net","agent":"js-agent.newrelic.com\/nr-476.min.js"}
+   </script>
+   <style type="text/css">
+    .kicker,
+.breaking,
+.kicker.highlight,
+.header-branding h1.section-title,
+.hc-ft-columnists .ftc-item-head .ftc-name,
+.hc-ft-columnists .ftc-item-head .ftc-name a{
+ text-rendering:auto;
+}
+   </style>
+  </div>
+ </body>
+</html>
+<!-- e src/business/templates/hearst/common/footer.tpl -->
