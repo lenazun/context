@@ -7,6 +7,19 @@
 }
 
 
+.table {
+  font-size: 14px;
+
+}
+
+a[href^="http://"] {
+    background: url(http://upload.wikimedia.org/wikipedia/commons/6/64/Icon_External_Link.png)     center right no-repeat;
+    padding-right: 13px;
+    font-size: 14px;
+    target-new: tab;
+}
+
+
 #container1 {
     width: 400px;
     margin: 30px auto;

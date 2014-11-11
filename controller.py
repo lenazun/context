@@ -37,7 +37,7 @@ def index():
 @app.route('/upload_file', methods=['POST'])
 def upload_file():
 	""" Uploads files or converts URLs into simple text files """
-
+	print session
 
 	#saves an uploaded text file to the uploads folder
 	if request.files['filename']:
@@ -49,7 +49,7 @@ def upload_file():
 			session['filename'] = filename
 			session['filepath'] = os.path.join(app.config['UPLOAD_FOLDER'], filename)
 			
-			return redirect(url_for('basic_process'))
+			return redirect(url_for('editor'))
 		else:
 			flash ("Make sure you're uploading a %s file" % [i for i in ALLOWED_EXTENSIONS])
 			return render_template("upload.html")
@@ -62,7 +62,7 @@ def upload_file():
 		session['filename'] = 'temp'
 		session['filepath'] = newfile
 		
-		return redirect(url_for('entities'))
+		return redirect(url_for('editor'))
 
 	else:
 		flash ("Enter a source file or URL")
@@ -71,30 +71,14 @@ def upload_file():
 
 
 @app.route('/editor', methods=["GET", "POST"])
-def entities():
-	""" Gets entities from text and grabs wikipedia information"""
+def editor():
+	""" Shows the main editor template"""
 
 	filepath = session['filepath']
 	target_lang = session['target_lang']
 
 
-	#applies the NER tags to the text and extract nouns from tagged words
-	text = file_reader.read_file(filepath)
-	organizations, locations, people = text_processing.ner_tagger(text)
-#	nouns = text_processing.nouns_only(text_processing.make_word_dict(text_processing.preprocess(text)))
-
-	#generates dictionaries for the entities and their wiki data
-	orglist = wikipedia_linker.get_entity_info(organizations, target_lang)
-	loclist = wikipedia_linker.get_entity_info(locations, target_lang)
-	peoplelist = wikipedia_linker.get_entity_info(people, target_lang)
-#	nounlist = wikipedia_linker.get_entity_info(nouns, target_lang)
-
-
 	return render_template("editor.html", 
-		organizations=orglist, 
-		locations=loclist, 
-		people=peoplelist, 
-#		nouns=nounlist, 
 		target_lang=target_lang,
 		path= filepath)
 
@@ -105,8 +89,7 @@ def set_target_language():
 	target_lang = request.args.get("target_lang")
 	session['target_lang'] = target_lang
 
-
-	return redirect(url_for('entities'))
+	return redirect(url_for('editor'))
 
 
 
@@ -115,12 +98,33 @@ def get_places():
 
 	text = file_reader.read_file(session['filepath'])
 	target_lang = session['target_lang']
+	#Checks the type of entity that is being requested
+	ent = request.form['ent']
 
+	#Uses the NER tagger to get entities
 	organizations, locations, people = text_processing.ner_tagger(text)
-	loclist = wikipedia_linker.get_entity_info(locations, target_lang)
+	
+	if ent == "places":
 
-	return render_template("places.html", 
-		locations = loclist)
+		loclist = wikipedia_linker.get_entity_info(locations, target_lang)
+		return render_template("places.html", locations = loclist)
+
+	elif ent == "organizations":
+
+		orglist = wikipedia_linker.get_entity_info(organizations, target_lang)
+		return render_template("orgs.html", organizations = orglist)
+
+	elif ent == "people":
+
+		peoplelist = wikipedia_linker.get_entity_info(people, target_lang)
+		return render_template("people.html", people = peoplelist)
+
+	elif ent == "nouns":
+
+		nouns = text_processing.nouns_only(text_processing.make_word_dict(text_processing.preprocess(text)))
+		nounlist = wikipedia_linker.get_entity_info(nouns, target_lang)
+		return render_template("other.html", nouns = nounlist)
+
 
 
 

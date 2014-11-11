@@ -8,7 +8,10 @@
 $(document).ready(function () {
    
    grabTextFile()
-   grabHTMLfile()
+   grabHTMLplaces()
+   grabHTMLorgs()
+   grabHTMLpeople()
+   grabHTMLother()
 
 
 });
@@ -26,29 +29,58 @@ function grabTextFile() {
 // by clicking a tab I should load a different html file on the div. THIS KINDA WORKS
 
 
-function grabHTMLfile() {
+function grabHTMLplaces() {
 
 $.ajax({
   type: "POST",
   url: "/get_places",
+  data: { ent : "places" },
 })
   .done(function( html ) {
     $( "#container_places" ).html( html );
   });
 
-
-
-// $.ajax({
-//   url: "../templates/places.html",
-//   cache: false
-// })
-//   .done(function( html ) {
-//     $( "#container_places" ).html( html );
-//   });
-
 }
 
 
+function grabHTMLorgs() {
+
+$.ajax({
+  type: "POST",
+  url: "/get_places",
+  data: { ent : "organizations" },
+})
+  .done(function( html ) {
+    $( "#container_orgs" ).html( html );
+  });
+
+}
+
+function grabHTMLpeople() {
+
+$.ajax({
+  type: "POST",
+  url: "/get_places",
+  data: { ent : "people" },
+})
+  .done(function( html ) {
+    $( "#container_people" ).html( html );
+  });
+
+}
+
+function grabHTMLother() {
+
+$.ajax({
+  type: "POST",
+  url: "/get_places",
+  data: { ent : "nouns" },
+})
+  .done(function( html ) {
+    $( "#container_general" ).html( html );
+  });
+
+}
 
 // highlight a list of terms on the main text. THIS WORKS
 
@@ -66,6 +98,7 @@ function removehighlightText() {
 
 
 // autosubmit the language selector form. THIS DOESNT WORK YET
+
 
 
 

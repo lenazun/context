@@ -3,11 +3,14 @@
 
 		  <table class="table">
 
-		<tr><th>On Wikipedia: AAAAAA</th><th></th></tr>    
+		<tr><th>On Wikipedia: </th><th></th></tr>    
 
 		    {% for key, value in locations.iteritems() %}
 
-		<tr><td><a href="http://en.wikipedia.org/wiki/{{ key }}">{{ key }}</a></td><td></td></tr>
+		<tr>
+			<td><a href="http://en.wikipedia.org/wiki/{{ key }}">{{ key }}</a></td>
+			<td><a href="http://{{ session.target_lang  }}.wikipedia.org/wiki/{{ key }}">{{ value[3] }}</a></td>
+		</tr>
 
 		    {% endfor %}
 

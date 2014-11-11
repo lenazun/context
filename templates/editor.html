@@ -28,7 +28,7 @@
 	    <div class="form-group">
 	<form class="form" id="langselector" method="GET" action="/set_target_lang">
 	    <label for="target_lang">Target language</label>
-	    <select id="target_lang" class="form-control" name="target_lang">
+	    <select id="target_lang" class="form-control" name="target_lang" onchange="this.form.submit()">
 	  		<option value="es">spanish</option>
 	  		<option value="fr">french</option>
 	 		 <option value="de">german</option>
@@ -36,7 +36,7 @@
 	  		<option value="pt">portuguese</option>
 	  		<option value="ar">arabic</option>
 		</select>
-  		 <button class="btn btn-primary btn-lg" type="submit">Go</button>
+  		 <!-- <button class="btn btn-primary btn-lg" type="submit">Go</button> -->
  	</div>
 	</form>
 
@@ -57,7 +57,7 @@
 
 	  	<div id="container_places">
 
-
+		Processing: this will take a sec
 
 		</div>
 
@@ -69,7 +69,7 @@
 
 	  	<div id="container_people">
 
-		hello this is people
+		Processing: this will take a sec
 
 
 		</div>
@@ -81,7 +81,7 @@
 
 	  	<div id="container_orgs">
 
-	  	hello this is orgs
+		Processing: this will take a sec
 
 		</div>
 
@@ -91,7 +91,7 @@
 
 	  	<div id="container_general">
 
-		hello this is general
+		Processing: this will take a sec
 
 
 		</div>
@@ -117,6 +117,7 @@
     });
 
     var path_to_show = "{{ path }}";
+
 
 </script>
 
