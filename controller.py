@@ -6,6 +6,7 @@ from werkzeug import secure_filename
 import file_reader
 import text_processing
 import wikipedia_linker
+import geocoding
 
 
 UPLOAD_FOLDER = 'static/uploads'
@@ -30,7 +31,7 @@ def is_file_allowed(filename):
 @app.route('/')
 def index():
 
-	session['target_lang'] = "en"
+	session['target_lang'] = "es"
 	return render_template("upload.html")
 
 
@@ -106,27 +107,43 @@ def get_places():
 	
 	if ent == "places":
 
-		loclist = wikipedia_linker.get_entity_info(locations, target_lang)
-		return render_template("places.html", locations = loclist)
+		if locations: 
+			loclist = wikipedia_linker.get_entity_info(locations, target_lang)
+			#longlat =  geocoding.geocode(loclist.keys())
+			return render_template("places.html", locations = loclist, 
+						#longlat = longlat
+						)
+		else: 
+			return render_template("places.html")
 
 	elif ent == "organizations":
 
-		orglist = wikipedia_linker.get_entity_info(organizations, target_lang)
-		return render_template("orgs.html", organizations = orglist)
+		if organizations:
+			orglist = wikipedia_linker.get_entity_info(organizations, target_lang)
+			return render_template("orgs.html", organizations = orglist)
+		else:
+			return render_template("orgs.html")
 
 	elif ent == "people":
 
-		peoplelist = wikipedia_linker.get_entity_info(people, target_lang)
-		return render_template("people.html", people = peoplelist)
+		if people:
+			peoplelist = wikipedia_linker.get_entity_info(people, target_lang)
+			# twitterquery = wikipedia_linker.twitter_search_query(peoplelist)
+			return render_template("people.html", people = peoplelist)
+		else:
+			return render_template("people.html")
 
 	elif ent == "nouns":
+			nouns = text_processing.nouns_only(text_processing.make_word_dict(text_processing.preprocess(text)))
+			if nouns: 	
+				nounlist = wikipedia_linker.get_entity_info(nouns, target_lang)
+				return render_template("other.html", nouns = nounlist)
+			else:
+				return render_template("other.html")
 
-		nouns = text_processing.nouns_only(text_processing.make_word_dict(text_processing.preprocess(text)))
-		nounlist = wikipedia_linker.get_entity_info(nouns, target_lang)
-		return render_template("other.html", nouns = nounlist)
-
-
-
+@app.route('/map')
+def map():
+	return render_template("map.html")
 
 
 

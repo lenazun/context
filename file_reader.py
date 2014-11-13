@@ -7,7 +7,8 @@ from bs4 import SoupStrainer
 
 import nltk
 
-from clean_html  import safe_html, plaintext # an open soure html sanitizer I found here http://chase-seibert.github.io/blog/2011/01/28/sanitize-html-with-beautiful-soup.html
+from clean_html  import safe_html, plaintext 
+# an open soure html sanitizer I found here http://chase-seibert.github.io/blog/2011/01/28/sanitize-html-with-beautiful-soup.html
 
 
 UPLOAD_FOLDER = 'static/uploads'
@@ -19,7 +20,7 @@ def read_file(input_file):
 	raw = text.read()
 	decoded = raw.decode('utf8').encode('ascii', 'replace')
 
-	text = plaintext(decoded)
+	text = decoded
 
 	return text
 

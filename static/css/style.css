@@ -2,8 +2,14 @@
   outline: none; 
   }
 
-.highlight { 
-  background-color: yellow; 
+.highlight {
+    background-color: #FFFF88;
+}
+
+#map-canvas { 
+  height: 250px; 
+  border: 1px solid #AAA; 
+  padding: 0;
 }
 
 
@@ -12,13 +18,10 @@
 
 }
 
-a[href^="http://"] {
-    background: url(http://upload.wikimedia.org/wikipedia/commons/6/64/Icon_External_Link.png)     center right no-repeat;
-    padding-right: 13px;
-    font-size: 14px;
-    target-new: tab;
+.thumbnail img { 
+  min-height:50px; 
+  height:50px; 
 }
-
 
 #container1 {
     width: 400px;
@@ -35,6 +38,7 @@ a[href^="http://"] {
     margin: 30px auto;
 }
 
+
 h1 {
     font-size: 30px;
     text-align: left;
@@ -45,7 +49,7 @@ h1 {
 }
 
 p {
-    margin-bottom: 20px;
+    /*margin-bottom: 20px;*/
 }
 
 blockquote {
@@ -53,6 +57,7 @@ blockquote {
     padding-left: 20px;
     border-left: 6px solid #df0d32;
 }
+
 
 
 .editable,

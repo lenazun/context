@@ -23,12 +23,11 @@
     <div id="container2">
 
     <!-- Language form -->
-        <p> The current target lang is {{ session.target_lang }} </p>
-
 	    <div class="form-group">
 	<form class="form" id="langselector" method="GET" action="/set_target_lang">
 	    <label for="target_lang">Target language</label>
 	    <select id="target_lang" class="form-control" name="target_lang" onchange="this.form.submit()">
+	    	<option selected="true" disabled="true" >The current target lang is {{ session.target_lang }}</option>
 	  		<option value="es">spanish</option>
 	  		<option value="fr">french</option>
 	 		 <option value="de">german</option>
@@ -41,14 +40,23 @@
 	</form>
 
 
+  <button type="button" class="btn btn-default" id="highlight">Highlight</button>
+  <button type="button" class="btn btn-default" id="downloadHTML">Download HTML</button>
+  <button type="button" class="btn btn-default" id="downloadCSV">References CSV</button>
+  <br>    <br>  
+
+
+
 
   	<!-- Nav tabs -->
 	<ul class="nav nav-tabs" role="tablist" id="myTab">
 	  <li role="presentation" class="active"><a href="#places" role="tab" data-toggle="tab">Places</a></li>
 	  <li role="presentation"><a href="#people" role="tab" data-toggle="tab">People</a></li>
 	  <li role="presentation"><a href="#organizations" role="tab" data-toggle="tab">Organizations</a></li>
-	  <li role="presentation"><a href="#general" role="tab" data-toggle="tab">Other words</a></li>
+	  <li role="presentation"><a href="#general" role="tab" data-toggle="tab">Other Terms</a></li>
 	</ul>
+
+
 
 	<div class="tab-content">
 
@@ -56,9 +64,9 @@
 	  <div role="tabpanel" class="tab-pane" id="places">
 
 	  	<div id="container_places">
-
-		Processing: this will take a sec
-
+	  		this will take a sec
+<!-- 		<img src='static/img/preloader.gif'>
+ -->
 		</div>
 
 

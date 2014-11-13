@@ -13,16 +13,19 @@ $(document).ready(function () {
    grabHTMLpeople()
    grabHTMLother()
 
-
+$('#downloadHTML').click(function(){
+    downloadInnerHtml(fileName, 'main','text/html');
 });
 
+
+});
 
 
 // grabs a file and displays it on the main div.  IT WORKS!
 
 function grabTextFile() {
 
-	$("#text1").load(path_to_show, highlightText);
+	$("#text1").load(path_to_show);
 
 }
 
@@ -38,6 +41,7 @@ $.ajax({
 })
   .done(function( html ) {
     $( "#container_places" ).html( html );
+    highlightText(); 
   });
 
 }
@@ -65,6 +69,7 @@ $.ajax({
 })
   .done(function( html ) {
     $( "#container_people" ).html( html );
+    highlightText(); 
   });
 
 }
@@ -82,23 +87,26 @@ $.ajax({
 
 }
 
-// highlight a list of terms on the main text. THIS WORKS
+// highlight a list of terms on the main text. THIS KINDA WORKS
+
 
 function highlightText() {
 
-	$("#text1").highlight("the", true);
+  var to_highlight = "Obama"
+  //$('#to_highlight').data()
+
+// jQuery Highlight plugin
+	$("#text1").highlight(to_highlight);
 }
 
 function removehighlightText() {
 
-	$("#text1").removeHighlight();
+	$("#text1").unhighlight();
 
 }
 
 
-
-// autosubmit the language selector form. THIS DOESNT WORK YET
-
+// Google
 
 
 

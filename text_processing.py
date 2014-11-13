@@ -48,10 +48,20 @@ def ner_tagger(text):
 
 	entities = tagger.get_entities(text)
 
-	#FIX ME need to intro conditionals in case there's none
-	organizations = set(entities['ORGANIZATION'])
-	locations = set(entities['LOCATION'])
-	people = set(entities['PERSON'])
+	if 'ORGANIZATION' in entities:
+		organizations = set(entities['ORGANIZATION'])
+	else:
+		organizations = None
+
+	if 'LOCATION' in entities:
+		locations = set(entities['LOCATION'])
+	else:
+		locations = None
+
+	if 'PERSON' in entities:
+		people = set(entities['PERSON'])
+	else:
+		people = None
 
 	return organizations, locations, people
 
@@ -66,7 +76,7 @@ def most_common_pos(tagged_words):
 def main():
 	""" Tests """
 
-	text = file_reader.read_file('spanish_sample.txt')
+	text = file_reader.read_file('sample.txt')
 	#prepro = preprocess(text)
 	#print prepro
 	#print most_common_pos(prepro)

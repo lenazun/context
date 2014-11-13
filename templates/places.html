@@ -1,6 +1,10 @@
 <div id="container2">
 
 
+	 <!-- <meta id="mapdata" data-name="{{longlat}}">  -->
+	<!-- <meta id="to_highlight" data-name="{{ toHighlight }}"> -->
+
+		{% if locations %}
 		  <table class="table">
 
 		<tr><th>On Wikipedia: </th><th></th></tr>    
@@ -8,8 +12,8 @@
 		    {% for key, value in locations.iteritems() %}
 
 		<tr>
-			<td><a href="http://en.wikipedia.org/wiki/{{ key }}">{{ key }}</a></td>
-			<td><a href="http://{{ session.target_lang  }}.wikipedia.org/wiki/{{ key }}">{{ value[3] }}</a></td>
+			<td><a href="http://en.wikipedia.org/wiki/{{ value['title'] }}">{{ value['title'] }}</a></td>
+			<td><a href="http://{{ session.target_lang  }}.wikipedia.org/wiki/{{ value['title'] }}">{{ value['targetwiki'] }}</a></td>
 		</tr>
 
 		    {% endfor %}
@@ -17,6 +21,61 @@
 		  </table>
 
 
+	<div id="map" </div>
+
+		  	{% else %}
+		  	<p>We didn't find any!</p>
+		    {% endif %}
 
 
 <div>
+
+	<script>
+
+	$.ajax({
+	  url: "map.html",
+	})
+	  .done(function( html ) {
+	    $( "#map" ).html( html );
+	  });
+
+	}
+
+
+	</script>
+
+<!-- 
+	<script>
+
+	// var map = L.map('map').setView([43.07265,-89.400929], 10);
+
+	var map = L.map( 'map', {
+    center: [41.850033, -87.6500523],
+    minZoom: 2,
+    zoom: 2
+	});
+
+
+	L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+	    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+	}).addTo(map); 
+
+	// L.tileLayer( 'http://{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.png', {
+ //    attribution: '&copy; <a href="http://osm.org/copyright" title="OpenStreetMap" target="_blank">OpenStreetMap</a> <a href="http://www.mapquest.com/" title="MapQuest" target="_blank">MapQuest</a>',
+ //    subdomains: ['otile1','otile2','otile3','otile4']
+	// }).addTo( map );
+
+	var mapData = {u'Georgia': {'lat': 32.3293809, 'long': -83.1137366}, u'Iowa': {'lat': 41.9216734, 'long': -93.3122705}, u'Colorado': {'lat': 38.7251776, 'long': -105.6077167}, u'North Carolina': {'lat': 35.6729639, 'long': -79.0392919}, u'Asheville': {'lat': 35.6009498, 'long': -82.5540161}, u'New York': {'lat': 40.7305991, 'long': -73.9865812}}
+	// $('#mapdata').data();
+
+	for ( var key in mapData) 
+	 	console.log(key)
+  		L.marker([key['lat'], key['long']]).addTo(map)
+   		.bindPopup(key)
+    	.openPopup();
+
+
+
+	</script>
+
+ -->
