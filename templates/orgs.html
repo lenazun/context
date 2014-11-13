@@ -1,0 +1,24 @@
+<div id="container2">
+
+
+		  {% if organizations %}
+		  <table class="table">
+
+		<tr><th>On Wikipedia:</th><th></th></tr>    
+
+		    {% for key, value in organizations.iteritems() %}
+
+		<tr><td><a href="http://en.wikipedia.org/wiki/{{ value['title'] }}">{{ value['title'] }}</a></td><td><a href="http://{{ session.target_lang }}.wikipedia.org/wiki/{{ value['title'] }}">{{ value['targetwiki'] }}</a></td></tr>
+
+		    {% endfor %}
+
+		  </table>
+
+		  	{% else %}
+		  	<p>We didn't find any!</p>
+		    {% endif %}
+
+
+
+
+<div>

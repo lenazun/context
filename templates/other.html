@@ -1,0 +1,28 @@
+<div id="container2">
+
+
+		  {% if nouns %}
+		  <table class="table">
+
+		<tr><th>On Wikipedia: </th><th></th></tr>    
+
+		    {% for key, value in nouns.iteritems() %}
+
+		<tr>
+			<td><a href="http://en.wikipedia.org/wiki/{{ value['title'] }}">{{ value['title'] }}</a></td>
+			<td><a href="http://{{ session.target_lang  }}.wikipedia.org/wiki/{{ value['title'] }}">{{ value['targetwiki'] }}</a></td>
+			<!-- <td><img class='thumbnail' src={{ value[4] }}></td> -->
+		</tr>
+
+		    {% endfor %}
+
+		  </table>
+
+		  	{% else %}
+		  	<p>We didn't find any!</p>
+		    {% endif %}
+
+
+
+
+<div>
