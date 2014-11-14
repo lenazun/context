@@ -101,9 +101,12 @@ $("#highlight").one("click", highlight);
 
 // getting Geocodes from JSON file.  Returns an object {"New_York": {"lat": 40.7305991, "lon": -73.9865812, "name": "New York"}....}
 
-var mapData = $.getJSON( "/geocodes", function() {
-  console.log( "success loading geocodes json" );
-});
+// var mapData = $.getJSON( "/geocodes", function() {
+//   console.log( "success loading geocodes json" );
+// });
+
+
+
 
 
 // // saving the content

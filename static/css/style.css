@@ -3,11 +3,12 @@
   }
 
 .highlight {
-    background-color: #f8d7a8;
+    background-color: #FFFF88;
 }
 
 #map-canvas { 
   height: 250px; 
+  width: 400px;
   border: 1px solid #AAA; 
   padding: 0;
 }

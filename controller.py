@@ -17,23 +17,21 @@ app = Flask(__name__)
 app.secret_key = '23987ETFSDDF345560DFSASF45DFDF567' #Fake key
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
+
 def is_file_allowed(filename):
-	"""Is this file allowed?
+	"""Is this file allowed?"""
 
-	    >>> allowed_file('foo.txt')
-	    True
-
-	    >>> allowed_file('foo.jpg')
-	    False
-	"""
 	return '.' in filename and \
 	filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
+
+
 
 @app.route('/')
 def index():
 
 	session['target_lang'] = "es"
 	return render_template("upload.html")
+
 
 
 @app.route('/upload_file', methods=['POST'])
@@ -87,6 +85,7 @@ def editor():
 
 @app.route('/set_target_lang', methods=["GET"])
 def set_target_language():
+	"""Changes the target language"""
 
 	target_lang = request.args.get("target_lang")
 	session['target_lang'] = target_lang
@@ -96,20 +95,25 @@ def set_target_language():
 
 @app.route('/named_entities')
 def get_entities():
+	"""Loads all entity names into a JSON for highlighting"""
+
 	text = file_reader.read_file(session['filepath'])
 	fullset = text_processing.single_set(text)
 	return json.dumps(fullset)
 
-@app.route('/geocodes')
-def get_geocodes():
-	text = file_reader.read_file(session['filepath'])
-	organizations, locations, people = text_processing.ner_tagger(text)
-	geocodes = geocoding.geocode(locations)
-	return json.dumps(geocodes)
+# @app.route('/geocodes')
+# def get_geocodes():
+# 	"""Loads all entity names into a JSON for highlighting"""
+
+# 	text = file_reader.read_file(session['filepath'])
+# 	organizations, locations, people = text_processing.ner_tagger(text)
+# 	geocodes = geocoding.geocode(locations)
+# 	return json.dumps(geocodes)
 
 
 @app.route('/get_places', methods=["POST"])
 def get_places():
+	"""Extracts entities from text and returns lists and links to wikipedia"""
 
 	text = file_reader.read_file(session['filepath'])
 	target_lang = session['target_lang']
@@ -123,10 +127,8 @@ def get_places():
 
 		if locations: 
 			loclist = wikipedia_linker.get_entity_info(locations, target_lang)
-			#longlat =  geocoding.geocode(loclist.keys())
-			return render_template("places.html", locations = loclist,  
-						#longlat = longlat
-						)
+			geocodes = geocoding.geocode(locations)
+			return render_template("places.html", locations = loclist, geocodes = json.dumps(geocodes))
 		else: 
 			return render_template("places.html")
 
@@ -153,6 +155,7 @@ def get_places():
 				return render_template("other.html", nouns = nounlist)
 			else:
 				return render_template("other.html")
+
 
 @app.route('/map')
 def map():
