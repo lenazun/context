@@ -1,4 +1,5 @@
 import os
+import json
 
 from flask import Flask, render_template, redirect, request, flash, session, url_for
 from werkzeug import secure_filename
@@ -93,6 +94,19 @@ def set_target_language():
 	return redirect(url_for('editor'))
 
 
+@app.route('/named_entities')
+def get_entities():
+	text = file_reader.read_file(session['filepath'])
+	fullset = text_processing.single_set(text)
+	return json.dumps(fullset)
+
+@app.route('/geocodes')
+def get_geocodes():
+	text = file_reader.read_file(session['filepath'])
+	organizations, locations, people = text_processing.ner_tagger(text)
+	geocodes = geocoding.geocode(locations)
+	return json.dumps(geocodes)
+
 
 @app.route('/get_places', methods=["POST"])
 def get_places():
@@ -110,7 +124,7 @@ def get_places():
 		if locations: 
 			loclist = wikipedia_linker.get_entity_info(locations, target_lang)
 			#longlat =  geocoding.geocode(loclist.keys())
-			return render_template("places.html", locations = loclist, 
+			return render_template("places.html", locations = loclist,  
 						#longlat = longlat
 						)
 		else: 
@@ -128,7 +142,6 @@ def get_places():
 
 		if people:
 			peoplelist = wikipedia_linker.get_entity_info(people, target_lang)
-			# twitterquery = wikipedia_linker.twitter_search_query(peoplelist)
 			return render_template("people.html", people = peoplelist)
 		else:
 			return render_template("people.html")

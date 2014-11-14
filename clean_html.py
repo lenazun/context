@@ -89,7 +89,7 @@ def plaintext(input):
                 except KeyError:  
                     pass  
             return text # leave as is  
-        return re.sub("&#?\w+;", fixup, text)  
+        return re.sub("&#-?\w'\"+;", fixup, text)  
   
     input = safe_html(input) # basic sanitation first  
     text = "".join(BeautifulSoup("<body>%s</body>" % input).body(text=True))  

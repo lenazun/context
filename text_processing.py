@@ -66,6 +66,20 @@ def ner_tagger(text):
 	return organizations, locations, people
 
 
+def single_set(text):
+	""" Makes all entities a single list so they can be highlighted"""
+
+	organizations, locations, people = ner_tagger(text)
+
+	set1 = []
+
+	[set1.append(i.encode('utf8')) for i in organizations]
+	[set1.append(i.encode('utf8')) for i in locations]
+	[set1.append(i.encode('utf8')) for i in people]
+
+	return set1
+
+
 def most_common_pos(tagged_words):
 	""" Return the most common parts of speech in a list of tagged words"""
 
@@ -81,7 +95,7 @@ def main():
 	#print prepro
 	#print most_common_pos(prepro)
 	ner = ner_tagger(text)
-	print ner
+	print single_set(text)
 	#dictionary = make_word_dict(prepro)
 	#print nouns_only(dictionary)
 	#print dictionary

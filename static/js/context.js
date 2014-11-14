@@ -13,10 +13,6 @@ $(document).ready(function () {
    grabHTMLpeople()
    grabHTMLother()
 
-$('#downloadHTML').click(function(){
-    downloadInnerHtml(fileName, 'main','text/html');
-});
-
 
 });
 
@@ -29,7 +25,7 @@ function grabTextFile() {
 
 }
 
-// by clicking a tab I should load a different html file on the div. THIS KINDA WORKS
+// by clicking a tab I should load a different html file on the div. THIS  WORKS
 
 
 function grabHTMLplaces() {
@@ -41,7 +37,6 @@ $.ajax({
 })
   .done(function( html ) {
     $( "#container_places" ).html( html );
-    highlightText(); 
   });
 
 }
@@ -69,7 +64,6 @@ $.ajax({
 })
   .done(function( html ) {
     $( "#container_people" ).html( html );
-    highlightText(); 
   });
 
 }
@@ -87,26 +81,35 @@ $.ajax({
 
 }
 
-// highlight a list of terms on the main text. THIS KINDA WORKS
+// highlight a list of terms on the main text. THIS  WORKS
 
+var hiData = $.getJSON( "/named_entities", function() {
+  console.log( "success loading highlight json" );
+});
+ 
 
-function highlightText() {
-
-  var to_highlight = "Obama"
-  //$('#to_highlight').data()
-
-// jQuery Highlight plugin
-	$("#text1").highlight(to_highlight);
+function highlight() {
+    $("#text1").highlight(hiData.responseJSON);
+    $("#highlight").one("click", unhighlight);
 }
-
-function removehighlightText() {
-
-	$("#text1").unhighlight();
-
+function unhighlight() {
+    $("#text1").unhighlight();
+    $("#highlight").one("click", highlight);
 }
+$("#highlight").one("click", highlight);
 
 
-// Google
+// getting Geocodes from JSON file.  Returns an object {"New_York": {"lat": 40.7305991, "lon": -73.9865812, "name": "New York"}....}
+
+var mapData = $.getJSON( "/geocodes", function() {
+  console.log( "success loading geocodes json" );
+});
 
 
+// // saving the content
+
+// $('.editable').on('input', function() {
+//         $('#page_content').val(editor.serialize().page_content_editor.value);
+//     });
+//     $('#page_content_editor').html($('#page_content').val()); // Put editor content into hidden field
 

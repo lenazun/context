@@ -25,7 +25,9 @@
 
 #container1 {
     width: 400px;
+    height: 600px;
     margin: 30px auto;
+
 }
 
 #container2 {
@@ -36,6 +38,12 @@
 #container3 {
     width: 350px;
     margin: 30px auto;
+}
+
+img.preloader {
+    display: block;
+    margin-left: auto;
+    margin-right: auto; 
 }
 
 
@@ -67,7 +75,8 @@ blockquote {
     margin: 0 0 20px 0;
     padding: 0 0 20px 0;
     border-bottom: 1px solid #dbdbdb;
-
+    height: 600px;
+    overflow-y:auto
 }
 
 pre {
