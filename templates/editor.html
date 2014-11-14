@@ -14,6 +14,7 @@
 
 
         </div>
+
     </div>
 
 
@@ -25,7 +26,7 @@
     <!-- Language form -->
 	    <div class="form-group">
 	<form class="form" id="langselector" method="GET" action="/set_target_lang">
-	    <label for="target_lang">Target language</label>
+<!-- 	    <label for="target_lang">Target language</label> -->
 	    <select id="target_lang" class="form-control" name="target_lang" onchange="this.form.submit()">
 	    	<option selected="true" disabled="true" >The current target lang is {{ session.target_lang }}</option>
 	  		<option value="es">spanish</option>
@@ -40,12 +41,17 @@
 	</form>
 
 
-  <button type="button" class="btn btn-default" id="highlight">Highlight</button>
-  <button type="button" class="btn btn-default" id="downloadHTML">Download HTML</button>
-  <button type="button" class="btn btn-default" id="downloadCSV">References CSV</button>
-  <br>    <br>  
 
-
+	<button type="button" class="btn btn-warning" id="highlight">Highlight</button>
+	<button type="button" class="btn btn-success" id="downloadHTML">Bing Translation</button>
+	<div class="btn-group">
+	<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" id="downloadCSV">Download <span class="caret"></span></button>
+	<ul class="dropdown-menu" role="menu">
+      <li><a href="#">Edited HTML</a></li>
+      <li><a href="#">References CSV</a></li>
+    </ul>
+	</div>
+	  <br><br>
 
 
   	<!-- Nav tabs -->
