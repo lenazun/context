@@ -2,7 +2,6 @@
 
 
 
-
 		{% if locations %}
 		  <table class="table">
 
@@ -16,6 +15,10 @@
 		</tr>
 
 		    {% endfor %}
+
+		 <tr><td>Download .csv file <a href="{{ downfile }}"><span class="glyphicon glyphicon-download" aria-hidden="true"></a></span></td>
+		 	<td> </td>
+		 </tr>
 
 		  </table>
 
@@ -39,17 +42,15 @@
 
 function googleMaploader(mapData) {
 
-console.log("googleMaploader", mapData);
 	var mapOptions = {
-		center: { lat: 41.921, lng: -93.312}, 
-		zoom: 3
+		center: { lat: 30.00, lng: -30.00}, 
+		zoom: 2
     };
 	var map = new google.maps.Map($('#map-canvas').get(0),
          mapOptions);
 
 	$.each(mapData, function(key, value) {
 
-console.log(key, value);
 	
     	var marker = new google.maps.Marker({
 			position: { lat: value["lat"], lng: value["lon"]},
@@ -60,7 +61,10 @@ console.log(key, value);
 
     });  
 	
+
 }    
+
+
 
     </script>
 

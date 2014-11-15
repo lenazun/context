@@ -76,16 +76,25 @@ def read_url_all(url):
 
 def write_csv_file(dictionary):
 	
+	wikiURL = 'http://en.wikipedia.org/wiki?curid='
 	tempfile.tempdir = DOWNLOAD_FOLDER
-	temp_file = tempfile.NamedTemporaryFile(delete=False)
+	temp_file = tempfile.NamedTemporaryFile(delete=False, suffix='.csv')
 
 	with open(temp_file.name, 'wb') as temp:
 		w = csv.writer(temp)
-		w.writerow(['wiki_id', 'title', 'targetlang', 'equiv_title', 'thumbnail'])
+		w.writerow(['wiki_id', 'title', 'targetlang', 'equiv_title', 'wiki_url'])
 		for key, value in dictionary.iteritems():
-			w.writerow([i.encode('ascii', 'replace').decode('utf8') for i in value])
-			
-	return temp.name
+			w.writerow([(key).encode('utf8'), 
+						(value['title']).encode('utf8'), 
+						(value['targetlang']).encode('utf8'), 
+						(value['targetwiki']).encode('utf8'),
+						(wikiURL + key)])
+
+	pathparts = (temp.name).split('/')
+	path = "/".join(pathparts[5:])
+
+	return path
+
 
 
 def main():
@@ -95,8 +104,8 @@ def main():
 	#print read_file('sample.txt')
 	#output = read_url('http://www.sfchronicle.com/bayarea/article/Throngs-of-fans-already-packing-Civic-Center-5860820.php')
 	#print clean_html(output)
-	#dictionary = {'New York': ['8210131', 'New York', 'fr', u'\xc9tat de New York', 'http://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Flag_of_New_York.svg/100px-Flag_of_New_York.svg.png'], 'Barack Obama': ['534366', 'Barack Obama', 'fr', 'Barack Obama', 'http://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/President_Barack_Obama.jpg/80px-President_Barack_Obama.jpg'], 'Earthquake': ['10106', 'Earthquake', 'fr', u'S\xe9isme', 'http://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Quake_epicenters_1963-98.png/100px-Quake_epicenters_1963-98.png'], 'President Obama': ['534366', 'President Obama', 'fr', 'Barack Obama', 'http://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/President_Barack_Obama.jpg/80px-President_Barack_Obama.jpg']}
-	#write_csv_file(dictionary)
+	dictionary = {'3390': {'targetlang': 'fr', 'targetwiki': 'Bible', 'title': 'The Bible'}, '844': {'targetlang': 'fr', 'targetwiki': 'Amsterdam', 'title': 'Amsterdam'}, '10106': {'targetlang': 'fr', 'targetwiki': u'S\xe9isme', 'title': 'Earthquake'}, '8210131': {'targetlang': 'fr', 'targetwiki': u'\xc9tat de New York', 'title': 'New York'}, '534366': {'targetlang': 'fr', 'targetwiki': 'Barack Obama', 'title': 'Barack Obama'}}
+	write_csv_file(dictionary)
 
 if __name__ == "__main__":
     main()

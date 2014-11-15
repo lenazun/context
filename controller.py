@@ -117,6 +117,7 @@ def get_places():
 
 	text = file_reader.read_file(session['filepath'])
 	target_lang = session['target_lang']
+
 	#Checks the type of entity that is being requested
 	ent = request.form['ent']
 
@@ -127,8 +128,9 @@ def get_places():
 
 		if locations: 
 			loclist = wikipedia_linker.get_entity_info(locations, target_lang)
+			downfile = file_reader.write_csv_file(loclist)
 			geocodes = geocoding.geocode(locations)
-			return render_template("places.html", locations = loclist, geocodes = json.dumps(geocodes))
+			return render_template("places.html", locations = loclist, geocodes = json.dumps(geocodes), downfile=downfile)
 		else: 
 			return render_template("places.html")
 
@@ -136,7 +138,8 @@ def get_places():
 
 		if organizations:
 			orglist = wikipedia_linker.get_entity_info(organizations, target_lang)
-			return render_template("orgs.html", organizations = orglist)
+			downfile = file_reader.write_csv_file(orglist)
+			return render_template("orgs.html", organizations = orglist, downfile=downfile)
 		else:
 			return render_template("orgs.html")
 
@@ -144,7 +147,8 @@ def get_places():
 
 		if people:
 			peoplelist = wikipedia_linker.get_entity_info(people, target_lang)
-			return render_template("people.html", people = peoplelist)
+			downfile = file_reader.write_csv_file(peoplelist)
+			return render_template("people.html", people = peoplelist, downfile=downfile)
 		else:
 			return render_template("people.html")
 
@@ -152,14 +156,13 @@ def get_places():
 			nouns = text_processing.nouns_only(text_processing.make_word_dict(text_processing.preprocess(text)))
 			if nouns: 	
 				nounlist = wikipedia_linker.get_entity_info(nouns, target_lang)
-				return render_template("other.html", nouns = nounlist)
+				downfile = file_reader.write_csv_file(nounlist)
+				return render_template("other.html", nouns = nounlist, downfile=downfile)
 			else:
 				return render_template("other.html")
 
 
-@app.route('/map')
-def map():
-	return render_template("map.html")
+
 
 
 

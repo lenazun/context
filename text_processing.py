@@ -95,7 +95,7 @@ def main():
 	#print prepro
 	#print most_common_pos(prepro)
 	ner = ner_tagger(text)
-	print single_set(text)
+	print ner
 	#dictionary = make_word_dict(prepro)
 	#print nouns_only(dictionary)
 	#print dictionary
