@@ -6,6 +6,7 @@ from werkzeug import secure_filename
 
 import file_reader
 import text_processing
+import german_processing
 import wikipedia_linker
 import geocoding
 
@@ -39,6 +40,9 @@ def upload_file():
 	""" Uploads files or converts URLs into simple text files """
 	print session
 
+	#sets the source language
+	session['source_lang'] = request.form.get('sourcelang')
+
 	#saves an uploaded text file to the uploads folder
 	if request.files['filename']:
 		file_ = request.files['filename']
@@ -67,7 +71,6 @@ def upload_file():
 	else:
 		flash ("Enter a source file or URL")
 		return render_template("upload.html")
-
 
 
 @app.route('/editor', methods=["GET", "POST"])
@@ -103,7 +106,6 @@ def get_entities():
 
 # @app.route('/geocodes')
 # def get_geocodes():
-# 	"""Loads all entity names into a JSON for highlighting"""
 
 # 	text = file_reader.read_file(session['filepath'])
 # 	organizations, locations, people = text_processing.ner_tagger(text)
@@ -117,17 +119,21 @@ def get_places():
 
 	text = file_reader.read_file(session['filepath'])
 	target_lang = session['target_lang']
+	source_lang = session['source_lang']
 
 	#Checks the type of entity that is being requested
 	ent = request.form['ent']
 
 	#Uses the NER tagger to get entities
-	organizations, locations, people = text_processing.ner_tagger(text)
+	if source_lang == 'de':
+		organizations, locations, people = german_processing.postprocess(german_processing.german_ner(text))
+	else:
+		organizations, locations, people = text_processing.ner_tagger(text)
 	
 	if ent == "places":
 
 		if locations: 
-			loclist = wikipedia_linker.get_entity_info(locations, target_lang)
+			loclist = wikipedia_linker.get_entity_info(locations, target_lang, source_lang)
 			downfile = file_reader.write_csv_file(loclist)
 			geocodes = geocoding.geocode(locations)
 			return render_template("places.html", locations = loclist, geocodes = json.dumps(geocodes), downfile=downfile)
@@ -137,7 +143,7 @@ def get_places():
 	elif ent == "organizations":
 
 		if organizations:
-			orglist = wikipedia_linker.get_entity_info(organizations, target_lang)
+			orglist = wikipedia_linker.get_entity_info(organizations, target_lang, source_lang)
 			downfile = file_reader.write_csv_file(orglist)
 			return render_template("orgs.html", organizations = orglist, downfile=downfile)
 		else:
@@ -146,7 +152,7 @@ def get_places():
 	elif ent == "people":
 
 		if people:
-			peoplelist = wikipedia_linker.get_entity_info(people, target_lang)
+			peoplelist = wikipedia_linker.get_entity_info(people, target_lang, source_lang)
 			downfile = file_reader.write_csv_file(peoplelist)
 			return render_template("people.html", people = peoplelist, downfile=downfile)
 		else:
@@ -155,7 +161,7 @@ def get_places():
 	elif ent == "nouns":
 			nouns = text_processing.nouns_only(text_processing.make_word_dict(text_processing.preprocess(text)))
 			if nouns: 	
-				nounlist = wikipedia_linker.get_entity_info(nouns, target_lang)
+				nounlist = wikipedia_linker.get_entity_info(nouns, target_lang, source_lang)
 				downfile = file_reader.write_csv_file(nounlist)
 				return render_template("other.html", nouns = nounlist, downfile=downfile)
 			else:

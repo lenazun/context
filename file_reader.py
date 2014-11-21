@@ -19,6 +19,7 @@ def read_file(input_file):
 	text = open(input_file)
 	raw = text.read()
 	decoded = raw.decode('utf8').encode('ascii', 'replace')
+#	decoded = raw.decode('utf8')
 
 	text = decoded
 
@@ -101,11 +102,11 @@ def main():
 	""" Tests """
 	
 	#print read_url('http://www.sfchronicle.com/bayarea/article/Throngs-of-fans-already-packing-Civic-Center-5860820.php')
-	#print read_file('sample.txt')
-	#output = read_url('http://www.sfchronicle.com/bayarea/article/Throngs-of-fans-already-packing-Civic-Center-5860820.php')
+	print read_file('sample.txt')
+	#output = read_url('http://www.newyorker.com/culture/cultural-comment/pills-difficult-birth')
 	#print clean_html(output)
-	dictionary = {'3390': {'targetlang': 'fr', 'targetwiki': 'Bible', 'title': 'The Bible'}, '844': {'targetlang': 'fr', 'targetwiki': 'Amsterdam', 'title': 'Amsterdam'}, '10106': {'targetlang': 'fr', 'targetwiki': u'S\xe9isme', 'title': 'Earthquake'}, '8210131': {'targetlang': 'fr', 'targetwiki': u'\xc9tat de New York', 'title': 'New York'}, '534366': {'targetlang': 'fr', 'targetwiki': 'Barack Obama', 'title': 'Barack Obama'}}
-	write_csv_file(dictionary)
+	#dictionary = {'3390': {'targetlang': 'fr', 'targetwiki': 'Bible', 'title': 'The Bible'}, '844': {'targetlang': 'fr', 'targetwiki': 'Amsterdam', 'title': 'Amsterdam'}, '10106': {'targetlang': 'fr', 'targetwiki': u'S\xe9isme', 'title': 'Earthquake'}, '8210131': {'targetlang': 'fr', 'targetwiki': u'\xc9tat de New York', 'title': 'New York'}, '534366': {'targetlang': 'fr', 'targetwiki': 'Barack Obama', 'title': 'Barack Obama'}}
+	#write_csv_file(dictionary)
 
 if __name__ == "__main__":
     main()

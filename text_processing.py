@@ -2,6 +2,7 @@ import file_reader
 
 import nltk, re, pprint
 import ner
+#from nltk.tag.stanford import NERTagger
 
 
 # loads custom stopwords
@@ -11,7 +12,7 @@ stopwords = [w.strip() for w in open('stopwords.txt').read().split('\n') if w !=
 def preprocess(text):
 	""" Quick and dirty text preprocessing, tokenization, tagging"""
 
-	text = text.decode('utf8').encode('ascii', 'replace')
+	text = text.decode('utf8').encode('ascii', 'ignore')
 	sentences = nltk.sent_tokenize(text)
 	sentences = [nltk.word_tokenize(sent) for sent in sentences] 
 	tagged = [nltk.pos_tag(sent) for sent in sentences]
@@ -44,9 +45,17 @@ def nouns_only(main_dict):
 def ner_tagger(text):    
 	""" Processes and tags text using the Stanford NER tagger"""
 
+
 	tagger = ner.SocketNER(host='localhost', port=8080)
 
 	entities = tagger.get_entities(text)
+
+	# st = NERTagger('/Users/Lena/src/context/stanford-ner-2014-10-26/classifiers/english.muc.7class.distsim.crf.ser.gz',
+ #                '/Users/Lena/src/context/stanford-ner-2014-10-26/stanford-ner.jar') 
+
+	# entities = st.tag(text.split())
+
+	#print entities
 
 	if 'ORGANIZATION' in entities:
 		organizations = set(entities['ORGANIZATION'])

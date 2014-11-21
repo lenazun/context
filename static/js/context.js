@@ -1,7 +1,3 @@
-// Loads the medium editor editable field
-// var editor = new MediumEditor('.editable', {
-//         buttonLabels: 'fontawesome'
-// });
 
 
 
@@ -99,11 +95,7 @@ function unhighlight() {
 $("#highlight").one("click", highlight);
 
 
-// getting Geocodes from JSON file.  Returns an object {"New_York": {"lat": 40.7305991, "lon": -73.9865812, "name": "New York"}....}
 
-// var mapData = $.getJSON( "/geocodes", function() {
-//   console.log( "success loading geocodes json" );
-// });
 
 
 
