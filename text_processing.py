@@ -49,12 +49,6 @@ def ner_tagger(text):
 
 	entities = tagger.get_entities(text)
 
-	# st = NERTagger('/Users/Lena/src/context/stanford-ner-2014-10-26/classifiers/english.muc.7class.distsim.crf.ser.gz',
- #                '/Users/Lena/src/context/stanford-ner-2014-10-26/stanford-ner.jar') 
-
-	# entities = st.tag(text.split())
-
-	#print entities
 
 	if 'ORGANIZATION' in entities:
 		organizations = set(entities['ORGANIZATION'])
