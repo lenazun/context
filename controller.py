@@ -8,7 +8,7 @@ import file_reader
 import text_processing
 import german_processing
 import wikipedia_linker
-import geocoding
+import geocoding2
 
 
 UPLOAD_FOLDER = 'static/uploads'
@@ -109,7 +109,7 @@ def get_entities():
 
 # 	text = file_reader.read_file(session['filepath'])
 # 	organizations, locations, people = text_processing.ner_tagger(text)
-# 	geocodes = geocoding.geocode(locations)
+# 	geocodes = geocoding2.geocode(locations)
 # 	return json.dumps(geocodes)
 
 
@@ -135,7 +135,7 @@ def get_places():
 		if locations: 
 			loclist = wikipedia_linker.get_entity_info(locations, target_lang, source_lang)
 			downfile = file_reader.write_csv_file(loclist)
-			geocodes = geocoding.geocode(locations)
+			geocodes = geocoding2.geocode(locations)
 			return render_template("places.html", locations = loclist, geocodes = json.dumps(geocodes), downfile=downfile)
 		else: 
 			return render_template("places.html")
