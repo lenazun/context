@@ -6,7 +6,8 @@ from werkzeug import secure_filename
 
 import file_reader
 import text_processing
-import german_processing
+import german_processing as german
+import spanish_processing as spanish
 import wikipedia_linker
 import geocoding2
 
@@ -126,7 +127,9 @@ def get_places():
 
 	#Uses the NER tagger to get entities
 	if source_lang == 'de':
-		organizations, locations, people = german_processing.postprocess(german_processing.german_ner(text))
+		organizations, locations, people = german.postprocess(german.german_ner(text))
+	elif source_lang == 'es':
+		organizations, locations, people = spanish.postprocess(spanish.spanish_ner(text))
 	else:
 		organizations, locations, people = text_processing.ner_tagger(text)
 	

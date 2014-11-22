@@ -12,7 +12,6 @@ stopwords = [w.strip() for w in open('stopwords.txt').read().split('\n') if w !=
 def preprocess(text):
 	""" Quick and dirty text preprocessing, tokenization, tagging"""
 
-	text = text.decode('utf8').encode('ascii', 'ignore')
 	sentences = nltk.sent_tokenize(text)
 	sentences = [nltk.word_tokenize(sent) for sent in sentences] 
 	tagged = [nltk.pos_tag(sent) for sent in sentences]

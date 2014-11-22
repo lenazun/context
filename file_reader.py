@@ -18,8 +18,8 @@ def read_file(input_file):
 	""" Open and read a text file """
 	text = open(input_file)
 	raw = text.read()
-	decoded = raw.decode('utf8').encode('ascii', 'replace')
-#	decoded = raw.decode('utf8')
+#	decoded = raw.decode('utf8').encode('ascii', 'replace')
+	decoded = raw.decode('utf8')
 
 	text = decoded
 

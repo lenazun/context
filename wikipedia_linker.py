@@ -20,11 +20,11 @@ def get_wiki_data(title, target_lang, source_lang):
 	langvalues = {'action' : 'query',
 			'prop' : 'langlinks',
 			'lllang': target_lang,
-			'titles' : title,
+			'titles' : title.encode('utf8'),
 			'redirects': '',
 			'format' : 'json'}
 
-	data = urllib.urlencode(langvalues)
+	data = urllib.urlencode(langvalues)  
 	req = urllib2.Request(URL, data)
 	response = urllib2.urlopen(req)
 	json_file = response.read()            
@@ -95,9 +95,10 @@ def get_entity_info(namelist, target_lang, source_lang):
 
 
 def main():
-	namelist = ["New York", "Barack Obama", "Earthquake", "President Obama", "North Carolina Board of Elections", "Amsterdam", "The Bible"]
+	#namelist = ["New York", "Barack Obama", "Earthquake", "President Obama", "North Carolina Board of Elections", "Amsterdam", "The Bible"]
+	namelist = [u'Instituto', u'Sociales', u'Brasil', u'Bolsa', u'Data', u'Partido', u'Ipea', u'Pol\xedticas', u'Folha', u'Dilma', u'del', u'Familia', u'Gobierno', u'Popular', u'-LRB-', u'Estado', u'Rousseff']
 	
-	print get_entity_info(namelist, 'fr', 'en')
+	print get_entity_info(namelist, 'fr', 'es')
 
 	# FIXME : learn about assert
 
