@@ -1,8 +1,19 @@
 import file_reader
 import nltk
 from nltk.tag.stanford import NERTagger
+from nltk.tag.stanford import POSTagger
 
+def spanish_pos(text):
+	""" Parts of speech tagger for Spanish """
 
+	text = text.encode('utf8')
+
+	st = POSTagger('/Users/Lena/src/context/stanford-ner-2014-10-26/edu/stanford/nlp/models/pos-tagger/spanish/spanish.tagger', 
+				'/usr/share/stanford-postagger/stanford-postagger.jar', 'utf8')
+
+	pos_tagged = st.tag(text.split())
+
+	return pos_tagged  
 
 
 def spanish_ner(text):
@@ -12,7 +23,7 @@ def spanish_ner(text):
 
 
 	st = NERTagger('/Users/Lena/src/context/stanford-ner-2014-10-26/edu/stanford/nlp/models/ner/spanish.ancora.distsim.s512.crf.ser.gz',
-                '/Users/Lena/src/context/stanford-ner-2014-10-26/stanford-ner.jar', 'utf8') 
+                '/Users/Lena/src/context/stanford-ner-2014-10-26/stanford-postagger.jar', 'utf8')  #NOT WORKING
 
 	tagged = st.tag(text.split())
 
@@ -67,7 +78,8 @@ def main():
 	text = file_reader.read_file('spanish_sample.txt')
 	#tokens = german_tokenize(text)
 	#print tokens
-	print postprocess(spanish_ner(text))
+	#print postprocess(spanish_ner(text))
+	print spanish_pos(text)
 	
 
 	

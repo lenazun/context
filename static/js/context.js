@@ -96,15 +96,24 @@ $("#highlight").one("click", highlight);
 
 
 
+// saving the content
+// From http://stackoverflow.com/questions/22084698/how-to-export-source-content-within-div-to-text-html-file
 
 
+function downloadInnerHtml(filename, elId, mimeType) {
+    var elHtml = document.getElementById(elId).innerHTML;
+    var link = document.createElement('a');
+    mimeType = mimeType || 'text/html';
+
+    link.setAttribute('download', filename);
+    link.setAttribute('href', 'data:' + mimeType  +  ';charset=utf-8,' + encodeURIComponent(elHtml));
+    link.click(); 
+}
+
+var fileName =  'exported.html';
 
 
-
-// // saving the content
-
-// $('.editable').on('input', function() {
-//         $('#page_content').val(editor.serialize().page_content_editor.value);
-//     });
-//     $('#page_content_editor').html($('#page_content').val()); // Put editor content into hidden field
+$('#download').click(function(){
+    downloadInnerHtml(fileName, 'text1','text/html');
+});
 

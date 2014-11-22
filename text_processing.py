@@ -2,7 +2,6 @@ import file_reader
 
 import nltk, re, pprint
 import ner
-#from nltk.tag.stanford import NERTagger
 
 
 # loads custom stopwords
