@@ -31,7 +31,7 @@ def is_file_allowed(filename):
 @app.route('/')
 def index():
 
-	session['target_lang'] = "es"
+	session['target_lang'] = "pt"
 	return render_template("upload.html")
 
 
@@ -120,7 +120,7 @@ def get_places():
 
 	text = file_reader.read_file(session['filepath'])
 	target_lang = session['target_lang']
-	source_lang = session['source_lang']
+	source_lang = (session['source_lang']).encode('ascii', 'replace')
 
 	#Checks the type of entity that is being requested
 	ent = request.form['ent']
