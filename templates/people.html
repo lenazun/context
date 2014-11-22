@@ -8,7 +8,7 @@
 
 		    {% for key, value in people.iteritems() %}
 
-		<tr><td><a href="http://en.wikipedia.org/wiki/{{ value['title'] }}">{{ value['title'] }}</a></td><td><a href="http://{{ session.target_lang  }}.wikipedia.org/wiki/{{ value['title'] }}">{{ value['targetwiki'] }}</a></td></tr>
+		<tr><td><a href="http://en.wikipedia.org/wiki/{{ value['title'] }}">{{ value['title'] }}</a></td><td><a href="http://{{ session.target_lang  }}.wikipedia.org/wiki/{{ value['targetwiki'] }}">{{ value['targetwiki'] }}</a></td></tr>
 
 		    {% endfor %}
 
