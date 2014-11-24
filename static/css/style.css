@@ -14,29 +14,31 @@
 
 
 .table {
-  font-size: 14px;
+/*  font-size: 14px;*/
 
 }
 
-.thumbnail img { 
-  min-height:50px; 
-  height:50px; 
+#images {
+  display: inline-block;
+  height: 250px;
+  overflow-y:auto
+
 }
 
 #container1 {
-    width: 400px;
+    width: 90%;
     height: 600px;
     margin: 30px auto;
 
 }
 
 #container2 {
-    width: 400px;
+    width: 95%;
     margin: 30px auto;
 }
 
 #container3 {
-    width: 350px;
+    width: 100%;
     margin: 30px auto;
 }
 
@@ -122,6 +124,8 @@ blockquote {
 
 
 /*Form stuff*/
+
+
 
 .form-signin {
   max-width: 330px;

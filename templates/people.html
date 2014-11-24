@@ -2,11 +2,31 @@
 
 
 		  {% if people %}
+
+
+		<div id="gallery" class="popup-gallery">
+
+		{% for key, value in people.iteritems() -%}	  
+
+		  {% if value['thumbnail'] -%}
+
+			<a href="{{ value['thumbnail'] }}" title="{{ value['title'] }}"><img style="margin: 3px;" src="{{ value['thumbnail'] }}" height="100"></a>
+
+
+			{%- endif %}
+
+		    {%- endfor %}
+
+		</div>
+
+
+
+		<div>
 		  <table class="table">
 
 		<tr><th>On Wikipedia: </th><th></th></tr>    
 
-		    {% for key, value in people.iteritems() %}
+		{% for key, value in people.iteritems() %}	 
 
 		<tr><td><a href="http://en.wikipedia.org/wiki/{{ value['title'] }}">{{ value['title'] }}</a></td><td><a href="http://{{ session.target_lang  }}.wikipedia.org/wiki/{{ value['targetwiki'] }}">{{ value['targetwiki'] }}</a></td></tr>
 
@@ -18,15 +38,25 @@
 		 </tr>
 
 		  </table>
-
+		</div>
 
 		  	{% else %}
 		  	<p>We didn't find any!</p>
 		    {% endif %}
 
-		  <script>
 
-		  </script>
+
+		   <script>
+
+
+			 $(document).ready(function() {
+
+			 	   magnificPopup()
+
+			 });
+
+
+		   </script>
 
 
 <div>

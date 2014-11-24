@@ -31,8 +31,8 @@ def is_file_allowed(filename):
 @app.route('/')
 def index():
 
-	session['target_lang'] = "pt"
-	return render_template("upload.html")
+	session['target_lang'] = "ru"
+	return render_template("index.html")
 
 
 
@@ -171,6 +171,9 @@ def get_places():
 				return render_template("other.html")
 
 
+@app.route('/gallery')
+def gallery():
+	return render_template("gallery.html")
 
 
 

@@ -24,21 +24,35 @@ def get_wiki_data(title, target_lang, source_lang):
 			'redirects': '',
 			'format' : 'json'}
 
-	data = urllib.urlencode(langvalues)  
-	req = urllib2.Request(URL, data)
-	response = urllib2.urlopen(req)
-	json_file = response.read()            
-	json_file = simplejson.loads(json_file)
+	imagevalues = {'action' : 'query',
+	          'prop' : 'pageimages',
+	          'titles' : title.encode('utf8'),
+	          'redirects': '',
+	          'format' : 'json', 
+	          'pithumbsize': '500'}
+
+	def get_json(values):
+		data = urllib.urlencode(values)  
+		req = urllib2.Request(URL, data)
+		response = urllib2.urlopen(req)
+		json_file = response.read()            
+		json_file = simplejson.loads(json_file)
+
+		return json_file
+
+	lang_json = get_json(langvalues)
+	image_json = get_json(imagevalues)
+
 
 	#gets the wiki id from the json file
-	wiki_id = str([key for key in json_file['query']['pages'].keys()])
+	wiki_id = str([key for key in lang_json['query']['pages'].keys()])
 	wiki_id = wiki_id.strip("['']")
 
 	#creates a unique id for memcache
 	id_with_lang = (wiki_id + "_" + target_lang).encode('utf8')
 
 	#if the article doesn't exist in English, returns None
-	if '-1' in json_file['query']['pages']:
+	if '-1' in lang_json['query']['pages']:
 		return None
 
 	else:
@@ -51,14 +65,19 @@ def get_wiki_data(title, target_lang, source_lang):
 
 		else:
 			#if the article has language links, extracts the equivalent titles
-			if 'langlinks' in json_file['query']['pages'][wiki_id]:
+			if 'langlinks' in lang_json['query']['pages'][wiki_id]:
 
-				lang_dict = json_file['query']['pages'][wiki_id]['langlinks'][0]
+				lang_dict = lang_json['query']['pages'][wiki_id]['langlinks'][0]
 				langcode = lang_dict['lang']
 				equivalent = lang_dict['*']
 
+				if 'thumbnail' in image_json['query']['pages'][wiki_id]:
+					thumbnail = image_json['query']['pages'][wiki_id]['thumbnail']['source']
+				else:
+					thumbnail = False
+
 				item_dict = {}
-				item_dict[wiki_id] = {'title': title, 'targetlang': langcode, 'targetwiki' : equivalent }
+				item_dict[wiki_id] = {'title': title, 'targetlang': langcode, 'targetwiki' : equivalent, 'thumbnail': thumbnail }
 				#adds it to memcache
 				mc.set(id_with_lang, item_dict)
 
@@ -67,6 +86,8 @@ def get_wiki_data(title, target_lang, source_lang):
 
 			else:
 				return False
+
+
 
 
 def get_entity_info(namelist, target_lang, source_lang):
@@ -95,8 +116,8 @@ def get_entity_info(namelist, target_lang, source_lang):
 
 
 def main():
-	#namelist = ["New York", "Barack Obama", "Earthquake", "President Obama", "North Carolina Board of Elections", "Amsterdam", "The Bible"]
-	namelist = [u'Instituto', u'Sociales', u'Brasil', u'Bolsa', u'Data', u'Partido', u'Ipea', u'Pol\xedticas', u'Folha', u'Dilma', u'del', u'Familia', u'Gobierno', u'Popular', u'-LRB-', u'Estado', u'Rousseff']
+	namelist = ["New York", "Barack Obama", "Earthquake", "President Obama", "North Carolina Board of Elections", "Amsterdam", "The Bible"]
+	#namelist = [u'Instituto', u'Sociales', u'Brasil', u'Bolsa', u'Data', u'Partido', u'Ipea', u'Pol\xedticas', u'Folha', u'Dilma', u'del', u'Familia', u'Gobierno', u'Popular', u'-LRB-', u'Estado', u'Rousseff']
 	
 	print get_entity_info(namelist, 'fr', 'es')
 

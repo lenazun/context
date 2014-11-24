@@ -9,7 +9,7 @@ def spanish_pos(text):
 	text = text.encode('utf8')
 
 	st = POSTagger('/Users/Lena/src/context/stanford-ner-2014-10-26/edu/stanford/nlp/models/pos-tagger/spanish/spanish.tagger', 
-				'/usr/share/stanford-postagger/stanford-postagger.jar', 'utf8')
+				'/usr/share/stanford-postagger/stanford-postagger.jar', 'utf8') #NOT working
 
 	pos_tagged = st.tag(text.split())
 
@@ -23,7 +23,7 @@ def spanish_ner(text):
 
 
 	st = NERTagger('/Users/Lena/src/context/stanford-ner-2014-10-26/edu/stanford/nlp/models/ner/spanish.ancora.distsim.s512.crf.ser.gz',
-                '/Users/Lena/src/context/stanford-ner-2014-10-26/stanford-postagger.jar', 'utf8')  #NOT WORKING
+                '/Users/Lena/src/context/stanford-ner-2014-10-26/stanford-postagger.jar', 'utf8') 
 
 	tagged = st.tag(text.split())
 

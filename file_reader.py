@@ -37,7 +37,7 @@ def clean_html(raw):
 	""" Clean HTML tags returns only text"""
 
 
-	text = safe_html(raw)
+	text = plaintext(raw)
 
 	# for script in raw(["script", "style"]):
 	# 	script.extract()

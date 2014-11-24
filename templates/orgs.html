@@ -2,6 +2,25 @@
 
 
 		  {% if organizations %}
+
+
+		<div id="gallery" class="popup-gallery">
+
+		{% for key, value in organizations.iteritems() -%}	  
+
+		  {% if value['thumbnail'] -%}
+
+			<a href="{{ value['thumbnail'] }}" title="{{ value['title'] }}"><img style="margin: 3px;" src="{{ value['thumbnail'] }}" height="100"></a>
+
+
+			{%- endif %}
+
+		    {%- endfor %}
+
+		</div>
+
+
+
 		  <table class="table">
 
 		<tr><th>On Wikipedia:</th><th></th></tr>    
@@ -22,6 +41,15 @@
 		  	{% else %}
 		  	<p>We didn't find any!</p>
 		    {% endif %}
+
+
+		   <script>
+			 $(document).ready(function() {
+
+			 	   magnificPopup()
+
+			 });
+		   </script>
 
 
 <div>
