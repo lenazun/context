@@ -89,8 +89,7 @@ def write_csv_file(dictionary):
 						(value['title']).encode('utf8'), 
 						(value['targetlang']).encode('utf8'), 
 						(value['targetwiki']).encode('utf8'),
-						(wikiURL + key),
-						(value['thumbnail'])])
+						(wikiURL + key)])
 
 	pathparts = (temp.name).split('/')
 	path = "/".join(pathparts[5:])

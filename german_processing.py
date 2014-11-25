@@ -1,14 +1,58 @@
+from operator import itemgetter
+
 import file_reader
 import nltk
 from nltk.tag.stanford import NERTagger
+from nltk.tag.stanford import POSTagger
 
 
-# def german_tokenize(text):
-# 	"""turns text into a list of tokens"""
+def german_pos(text):
+	""" Parts of speech tagger for Spanish """
+	
+	text = text.encode('utf8')
 
-# 	tokens = nltk.word_tokenize(text)
+	st = POSTagger('/Users/Lena/src/context/stanford-postagger/models/german-fast.tagger', 
+				'/Users/Lena/src/context/stanford-postagger/stanford-postagger.jar', 'utf8')
 
-# 	return tokens
+	pos_tagged = st.tag(text.split())
+
+	return pos_tagged  
+
+
+def german_nouns(pos_tagged):
+	""" Creates a list of nouns only ordered by their number of appearances in the text"""
+
+	nouns_dict = {}
+
+	for wordpair in pos_tagged[0]:
+		if wordpair[1] in ('NN', 'NNS') and len(wordpair[0]) > 2:
+			nouns_dict[wordpair] = nouns_dict.get(wordpair, 0) + 1
+
+
+	nouns_list = [(key[0], value) for key, value in nouns_dict.items()]
+
+	#Alpha sort
+	nouns_list.sort()
+	#Sorts by number of appearances
+	sorted_nouns = sorted(nouns_list, key=itemgetter(1), reverse = True)
+
+	allnouns = [word[0] for word in sorted_nouns]
+
+	return allnouns
+
+
+def exclude_entities(allnouns, text):
+	""" exclude nouns already identified as entities """
+
+	exclude = postprocess(german_ner(text))
+
+	singlelist = [[x for x in i] for i in exclude]
+
+	
+	cleanlist = set(allnouns).difference(singlelist[0])
+	cleanlist = list(cleanlist)
+
+	return cleanlist[:20]
 
 
 def german_ner(text):
@@ -67,6 +111,12 @@ def postprocess(tagged):
 
 	return organizations, locations, people
 
+def ner(text):
+	return postprocess(german_ner(text))
+
+def pos(text):
+	return exclude_entities(german_nouns(german_pos(text)), text)
+
 
 
 def main():
@@ -74,8 +124,8 @@ def main():
 	text = file_reader.read_file('german_sample.txt')
 	#tokens = german_tokenize(text)
 	#print tokens
-	print postprocess(german_ner(text))
-	
+	#print postprocess(german_ner(text))
+	print exclude_entities(german_nouns(german_pos(text)), text)
 
 	
 if __name__ == "__main__":

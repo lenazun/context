@@ -124,10 +124,13 @@ def get_places():
 
 	#Uses the NER tagger to get entities
 	if source_lang == 'de':
-		organizations, locations, people = german.postprocess(german.german_ner(text))
+		nouns = german.pos(text)
+		organizations, locations, people = german.ner(text)
 	elif source_lang == 'es':
-		organizations, locations, people = spanish.postprocess(spanish.spanish_ner(text))
+		nouns = spanish.pos(text)
+		organizations, locations, people = spanish.ner(text)
 	else:
+		nouns = text_processing.nouns_only(text_processing.preprocess(text))
 		organizations, locations, people = text_processing.ner_tagger(text)
 
 
@@ -163,7 +166,6 @@ def get_places():
 			return render_template("people.html")
 
 	elif ent == "nouns":
-			nouns = text_processing.nouns_only(text_processing.preprocess(text))
 			if nouns: 	
 				nounlist = wikipedia_linker.get_entity_info(nouns, target_lang, source_lang)
 				downfile = file_reader.write_csv_file(nounlist)
