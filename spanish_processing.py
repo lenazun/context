@@ -5,15 +5,15 @@ from nltk.tag.stanford import POSTagger
 
 def spanish_pos(text):
 	""" Parts of speech tagger for Spanish """
+	pass
+	# text = text.encode('utf8')
 
-	text = text.encode('utf8')
+	# st = POSTagger('/Users/Lena/src/context/stanford-ner-2014-10-26/edu/stanford/nlp/models/pos-tagger/spanish/spanish.tagger', 
+	# 			'/usr/share/stanford-postagger/stanford-postagger.jar', 'utf8') #NOT working
 
-	st = POSTagger('/Users/Lena/src/context/stanford-ner-2014-10-26/edu/stanford/nlp/models/pos-tagger/spanish/spanish.tagger', 
-				'/usr/share/stanford-postagger/stanford-postagger.jar', 'utf8') #NOT working
+	# pos_tagged = st.tag(text.split())
 
-	pos_tagged = st.tag(text.split())
-
-	return pos_tagged  
+	# return pos_tagged  
 
 
 def spanish_ner(text):

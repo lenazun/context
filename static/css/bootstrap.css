@@ -183,8 +183,8 @@ optgroup {
 }
 table {
   border-spacing: 0;
-  border-collapse: collapse;
-}
+/*  border-collapse: collapse;
+*/}
 td,
 th {
   padding: 0;
@@ -251,10 +251,10 @@ th {
     border-top-color: #000 !important;
   }
   .label {
-    border: 1px solid #000;
+    /*border: 1px solid #000;*/
   }
   .table {
-    border-collapse: collapse !important;
+/*    border-collapse: collapse !important;*/
   }
   .table td,
   .table th {
@@ -262,8 +262,8 @@ th {
   }
   .table-bordered th,
   .table-bordered td {
-    border: 1px solid #ddd !important;
-  }
+/*    border: 1px solid #ddd !important;
+*/  }
 }
 @font-face {
   font-family: 'Glyphicons Halflings';
@@ -4289,23 +4289,39 @@ fieldset[disabled] .navbar-default .btn-link:hover,
 fieldset[disabled] .navbar-default .btn-link:focus {
   color: #ccc;
 }
+
+/*I overwrote all of this */
+
 .navbar-inverse {
-  background-color: #222;
-  border-color: #080808;
+  background-color: transparent;  
+  border-color: #ffffff;
+  background: url("../img/background.jpg") no-repeat center center fixed; ; 
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
 }
+
+.navbar-panel {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+
+
 .navbar-inverse .navbar-brand {
-  color: #9d9d9d;
+  color: black;
+  font-weight: bold;
 }
 .navbar-inverse .navbar-brand:hover,
 .navbar-inverse .navbar-brand:focus {
-  color: #fff;
+  color: black;
   background-color: transparent;
 }
 .navbar-inverse .navbar-text {
-  color: #9d9d9d;
+  color: black;
 }
 .navbar-inverse .navbar-nav > li > a {
-  color: #9d9d9d;
+  color: black;
 }
 .navbar-inverse .navbar-nav > li > a:hover,
 .navbar-inverse .navbar-nav > li > a:focus {

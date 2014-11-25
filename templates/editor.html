@@ -6,11 +6,9 @@
     <div class="col-md-6">
 
     <div id="container1">
-        <h1>Your text</h1>
+        <h1>Source text</h1>
         <div id= "text1" class="editable">
-            Etsy keffiyeh YOLO selfies, yr seitan wolf bitters fixie. Retro banh mi mustache dreamcatcher artisan hashtag hoodie vinyl. Four loko street art butcher, Truffaut wolf hella sustainable dreamcatcher Etsy. Readymade selfies seitan, hoodie biodiesel sartorial four loko hashtag banh mi. Pork belly Pitchfork Williamsburg, pop-up hashtag viral next level Wes Anderson locavore ennui tilde try-hard Neutra. Beard chillwave ethical you probably haven't heard of them leggings. Kitsch pour-over synth salvia before they sold out.
-
-			jean shorts, fap beard fingerstache Odd Future gentrify Bushwick craft beer. Quinoa Banksy put a bird on it asymmetrical irony lomo. Letterpress asymmetrical master cleanse, ethical Williamsburg Bushwick next level umami occupy iPhone mumblecore disrupt kale chips biodiesel stumptown. Chambray gastropub leggings craft beer small batch skateboard, biodiesel Tonx cliche yr tote bag hashtag roof party. Williamsburg mixtape master cleanse, vinyl post-ironic bicycle rights Echo Park ugh Blue Bottle Helvetica squid beard Marfa slow-carb banjo. Vice Helvetica yr, disrupt lomo beard Shoreditch ugh plaid Blue Bottle dreamcatcher cold-pressed.
+            <img class="preloader" src='static/img/preloader.gif'>
 
 
         </div>
@@ -28,7 +26,7 @@
 	<form class="form" id="langselector" method="GET" action="/set_target_lang">
 <!-- 	    <label for="target_lang">Target language</label> -->
 	    <select id="target_lang" class="form-control" name="target_lang" onchange="this.form.submit()">
-	    	<option selected="true" disabled="true" >The current target lang is {{ session.target_lang }}</option>
+	    	<option selected="true" disabled="true" >The current target language is {{ session.target_lang }}</option>
 	  		<option value="es">Spanish</option>
 	  		<option value="fr">French</option>
 	 		 <option value="de">German</option>
@@ -39,7 +37,6 @@
 	  		<option value="ru">Russian</option>
 	  		<option value="zh">Chinese</option>
 		</select>
-  		 <!-- <button class="btn btn-primary btn-lg" type="submit">Go</button> -->
  	</div>
 	</form>
 
@@ -127,6 +124,9 @@
     });
 
     var path_to_show = "{{ path }}";
+
+
+
 
 
 </script>

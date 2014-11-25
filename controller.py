@@ -161,14 +161,14 @@ def get_places():
 		else:
 			return render_template("people.html")
 
-	elif ent == "nouns":
-			nouns = text_processing.nouns_only(text_processing.make_word_dict(text_processing.preprocess(text)))
-			if nouns: 	
-				nounlist = wikipedia_linker.get_entity_info(nouns, target_lang, source_lang)
-				downfile = file_reader.write_csv_file(nounlist)
-				return render_template("other.html", nouns = nounlist, downfile=downfile)
-			else:
-				return render_template("other.html")
+	# elif ent == "nouns":
+	# 		nouns = text_processing.nouns_only(text_processing.make_word_dict(text_processing.preprocess(text)))
+	# 		if nouns: 	
+	# 			nounlist = wikipedia_linker.get_entity_info(nouns, target_lang, source_lang)
+	# 			downfile = file_reader.write_csv_file(nounlist)
+	# 			return render_template("other.html", nouns = nounlist, downfile=downfile)
+	# 		else:
+	# 			return render_template("other.html")
 
 
 @app.route('/gallery')

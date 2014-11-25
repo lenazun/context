@@ -83,13 +83,14 @@ def write_csv_file(dictionary):
 
 	with open(temp_file.name, 'wb') as temp:
 		w = csv.writer(temp)
-		w.writerow(['wiki_id', 'title', 'targetlang', 'equiv_title', 'wiki_url'])
+		w.writerow(['wiki_id', 'title', 'targetlang', 'equiv_title', 'wiki_url', 'wiki_image'])
 		for key, value in dictionary.iteritems():
 			w.writerow([(key).encode('utf8'), 
 						(value['title']).encode('utf8'), 
 						(value['targetlang']).encode('utf8'), 
 						(value['targetwiki']).encode('utf8'),
-						(wikiURL + key)])
+						(wikiURL + key),
+						(value['thumbnail'])])
 
 	pathparts = (temp.name).split('/')
 	path = "/".join(pathparts[5:])

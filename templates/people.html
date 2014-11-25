@@ -22,41 +22,61 @@
 
 
 		<div>
-		  <table class="table">
 
-		<tr><th>On Wikipedia: </th><th></th></tr>    
 
-		{% for key, value in people.iteritems() %}	 
+		<table class="table table-hover">
+			<thead>
+			  	<tr>
+				<th>On Wikipedia: </th>
 
-		<tr><td><a href="http://en.wikipedia.org/wiki/{{ value['title'] }}">{{ value['title'] }}</a></td><td><a href="http://{{ session.target_lang  }}.wikipedia.org/wiki/{{ value['targetwiki'] }}">{{ value['targetwiki'] }}</a></td></tr>
+				</tr>    
+			</thead>
+
+		    {% for key, value in people.iteritems() %}
+
+		<tbody>
+			<tr>
+				<td><a target="_blank" href="http://en.wikipedia.org/wiki/{{ value['title'] }}">{{ value['title'] }}</a></td>
+				<td><a target="_blank" href="http://{{ session.target_lang  }}.wikipedia.org/wiki/{{ value['targetwiki'] }}">{{ value['targetwiki'] }}</a></td>
+			</tr>
 
 		    {% endfor %}
 
-		
-		 <tr><td>Download .csv file <a href="{{ downfile }}"><span class="glyphicon glyphicon-download" aria-hidden="true"></a></span></td>
-		 	<td> </td>
-		 </tr>
+			 <tr><td></td>
+			 	<td> </td>
+			 </tr>
+		</tbody>
 
-		  </table>
+		</table>
+
+		<p align="right"> Download .csv file <a href="{{ downfile }}"><span class="glyphicon glyphicon-download" aria-hidden="true"></a></span></p>
+
+
 		</div>
 
 		  	{% else %}
 		  	<p>We didn't find any!</p>
 		    {% endif %}
 
+		</div>
 
 
-		   <script>
+    	<script type="text/javascript">
+
+
+
+
 
 
 			 $(document).ready(function() {
 
-			 	   magnificPopup()
+			 	 magnificPopup();
+
 
 			 });
 
 
-		   </script>
+		</script>
 
 
 <div>

@@ -6,7 +6,6 @@
         <link rel="stylesheet" href="/static/css/themes/default.css">
         <link rel="stylesheet" href="/static/css/magnific-popup.css">
         <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
-<!--         <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" /> -->
 
         <script src="/static/js/medium-editor.js"></script>
         <!-- Medium editor JS -->
@@ -21,23 +20,20 @@
         <script src="/static/js/jquery.magnific-popup.js"></script> 
         <!-- Magnific Popup core JS file -->
 
+
     </head>
     <body>
         <div class="navbar navbar-inverse navbar-static-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="/">Context Explorer</a>
-                </div>
-                <div class="navbar-collapse collapse">
-                    <!-- <ul class="nav navbar-nav navbar-right">
-                        {% if session["user"] %}
-                            <li><a href="/view_user/{{session['user']}}">My Profile</a></li>
-                            <li><a href="/logout"> {{"Log Out"}} </a></li>
-
-                        {% else %}
-                            <li><a href="/login">{{"Log In"}}</a></li>
-                        {% endif %}
-                    </ul> -->
+            <div class="navbar-panel">
+                <div class="container">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="/">News Context Explorer</a>
+                    </div>
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav navbar-right">
+                            <small>Powered by <img src="static/img/wikipedia_logo.png" height="50"></small>
+                        </ul>
+                    </div>
                 </div>
             </div>
 
@@ -55,9 +51,9 @@
             {% block body %}{% endblock %}
         </div>
 
-
         <script src="/static/js/context.js"></script>
         <!-- Main JS -->
+
 
 
     </body>

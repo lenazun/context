@@ -8,25 +8,32 @@
 		<div id="map-canvas"></div>
 		
 
-		  <table class="table">
+		<table class="table table-hover">
+			<thead>
+			  	<tr>
+				<th>On Wikipedia: </th>
 
-		<tr><th>On Wikipedia: </th><th></th></tr>    
+				</tr>    
+			</thead>
 
 		    {% for key, value in locations.iteritems() %}
 
-		<tr>
-			<td><a href="http://en.wikipedia.org/wiki/{{ value['title'] }}">{{ value['title'] }}</a></td>
-			<td><a href="http://{{ session.target_lang  }}.wikipedia.org/wiki/{{ value['targetwiki'] }}">{{ value['targetwiki'] }}</a></td>
-		</tr>
+		<tbody>
+			<tr>
+				<td><a target="_blank" href="http://en.wikipedia.org/wiki/{{ value['title'] }}">{{ value['title'] }}</a></td>
+				<td><a target="_blank" href="http://{{ session.target_lang  }}.wikipedia.org/wiki/{{ value['targetwiki'] }}">{{ value['targetwiki'] }}</a></td>
+			</tr>
 
 		    {% endfor %}
 
-		 <tr><td>Download .csv file <a href="{{ downfile }}"><span class="glyphicon glyphicon-download" aria-hidden="true"></a></span></td>
-		 	<td> </td>
-		 </tr>
+			 <tr><td></td>
+			 	<td> </td>
+			 </tr>
+		</tbody>
 
-		  </table>
+		</table>
 
+		<p align="right"> Download .csv file <a href="{{ downfile }}"><span class="glyphicon glyphicon-download" aria-hidden="true"></a></span></p>
 
 		  	{% else %}
 		  	<p>We didn't find any!</p>
