@@ -5,9 +5,9 @@
 		{% if locations %}
 
 
-		<div id="map-canvas"></div>
+	<div id="map-canvas"></div>
 		
-
+		<div id="containertable">
 		<table class="table table-hover">
 			<thead>
 			  	<tr>
@@ -32,8 +32,8 @@
 		</tbody>
 
 		</table>
-
-		<p align="right"> Download .csv file <a href="{{ downfile }}"><span class="glyphicon glyphicon-download" aria-hidden="true"></a></span></p>
+	</div>
+				<p align="right"> Download .csv file <a href="{{ downfile }}"><span class="glyphicon glyphicon-download" aria-hidden="true"></a></span></p>
 
 		  	{% else %}
 		  	<p>We didn't find any!</p>

@@ -7,7 +7,7 @@ $(document).ready(function () {
    grabHTMLplaces()
    grabHTMLpeople()
    grabHTMLorgs()
-   // grabHTMLother()
+   grabHTMLother()
 
 
 });
@@ -33,7 +33,6 @@ $.ajax({
 })
   .done(function( html ) {
     $( "#container_places" ).html( html );
-       loadTables();
   });
 
 }
@@ -48,7 +47,7 @@ $.ajax({
 })
   .done(function( html ) {
     $( "#container_orgs" ).html( html );
-       loadTables();
+
   });
 
 }
@@ -62,7 +61,7 @@ $.ajax({
 })
   .done(function( html ) {
     $( "#container_people" ).html( html );
-       loadTables();
+
   });
 
 }
@@ -76,7 +75,7 @@ $.ajax({
 })
   .done(function( html ) {
     $( "#container_general" ).html( html );
-       loadTables();
+
   });
 
 }

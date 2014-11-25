@@ -81,7 +81,6 @@ def editor():
 	filepath = session['filepath']
 	target_lang = session['target_lang']
 
-
 	return render_template("editor.html", 
 		target_lang=target_lang,
 		path= filepath)
@@ -122,8 +121,6 @@ def get_places():
 	target_lang = session['target_lang']
 	source_lang = (session['source_lang']).encode('ascii', 'replace')
 
-	#Checks the type of entity that is being requested
-	ent = request.form['ent']
 
 	#Uses the NER tagger to get entities
 	if source_lang == 'de':
@@ -132,6 +129,10 @@ def get_places():
 		organizations, locations, people = spanish.postprocess(spanish.spanish_ner(text))
 	else:
 		organizations, locations, people = text_processing.ner_tagger(text)
+
+
+	#Checks the type of entity that is being requested
+	ent = request.form['ent']
 	
 	if ent == "places":
 
@@ -161,19 +162,17 @@ def get_places():
 		else:
 			return render_template("people.html")
 
-	# elif ent == "nouns":
-	# 		nouns = text_processing.nouns_only(text_processing.make_word_dict(text_processing.preprocess(text)))
-	# 		if nouns: 	
-	# 			nounlist = wikipedia_linker.get_entity_info(nouns, target_lang, source_lang)
-	# 			downfile = file_reader.write_csv_file(nounlist)
-	# 			return render_template("other.html", nouns = nounlist, downfile=downfile)
-	# 		else:
-	# 			return render_template("other.html")
+	elif ent == "nouns":
+			nouns = text_processing.nouns_only(text_processing.preprocess(text))
+			if nouns: 	
+				nounlist = wikipedia_linker.get_entity_info(nouns, target_lang, source_lang)
+				downfile = file_reader.write_csv_file(nounlist)
+				return render_template("other.html", nouns = nounlist, downfile=downfile)
+			else:
+				return render_template("other.html")
 
 
-@app.route('/gallery')
-def gallery():
-	return render_template("gallery.html")
+
 
 
 

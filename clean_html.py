@@ -17,7 +17,8 @@ def safe_html(html):
   
     whitelist = [  
         "div", "span", "p", "br", "pre",  
-        "table", "tbody", "thead", "tr", "td", "a",  
+        # "table", "tbody", "thead", "tr", "td", 
+        "a",  
         "blockquote",  
         "ul", "li", "ol",  
         "b", "em", "i", "strong", "u", "font"  

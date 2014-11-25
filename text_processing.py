@@ -1,11 +1,9 @@
+from operator import itemgetter
+
 import file_reader
 
 import nltk, re, pprint
 import ner
-
-
-# loads custom stopwords
-stopwords = [w.strip() for w in open('stopwords.txt').read().split('\n') if w != '']
 
 
 def preprocess(text):
@@ -23,21 +21,27 @@ def preprocess(text):
 	return all_tagged_words
 
 
-def make_word_dict(all_tagged_words):
-	""" Makes a dictionary out of the whole word list"""	
+def nouns_only(all_tagged_words):
+	""" Creates a list of nouns only ordered by their number of appearances in the text"""
 
-	main_dict = dict(all_tagged_words)
-	return main_dict
+	nouns_dict = {}
+
+	for wordpair in all_tagged_words:
+		if wordpair[1] in ('NN','NNS') and len(wordpair[0]) > 2:
+			nouns_dict[wordpair] = nouns_dict.get(wordpair, 0) + 1
 
 
+	nouns_list = [(key[0], value) for key, value in nouns_dict.items()]
 
-def nouns_only(main_dict):
-	""" Creates a dictionary of nouns only """
+	#Alpha sort
+	nouns_list.sort()
+	#Sorts by number of appearances
+	sorted_nouns = sorted(nouns_list, key=itemgetter(1), reverse = True)
 
-	nouns_dict = {key: value for key, value in main_dict.items() 
-             if value in ('NN','NNS') and len(key) > 2 }
+	top20 = [word[0] for word in sorted_nouns[:20]]
 
-	return  list(nouns_dict.keys())
+	return top20
+
 
 
 def ner_tagger(text):    
@@ -92,13 +96,13 @@ def main():
 	""" Tests """
 
 	text = file_reader.read_file('sample.txt')
-	#prepro = preprocess(text)
+	prepro = preprocess(text)
 	#print prepro
 	#print most_common_pos(prepro)
-	ner = ner_tagger(text)
-	print ner
+	#ner = ner_tagger(text)
+	#print ner
 	#dictionary = make_word_dict(prepro)
-	#print nouns_only(dictionary)
+	print nouns_only(prepro)
 	#print dictionary
 
 	

@@ -15,8 +15,7 @@
 
 .table {
   font-size: 14px;
-  height: 400px;
-  overflow-y:auto
+  margin-top: 15px;
 
 }
 
@@ -24,8 +23,7 @@
 
 #images {
   display: inline-block;
-  height: 250px;
-  overflow-y:auto
+  max-height: 250px
 
 }
 
@@ -35,11 +33,19 @@
 
 #container2 {
     width: 95%;
+    margin-top: 15px;
 }
 
 #container3 {
     width: 100%;
-    margin-top: 20px;
+    margin-top: 15px;
+}
+
+#containertable {
+    width: 100%;
+    margin-top: 15px;
+    max-height: 400px;
+    overflow-y:auto
 }
 
 img.preloader {
