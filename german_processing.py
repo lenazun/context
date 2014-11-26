@@ -7,7 +7,7 @@ from nltk.tag.stanford import POSTagger
 
 
 def german_pos(text):
-	""" Parts of speech tagger for Spanish """
+	""" Parts of speech tagger for German """
 	
 	text = text.encode('utf8')
 
@@ -71,27 +71,53 @@ def german_ner(text):
 	return tagged  
 
 
+
+
+def join_items(tagged, ent):
+	"""Joins ngrams from tagged sentences given a type of entity"""
+
+	ngram_list = []
+
+	for sentence in tagged:
+
+		incomplete = False
+		ngram = []
+
+		for i in range(len(sentence)):
+
+			wordpair = sentence[i]
+
+			if wordpair[1] == ent:
+				incomplete = True
+				ngram.append(wordpair)
+			else:
+				if incomplete == True:
+					incomplete = False
+					ngram_list.append(ngram)
+					ngram = []
+
+	string_list = []
+
+	for i in ngram_list:
+		name = []
+		for wordpair in i:
+			name.append(wordpair[0])
+
+		string_list.append(' '.join(name))
+
+	return string_list
+
+
 def postprocess(tagged):
 	""" Takes the output of the NER tagger and returns it as dictionaries"""
 
 	entities = {}
 
-	PERSON = []
-	LOCATION = []
-	ORGANIZATION = []
+	entities['PERSON'] = join_items(tagged, 'I-PER')
 
-	for sentence in tagged:
-		for wordpair in sentence:
-			if 'I-PER' in wordpair:
-				PERSON.append(wordpair[0])
-			elif 'I-LOC' in wordpair:
-				LOCATION.append(wordpair[0])
-			elif 'I-ORG' in wordpair:
-				ORGANIZATION.append(wordpair[0])
+	entities['LOCATION'] = join_items(tagged, 'I-LOC')
 
-	entities['PERSON'] = PERSON
-	entities['LOCATION'] = LOCATION
-	entities['ORGANIZATION'] = ORGANIZATION
+	entities['ORGANIZATION'] = join_items(tagged, 'I-ORG')
 
 
 	if 'ORGANIZATION' in entities:
@@ -118,14 +144,14 @@ def pos(text):
 	return exclude_entities(german_nouns(german_pos(text)), text)
 
 
-
 def main():
 	""" Tests """
 	text = file_reader.read_file('german_sample.txt')
 	#tokens = german_tokenize(text)
 	#print tokens
-	#print postprocess(german_ner(text))
-	print exclude_entities(german_nouns(german_pos(text)), text)
+	#print german_ner(text)
+	#print exclude_entities(german_nouns(german_pos(text)), text)
+	print ner(text)
 
 	
 if __name__ == "__main__":

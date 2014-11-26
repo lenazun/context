@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<!-- I made this page using this awesome tutorial http://www.williamghelfi.com/blog/2013/08/04/bootstrap-in-practice-a-landing-page/ -->
+
+<html>
+<head>
+	<title>News Context Explorer</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<!-- Bootstrap -->
+	<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" />
+     <script src="/static/js/jquery-1.11.1.min.js"></script>
+
+	<style>
+
+		/* http://css-tricks.com/perfect-full-page-background-image/ */
+		html {
+			background: url(static/img/background.jpg) no-repeat center center fixed; 
+			-webkit-background-size: cover;
+			-moz-background-size: cover;
+			-o-background-size: cover;
+			background-size: cover;
+		}
+
+		body {
+			padding-top: 20px;
+			font-size: 16px;
+/*			font-family: "Open Sans",serif;
+*/			background: transparent;
+		}
+
+		h1 {
+/*			font-family: "Abel", Arial, sans-serif;
+*/			font-weight: 400;
+			font-size: 40px;
+			text-align: center;
+		}
+
+		/* Override B3 .panel adding a subtly transparent background */
+		.panel {
+			background-color: rgba(255, 255, 255, 0.9);
+		}
+
+		.margin-base-vertical {
+			margin: 40px 0;
+		}
+
+		.input-lg {
+			font-size: 14px;
+		}
+
+		.btn-file {
+		    position: relative;
+		    overflow: hidden;
+		    padding: 12px 12px;
+
+		}
+		
+		.btn-file input[type=file] {
+		    position: absolute;
+		    top: 0;
+		    right: 0;
+		    min-width: 100%;
+		    min-height: 100%;
+		    /*font-size: 100px;*/
+		    text-align: right;
+		    filter: alpha(opacity=0);
+		    opacity: 0;
+		    outline: none;
+		    background: white;
+		    cursor: inherit;
+		    display: block;
+}
+
+	</style>
+
+
+
+</head>
+
+<body>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3 panel panel-default">
+
+			<h1 class="margin-base-vertical">News Context Explorer</h1>
+
+			<p>
+				Explore the news in multiple languages using data from Wikipedia.
+				Context Explorer analyzes your text and identifies places, people, organizations and more.
+				Upload a text file or enter a URL to start.
+			</p>	
+
+				<form class="margin-base-vertical" method="POST" enctype="multipart/form-data" action='/upload_file'>
+
+					<p class="input-group">
+		                <span class="input-group-btn">
+		                    <span class="btn btn-primary btn-file input-lg">
+		                        Browse&nbsp;&nbsp;&nbsp;&nbsp; <input class="form-control input-lg" id="input-file" type="file" name="filename"/>
+		                    </span>
+		                </span>
+		                <input type="text" class="form-control input-lg" placeholder="Upload a text file" readonly>
+					</p>
+
+
+					<p class="input-group">
+						<span class="input-group-addon">URL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+						<input class="form-control input-lg" id="url" type="url" name="url" placeholder="or enter a URL" />
+					</p>
+
+					<p class="input-group">
+						<span class="input-group-addon">Language</span>
+	                  <select id="source-lang" class="form-control input-lg" name="sourcelang">
+	                  <option value="en">English</option>
+	                  <option value="de">German</option>
+	                  <option value="es">Spanish</option>
+	                  </select>
+					</p>
+
+					<p class="text-center">
+						<button type="submit" class="btn btn-primary btn-lg">Explore</button>
+					</p>
+					</span>
+				</form>
+
+				<p align="center"> 
+				<small>Powered by <img src="static/img/wikipedia_logo.png" height="60"></small>
+				</p>
+
+			</div>
+
+				<div class="col-md-6 col-md-offset-3">
+				<small class="text-muted">
+				<p align="center">Source code at <a href="http://github.com/lenazun/context">github.com/lenazun/context</a>. Background image from <a href="https://www.flickr.com/photos/80497449@N04/10012162166">here</a></p></small>
+				</div>
+
+		</div>
+	</div>
+
+<script>
+
+// These are from here http://www.abeautifulsite.net/whipping-file-inputs-into-shape-with-bootstrap-3/
+
+	$(document).on('change', '.btn-file :file', function() {
+	  var input = $(this),
+	      numFiles = input.get(0).files ? input.get(0).files.length : 1,
+	      label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+	  input.trigger('fileselect', [numFiles, label]);
+	});
+
+	$(document).ready( function() {
+	    $('.btn-file :file').on('fileselect', function(event, numFiles, label) {
+	        
+	        var input = $(this).parents('.input-group').find(':text'),
+	            log = numFiles > 1 ? numFiles + ' files selected' : label;
+	        
+	        if( input.length ) {
+	            input.val(log);
+	        } else {
+	            if( log ) alert(log);
+	        }
+	        
+	    });
+	});
+
+
+</script>
+
+</body>
+
+
+
+</html>

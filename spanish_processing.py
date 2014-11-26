@@ -54,7 +54,6 @@ def exclude_entities(allnouns, text):
 	return cleanlist[:20]
 
 
-
 def spanish_ner(text):
 	""" Moves the list of words through the NER tagger"""
 
@@ -69,27 +68,51 @@ def spanish_ner(text):
 	return tagged  
 
 
+def join_items(tagged, ent):
+	"""Joins ngrams from tagged sentences given a type of entity"""
+
+	ngram_list = []
+
+	for sentence in tagged:
+
+		incomplete = False
+		ngram = []
+
+		for i in range(len(sentence)):
+
+			wordpair = sentence[i]
+
+			if wordpair[1] == ent:
+				incomplete = True
+				ngram.append(wordpair)
+			else:
+				if incomplete == True:
+					incomplete = False
+					ngram_list.append(ngram)
+					ngram = []
+
+	string_list = []
+
+	for i in ngram_list:
+		name = []
+		for wordpair in i:
+			name.append(wordpair[0])
+
+		string_list.append(' '.join(name))
+
+	return string_list
+
+
 def postprocess(tagged):
 	""" Takes the output of the NER tagger and returns it as dictionaries"""
 
 	entities = {}
 
-	PERSON = []
-	LOCATION = []
-	ORGANIZATION = []
+	entities['PERSON'] = join_items(tagged, 'PERS')
 
-	for sentence in tagged:
-		for wordpair in sentence:
-			if 'PERS' in wordpair:
-				PERSON.append(wordpair[0])
-			elif 'LUG' in wordpair:
-				LOCATION.append(wordpair[0])
-			elif 'ORG' in wordpair:
-				ORGANIZATION.append(wordpair[0])
+	entities['LOCATION'] = join_items(tagged, 'LUG')
 
-	entities['PERSON'] = PERSON
-	entities['LOCATION'] = LOCATION
-	entities['ORGANIZATION'] = ORGANIZATION
+	entities['ORGANIZATION'] = join_items(tagged, 'ORG')
 
 
 	if 'ORGANIZATION' in entities:
@@ -107,7 +130,6 @@ def postprocess(tagged):
 	else:
 		people = None
 
-	#print organizations, locations, people
 	return organizations, locations, people
 
 
@@ -124,10 +146,10 @@ def main():
 	text = file_reader.read_file('spanish_sample.txt')
 
 	#print spanish_pos(text)
+	#print spanish_ner(text)
+	#print join_items(spanish_ner(text), 'ORG')
 	
-	print spanish_ner(text)
-	
-
+	print ner(text)
 	
 if __name__ == "__main__":
     main()
