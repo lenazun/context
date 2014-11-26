@@ -71,10 +71,10 @@ def ner_tagger(text):
 	return organizations, locations, people
 
 
-def single_set(text):
+def single_set(lists):
 	""" Makes all entities a single list so they can be highlighted"""
 
-	organizations, locations, people = ner_tagger(text)
+	organizations, locations, people = lists
 
 	set1 = []
 
@@ -99,11 +99,12 @@ def main():
 	#prepro = preprocess(text)
 	#print prepro
 	#print most_common_pos(prepro)
-	ner = ner_tagger(text)
-	print ner
+	#ner = ner_tagger(text)
+	#print ner
 	#dictionary = make_word_dict(prepro)
 	#print nouns_only(prepro)
 	#print dictionary
+	print single_set(ner_tagger(text))
 
 	
 if __name__ == "__main__":

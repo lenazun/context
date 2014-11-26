@@ -43,7 +43,6 @@ def get_wiki_data(title, target_lang, source_lang):
 	lang_json = get_json(langvalues)
 	image_json = get_json(imagevalues)
 
-
 	#gets the wiki id from the json file
 	wiki_id = str([key for key in lang_json['query']['pages'].keys()])
 	wiki_id = wiki_id.strip("['']")
@@ -119,7 +118,7 @@ def main():
 	namelist = ["New York", "Barack Obama", "Earthquake", "President Obama", "North Carolina Board of Elections", "Amsterdam", "The Bible"]
 	#namelist = [u'Instituto', u'Sociales', u'Brasil', u'Bolsa', u'Data', u'Partido', u'Ipea', u'Pol\xedticas', u'Folha', u'Dilma', u'del', u'Familia', u'Gobierno', u'Popular', u'-LRB-', u'Estado', u'Rousseff']
 	
-	print get_entity_info(namelist, 'fr', 'es')
+	print get_entity_info(namelist, 'fr', 'en')
 
 	# FIXME : learn about assert
 

@@ -5,8 +5,11 @@ import memcache
 mc = memcache.Client(['127.0.0.1:11211'], debug=0)
 
 
-def geocode(place_list):
 
+
+
+
+def geocode(place_list):
 
 	#reformat the placelist to work ask keys for memcache and google maps
 	place_list = [i.encode('utf8') for i in place_list ]
@@ -14,17 +17,18 @@ def geocode(place_list):
 
 	keyplace = dict(zip(keylist, place_list))
 
+	existing = mc.get_multi(keylist)
+
+	for key, value in existing.items():
+		keyplace[key] = value
+
+
 		#'New_York' : 'New York'
 	for key, value in keyplace.iteritems():
 
-		exists = mc.get(key)
+		if key not in existing:
+			print "I don't exist yet"	
 
-		if exists:
-			print "I exist"
-			keyplace[key] = mc.get(key)			
-
-		else:
-			print "I don't exist yet"
 			name = value
 			try:
 				loc = Geocoder.geocode(value)

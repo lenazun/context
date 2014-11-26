@@ -8,8 +8,8 @@ import file_reader
 import text_processing
 import german_processing as german
 import spanish_processing as spanish
-import wikipedia_linker
-import geocoding2
+import wikipedia_linker2 as wikipedia
+import geocoding2 as geocoding
 
 
 UPLOAD_FOLDER = 'static/uploads'
@@ -35,14 +35,16 @@ def index():
 	return render_template("index.html")
 
 
-
 @app.route('/upload_file', methods=['POST'])
 def upload_file():
 	""" Uploads files or converts URLs into simple text files """
-	print session
 
 	#sets the source language
-	session['source_lang'] = request.form.get('sourcelang')
+	sourcelang = request.form.get('sourcelang')
+	session['source_lang'] = sourcelang
+
+	if sourcelang != 'en':
+		session['target_lang'] = 'en'
 
 	#saves an uploaded text file to the uploads folder
 	if request.files['filename']:
@@ -101,7 +103,16 @@ def get_entities():
 	"""Loads all entity names into a JSON for highlighting"""
 
 	text = file_reader.read_file(session['filepath'])
-	fullset = text_processing.single_set(text)
+
+	source_lang = session['source_lang']
+
+	if source_lang == 'de':
+		fullset =text_processing.single_set(german.ner(text))
+	elif source_lang == 'es':
+		fullset =text_processing.single_set(spanish.ner(text))
+	else:
+		fullset = text_processing.single_set(text)
+
 	return json.dumps(fullset)
 
 # @app.route('/geocodes')
@@ -109,7 +120,7 @@ def get_entities():
 
 # 	text = file_reader.read_file(session['filepath'])
 # 	organizations, locations, people = text_processing.ner_tagger(text)
-# 	geocodes = geocoding2.geocode(locations)
+# 	geocodes = geocoding.geocode(locations)
 # 	return json.dumps(geocodes)
 
 
@@ -140,9 +151,9 @@ def get_places():
 	if ent == "places":
 
 		if locations: 
-			loclist = wikipedia_linker.get_entity_info(locations, target_lang, source_lang)
+			loclist = wikipedia.get_entity_info(locations, target_lang, source_lang)
 			downfile = file_reader.write_csv_file(loclist)
-			geocodes = geocoding2.geocode(locations)
+			geocodes = geocoding.geocode(locations)
 			return render_template("places.html", locations = loclist, geocodes = json.dumps(geocodes), downfile=downfile)
 		else: 
 			return render_template("places.html")
@@ -150,7 +161,7 @@ def get_places():
 	elif ent == "organizations":
 
 		if organizations:
-			orglist = wikipedia_linker.get_entity_info(organizations, target_lang, source_lang)
+			orglist = wikipedia.get_entity_info(organizations, target_lang, source_lang)
 			downfile = file_reader.write_csv_file(orglist)
 			return render_template("orgs.html", organizations = orglist, downfile=downfile)
 		else:
@@ -159,7 +170,7 @@ def get_places():
 	elif ent == "people":
 
 		if people:
-			peoplelist = wikipedia_linker.get_entity_info(people, target_lang, source_lang)
+			peoplelist = wikipedia.get_entity_info(people, target_lang, source_lang)
 			downfile = file_reader.write_csv_file(peoplelist)
 			return render_template("people.html", people = peoplelist, downfile=downfile)
 		else:
@@ -167,7 +178,7 @@ def get_places():
 
 	elif ent == "nouns":
 			if nouns: 	
-				nounlist = wikipedia_linker.get_entity_info(nouns, target_lang, source_lang)
+				nounlist = wikipedia.get_entity_info(nouns, target_lang, source_lang)
 				downfile = file_reader.write_csv_file(nounlist)
 				return render_template("other.html", nouns = nounlist, downfile=downfile)
 			else:

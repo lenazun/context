@@ -51,6 +51,7 @@ def exclude_entities(allnouns, text):
 	cleanlist = set(allnouns).difference(singlelist[0])
 	cleanlist = list(cleanlist)
 
+
 	return cleanlist[:20]
 
 
@@ -143,13 +144,13 @@ def pos(text):
 
 def main():
 	""" Tests """
-	text = file_reader.read_file('spanish_sample.txt')
+	text = file_reader.read_file('spanish_sample2.txt')
 
 	#print spanish_pos(text)
 	#print spanish_ner(text)
-	#print join_items(spanish_ner(text), 'ORG')
+	print join_items(spanish_ner(text), 'ORG')
 	
-	print ner(text)
+	#print pos(text)
 	
 if __name__ == "__main__":
     main()
