@@ -8,12 +8,13 @@
 	<div id="map-canvas"></div>
 		
 		<div id="containertable">
+
+		<p><strong>&nbsp;On Wikipedia: </strong> </b>	
 		<table class="table table-hover">
 			<thead>
-			  	<tr>
-				<th>On Wikipedia: </th>
-
-				</tr>    
+				<tr>
+				<th>{{ session.source_name }}</th><th>{{ session.target_name }}</th>
+				</tr> 
 			</thead>
 
 		    {% for key, value in locations.iteritems() %}
@@ -47,7 +48,10 @@
     <script type="text/javascript">
 
 
+
+
 	googleMaploader({{geocodes|safe}});
+
 
 
 function googleMaploader(mapData) {
@@ -70,9 +74,17 @@ function googleMaploader(mapData) {
 	    marker.setMap(map);
 
     });  
-	
 
-}    
+    googleMapRefresher(map)
+
+}
+
+function googleMapRefresher(map) {
+
+	google.maps.event.trigger(map, 'resize');   
+
+}
+
 
 
 

@@ -3,7 +3,6 @@ import json
 import urllib
 import urllib2
 import simplejson
-from pprint import pprint
 
 
 #MEMECACHE
@@ -32,6 +31,7 @@ def get_wiki_data(title, target_lang, source_lang):
 	          'pithumbsize': '500'}
 
 	def get_json(values):
+		print "."
 		data = urllib.urlencode(values)  
 		req = urllib2.Request(URL, data)
 		response = urllib2.urlopen(req)
@@ -40,6 +40,7 @@ def get_wiki_data(title, target_lang, source_lang):
 
 		return json_file
 
+	#get json files based on the values above
 	lang_json = get_json(langvalues)
 	image_json = get_json(imagevalues)
 
@@ -70,14 +71,17 @@ def get_wiki_data(title, target_lang, source_lang):
 				langcode = lang_dict['lang']
 				equivalent = lang_dict['*']
 
+				#if the image json contains an image, it sets it as thumbnail
 				if 'thumbnail' in image_json['query']['pages'][wiki_id]:
 					thumbnail = image_json['query']['pages'][wiki_id]['thumbnail']['source']
 				else:
 					thumbnail = False
 
+				#creates a dictionary for the item 
 				item_dict = {}
 				item_dict[wiki_id] = {'title': title, 'targetlang': langcode, 'targetwiki' : equivalent, 'thumbnail': thumbnail }
-				#adds it to memcache
+				
+				#adds the item to memcache
 				mc.set(id_with_lang, item_dict)
 
 				print "BRB Im running to wikipedia to find this"
@@ -90,7 +94,7 @@ def get_wiki_data(title, target_lang, source_lang):
 
 
 def get_entity_info(namelist, target_lang, source_lang):
-	""" Creates a dictionary with all entities in a list and their data from wikipedia"""
+	""" Creates a dictionary with the individual entity dictionaries"""
 
 	entity_dict = {}
 
@@ -103,6 +107,29 @@ def get_entity_info(namelist, target_lang, source_lang):
 	return  entity_dict
 
 
+
+
+def main():
+	namelist = ["New York", "Barack Obama", "Earthquake", "President Obama", "North Carolina Board of Elections", "Amsterdam", "The Bible"]
+	#namelist = [u'Instituto', u'Sociales', u'Brasil', u'Bolsa', u'Data', u'Partido', u'Ipea', u'Pol\xedticas', u'Folha', u'Dilma', u'del', u'Familia', u'Gobierno', u'Popular', u'-LRB-', u'Estado', u'Rousseff']
+	
+
+	# #Feeding the cache
+	# text = open('countries.txt')
+	# raw = text.read()
+	# namelist = [i for i in raw.splitlines()]
+	# #print place_list
+
+	get_entity_info(namelist, 'fr', 'en')
+
+
+if __name__ == "__main__":
+    main()
+
+
+
+
+
 # def twitter_search_query(entity_dict):
 # 	"""Creates a twitter search query separated by spaces and OR """
 
@@ -113,20 +140,3 @@ def get_entity_info(namelist, target_lang, source_lang):
 # 	return query
 
 
-
-def main():
-	namelist = ["New York", "Barack Obama", "Earthquake", "President Obama", "North Carolina Board of Elections", "Amsterdam", "The Bible"]
-	#namelist = [u'Instituto', u'Sociales', u'Brasil', u'Bolsa', u'Data', u'Partido', u'Ipea', u'Pol\xedticas', u'Folha', u'Dilma', u'del', u'Familia', u'Gobierno', u'Popular', u'-LRB-', u'Estado', u'Rousseff']
-	
-
-	#Feeding the cache
-	text = open('countries.txt')
-	raw = text.read()
-	namelist = [i for i in raw.splitlines()]
-	#print place_list
-
-	get_entity_info(namelist, 'fr', 'en')
-
-
-if __name__ == "__main__":
-    main()

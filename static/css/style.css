@@ -16,9 +16,13 @@
 .table {
   font-size: 14px;
   margin-top: 15px;
+  table-layout: fixed;
 
 }
 
+.td {
+  width: 50%;
+}
 
 
 #images {
@@ -43,7 +47,7 @@
 
 #containertable {
     width: 100%;
-    margin-top: 15px;
+    margin-top: 20px;
     max-height: 400px;
     overflow-y:auto
 }

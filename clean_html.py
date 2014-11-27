@@ -13,7 +13,7 @@ def safe_html(html):
         return None  
   
     # remove these tags, complete with contents.  
-    blacklist = ["script", "style" ]  
+    blacklist = ["script", "style"]  
   
     whitelist = [  
         "div", "span", "p", "br", "pre",  

@@ -4,6 +4,7 @@ import tempfile
 import csv
 from bs4 import BeautifulSoup
 from bs4 import SoupStrainer
+import re
 
 import nltk
 
@@ -14,42 +15,53 @@ from clean_html  import safe_html, plaintext
 UPLOAD_FOLDER = 'static/uploads'
 DOWNLOAD_FOLDER ='static/downloads'
 
+
+
+#### FILE READING ######
+
+
 def read_file(input_file):
-	""" Open and read a text file """
+	""" Open and read a cleaned up simpletext file """
+
 	text = open(input_file)
 	raw = text.read()
 #	decoded = raw.decode('utf8').encode('ascii', 'replace')
 	decoded = raw.decode('utf8')
 
-	text = decoded
+	#moves this through the html cleaner
+	text = plaintext(decoded)
 
 	return text
+
+
+def read_file_pretty(input_file):
+	""" Open and read a text file and preserve spaces for display """
+
+	text = open(input_file)
+	raw = text.readlines()
+	decoded = [line.decode('utf8') for line in raw]
+	lines = [line.replace('\n', '<br>') for line in decoded]
+
+	return lines
 
  
 def read_url(url):
-	""" Open and read a URL """
+	""" Open and read a URL and return plain text """
 	html = urllib.urlopen(url).read().decode('utf8')
-	#raw = BeautifulSoup(html)
-	return html
+	text = plaintext(html)
+	lines = text.splitlines()
+	lines = [line for line in lines if line != ' ']
+	
+	return lines
 
 
-def clean_html(raw):
-	""" Clean HTML tags returns only text"""
+def read_url_all(url):
+		""" Write a file with clean URL input"""
+
+		return write_file(read_url(url))
 
 
-	text = plaintext(raw)
-
-	# for script in raw(["script", "style"]):
-	# 	script.extract()
-
-	# pretext = raw.get_text()
-
-	# #gets rid of blank lines and spaces
-	# lines = (line.strip() for line in pretext.splitlines())
-	# chunks = (phrase.strip() for line in lines for phrase in line.split("  "))
-	# text = '\n'.join(chunk for chunk in chunks if chunk)
-
-	return text
+##### FILE WRITING #########
 
 
 def write_file(text):
@@ -70,11 +82,6 @@ def write_file(text):
 	return path
 
 
-def read_url_all(url):
-		""" Write a file with clean URL input"""
-
-		return write_file(clean_html(read_url(url)))
-
 
 def write_csv_file(dictionary):
 	
@@ -84,7 +91,7 @@ def write_csv_file(dictionary):
 
 	with open(temp_file.name, 'wb') as temp:
 		w = csv.writer(temp)
-		w.writerow(['wiki_id', 'title', 'targetlang', 'equiv_title', 'wiki_url', 'wiki_image'])
+		w.writerow(['wiki_id', 'title', 'targetlang', 'equiv_title', 'wiki_url'])
 		try:
 			for key, value in dictionary.iteritems():
 				try:
@@ -108,12 +115,13 @@ def write_csv_file(dictionary):
 def main():
 	""" Tests """
 	
-	#print read_url('http://www.sfchronicle.com/bayarea/article/Throngs-of-fans-already-packing-Civic-Center-5860820.php')
-	print read_file('sample.txt')
+	#output = read_url('http://www.sfchronicle.com/bayarea/article/Throngs-of-fans-already-packing-Civic-Center-5860820.php')
+	#print read_file_pretty('sample.txt')
 	#output = read_url('http://www.newyorker.com/culture/cultural-comment/pills-difficult-birth')
-	#print clean_html(output)
+	print read_url('http://www.newyorker.com/culture/cultural-comment/pills-difficult-birth')
 	#dictionary = {'3390': {'targetlang': 'fr', 'targetwiki': 'Bible', 'title': 'The Bible'}, '844': {'targetlang': 'fr', 'targetwiki': 'Amsterdam', 'title': 'Amsterdam'}, '10106': {'targetlang': 'fr', 'targetwiki': u'S\xe9isme', 'title': 'Earthquake'}, '8210131': {'targetlang': 'fr', 'targetwiki': u'\xc9tat de New York', 'title': 'New York'}, '534366': {'targetlang': 'fr', 'targetwiki': 'Barack Obama', 'title': 'Barack Obama'}}
 	#write_csv_file(dictionary)
+
 
 if __name__ == "__main__":
     main()

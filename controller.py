@@ -8,7 +8,7 @@ import file_reader
 import text_processing
 import german_processing as german
 import spanish_processing as spanish
-import wikipedia_linker as wikipedia
+import wikipedia_linker3 as wikipedia
 import geocoding2 as geocoding
 
 
@@ -18,6 +18,19 @@ ALLOWED_EXTENSIONS = frozenset(['txt'])
 app = Flask(__name__)
 app.secret_key = '23987ETFSDDF345560DFSASF45DFDF567' #Fake key
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+
+langcodes = {'en': 'English',
+		'es': 'Spanish',
+		'de': 'German',
+		'fr': 'French',
+		'it': 'Italian',
+		'ja': 'Japanese',
+		'ar': 'Arabic',
+		'ru': 'Russian',
+		'pt': 'Portuguese',
+		'zh': 'Chinese',															
+		}
 
 
 def is_file_allowed(filename):
@@ -42,6 +55,7 @@ def upload_file():
 	#sets the source language
 	sourcelang = request.form.get('sourcelang')
 	session['source_lang'] = sourcelang
+	session['source_name'] = langcodes[sourcelang]
 
 	if sourcelang != 'en':
 		session['target_lang'] = 'en'
@@ -80,10 +94,10 @@ def editor():
 
 	filepath = session['filepath']
 	target_lang = session['target_lang']
+	session['target_name'] = langcodes[session['target_lang']]
 
 	return render_template("editor.html", 
-		target_lang=target_lang,
-		path= filepath)
+		target_lang=target_lang)
 
 
 @app.route('/set_target_lang', methods=["GET"])
@@ -96,13 +110,19 @@ def set_target_language():
 	return redirect(url_for('editor'))
 
 
+@app.route('/text')
+def get_text():
+
+	text = file_reader.read_file_pretty(session['filepath'])
+	return json.dumps(text)
+
+
 @app.route('/named_entities')
 def get_entities():
 	"""Loads all entity names into a JSON for highlighting"""
 
 	text = file_reader.read_file(session['filepath'])
 	session['text'] = (text)
-
 	source_lang = session['source_lang']
 
 	if source_lang == 'de':
@@ -113,6 +133,10 @@ def get_entities():
 		fullset = text_processing.single_set(text_processing.ner_tagger(text))
 
 	return json.dumps(fullset)
+
+
+
+
 
 # @app.route('/geocodes')
 # def get_geocodes():

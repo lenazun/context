@@ -16,7 +16,6 @@
     </div>
 
 
-
     </div>
   	<div class="col-md-6">
     <div id="container2">
@@ -26,7 +25,7 @@
 	<form class="form" id="langselector" method="GET" action="/set_target_lang">
 <!-- 	    <label for="target_lang">Target language</label> -->
 	    <select id="target_lang" class="form-control" name="target_lang" onchange="this.form.submit()">
-	    	<option selected="true" disabled="true" >The current target language is {{ session.target_lang }}</option>
+	    	<option selected="true" disabled="true" >The current target language is {{ session.target_name }}</option>
 	    	<option value="en">English</option>
 	  		<option value="es">Spanish</option>
 	  		<option value="fr">French</option>
@@ -124,10 +123,7 @@
         buttonLabels: 'fontawesome'
     });
 
-    var path_to_show = "{{ path }}";
-
-
-
+    // var path_to_show = "{{ path }}";
 
 
 </script>

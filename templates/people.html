@@ -24,12 +24,13 @@
 		<div>
 
 	<div id="containertable">
+		
+		<p><strong>&nbsp;On Wikipedia: </strong> </b>	
 		<table class="table table-hover">
 			<thead>
-			  	<tr>
-				<th>On Wikipedia: </th>
-
-				</tr>    
+				<tr>
+				<th>{{ session.source_name }}</th><th>{{ session.target_name }}</th>
+				</tr> 
 			</thead>
 
 		    {% for key, value in people.iteritems() %}

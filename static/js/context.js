@@ -13,15 +13,19 @@ $(document).ready(function () {
 });
 
 
-// grabs a file and displays it on the main div.  IT WORKS!
+// grabs a file and displays it on the main div.
 
 function grabTextFile() {
 
-	$("#text1").load(path_to_show);
+  $.getJSON( "/text", function(textdata) {
+    console.log( "success loading text data" );
+    $("#text1").html(textdata);
+  });
+
 
 }
 
-// by clicking a tab I should load a different html file on the div. THIS  WORKS
+// by clicking a tab I should load a different html file on the div. 
 
 
 function grabHTMLplaces() {
@@ -33,6 +37,7 @@ $.ajax({
 })
   .done(function( html ) {
     $( "#container_places" ).html( html );
+
   });
 
 }
@@ -80,7 +85,8 @@ $.ajax({
 
 }
 
-// highlight a list of terms on the main text. THIS  WORKS
+// highlight a list of terms on the main text. 
+// http://bartaz.github.io/sandbox.js/jquery.highlight.html
 
 var hiData = $.getJSON( "/named_entities", function() {
   console.log( "success loading highlight json" );
@@ -119,29 +125,6 @@ var fileName =  'exported.html';
 $('#download').click(function(){
     downloadInnerHtml(fileName, 'text1','text/html');
 });
-
-// Google translate 
-
-// var newScript = document.createElement('script');
-// newScript.type = 'text/javascript';
-// var sourceText = escape(document.getElementById("#text1").innerHTML);
-// var source = 'https://www.googleapis.com/language/translate/v2?key=AIzaSyAUzvBotol9Bp8Z10N72JKs0_Mr6K0aFkA&source=en&target=de&callback=translateText&q=' + sourceText;
-// newScript.src = source;
-
-
-// function translateText(response) {
-//   document.getElementById("#text1").innerHTML += "<br>" + response.data.translations[0].translatedText;
-// }
-
-
-// // // When we add this script to the head, the request is sent off.
-//  document.getElementsByTagName('#translate')[0].appendChild(newScript);
-
-
-// $('#translate').click(function(){
-//     console.log( "clicking" );
-//     translateText(newScript);
-// });
 
 
 // Image Gallery (Magnific Popup) http://dimsemenov.com/plugins/magnific-popup/
