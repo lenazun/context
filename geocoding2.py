@@ -50,7 +50,14 @@ def geocode(place_list):
 def main():
 	""" Tests """
 
-	place_list = [u'New Orleans', u'Iowa', u'Colorado', u'North Carolina', u'Asheville', u'New York', u'ADSFADSfjdhf']
+	#place_list = [u'New Orleans', u'Iowa', u'Colorado', u'North Carolina', u'Asheville', u'New York', u'ADSFADSfjdhf']
+	place_list = ['California', 'New Jersey', 'Finland']
+
+	#Feeding the cache
+	# text = open('uscities.txt')
+	# raw = text.read()
+	# place_list = [i for i in raw.splitlines()]
+	# #print place_list
 	print geocode(place_list)
 	
 if __name__ == "__main__":

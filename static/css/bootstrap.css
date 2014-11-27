@@ -4295,11 +4295,11 @@ fieldset[disabled] .navbar-default .btn-link:focus {
 .navbar-inverse {
   background-color: transparent;  
   border-color: #ffffff;
-  background: url("../img/background.jpg") no-repeat center center fixed; ; 
+/*  background: url("../img/background.jpg") no-repeat center center fixed; ; 
       -webkit-background-size: cover;
       -moz-background-size: cover;
       -o-background-size: cover;
-      background-size: cover;
+      background-size: cover;*/
 }
 
 .navbar-panel {

@@ -118,10 +118,14 @@ def main():
 	namelist = ["New York", "Barack Obama", "Earthquake", "President Obama", "North Carolina Board of Elections", "Amsterdam", "The Bible"]
 	#namelist = [u'Instituto', u'Sociales', u'Brasil', u'Bolsa', u'Data', u'Partido', u'Ipea', u'Pol\xedticas', u'Folha', u'Dilma', u'del', u'Familia', u'Gobierno', u'Popular', u'-LRB-', u'Estado', u'Rousseff']
 	
-	print get_entity_info(namelist, 'fr', 'en')
 
-	# FIXME : learn about assert
+	#Feeding the cache
+	text = open('countries.txt')
+	raw = text.read()
+	namelist = [i for i in raw.splitlines()]
+	#print place_list
 
+	get_entity_info(namelist, 'fr', 'en')
 
 
 if __name__ == "__main__":

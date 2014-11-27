@@ -8,7 +8,7 @@ import file_reader
 import text_processing
 import german_processing as german
 import spanish_processing as spanish
-import wikipedia_linker2 as wikipedia
+import wikipedia_linker as wikipedia
 import geocoding2 as geocoding
 
 
@@ -53,7 +53,6 @@ def upload_file():
 			filename = secure_filename(file_.filename)
 			file_.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
-			session['filename'] = filename
 			session['filepath'] = os.path.join(app.config['UPLOAD_FOLDER'], filename)
 			
 			return redirect(url_for('editor'))
@@ -66,7 +65,6 @@ def upload_file():
 		url = request.form.get('url')
 		newfile = file_reader.read_url_all(url)
 
-		session['filename'] = 'temp'
 		session['filepath'] = newfile
 		
 		return redirect(url_for('editor'))
@@ -103,6 +101,7 @@ def get_entities():
 	"""Loads all entity names into a JSON for highlighting"""
 
 	text = file_reader.read_file(session['filepath'])
+	session['text'] = (text)
 
 	source_lang = session['source_lang']
 
@@ -111,7 +110,7 @@ def get_entities():
 	elif source_lang == 'es':
 		fullset =text_processing.single_set(spanish.ner(text))
 	else:
-		fullset = text_processing.single_set(text)
+		fullset = text_processing.single_set(text_processing.ner_tagger(text))
 
 	return json.dumps(fullset)
 
@@ -183,8 +182,6 @@ def get_places():
 				return render_template("other.html", nouns = nounlist, downfile=downfile)
 			else:
 				return render_template("other.html")
-
-
 
 
 

@@ -75,6 +75,7 @@ def read_url_all(url):
 
 		return write_file(clean_html(read_url(url)))
 
+
 def write_csv_file(dictionary):
 	
 	wikiURL = 'http://en.wikipedia.org/wiki?curid='
@@ -84,12 +85,18 @@ def write_csv_file(dictionary):
 	with open(temp_file.name, 'wb') as temp:
 		w = csv.writer(temp)
 		w.writerow(['wiki_id', 'title', 'targetlang', 'equiv_title', 'wiki_url', 'wiki_image'])
-		for key, value in dictionary.iteritems():
-			w.writerow([(key).encode('utf8'), 
-						(value['title']).encode('utf8'), 
-						(value['targetlang']).encode('utf8'), 
-						(value['targetwiki']).encode('utf8'),
-						(wikiURL + key)])
+		try:
+			for key, value in dictionary.iteritems():
+				try:
+					w.writerow([(key).encode('utf8'), 
+								(value['title']).encode('utf8'), 
+								(value['targetlang']).encode('utf8'), 
+								(value['targetwiki']).encode('utf8'),
+								(wikiURL + key)])
+				except Exception:
+					pass
+		except Exception:
+			pass
 
 	pathparts = (temp.name).split('/')
 	path = "/".join(pathparts[5:])
