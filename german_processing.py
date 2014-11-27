@@ -63,8 +63,8 @@ def german_ner(text):
 	#print text.split()
 
 
-	st = NERTagger('/Users/Lena/src/context/stanford-ner-2014-10-26/classifiers/german/dewac_175m_600.crf.ser.gz',
-                '/Users/Lena/src/context/stanford-ner-2014-10-26/stanford-ner.jar', 'utf8') 
+	st = NERTagger('/Users/Lena/src/context/stanford-ner/classifiers/german/dewac_175m_600.crf.ser.gz',
+                '/Users/Lena/src/context/stanford-ner/stanford-ner.jar', 'utf8') 
 
 	tagged = st.tag(text.split())
 

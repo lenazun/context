@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Implementation-Version: 3.5.0
+Built-Date: 2014-10-26
+Created-By: Stanford JavaNLP (jgauthie)
+

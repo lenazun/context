@@ -61,8 +61,8 @@ def spanish_ner(text):
 	text = text.encode('utf8')
 
 
-	st = NERTagger('/Users/Lena/src/context/stanford-ner-2014-10-26/edu/stanford/nlp/models/ner/spanish.ancora.distsim.s512.crf.ser.gz',
-                '/Users/Lena/src/context/stanford-ner-2014-10-26/stanford-ner.jar', 'utf8') 
+	st = NERTagger('/Users/Lena/src/context/stanford-ner/edu/stanford/nlp/models/ner/spanish.ancora.distsim.s512.crf.ser.gz',
+                '/Users/Lena/src/context/stanford-ner/stanford-ner.jar', 'utf8') 
 
 	tagged = st.tag(text.split())
 
