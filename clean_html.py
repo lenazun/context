@@ -13,7 +13,7 @@ def safe_html(html):
         return None  
   
     # remove these tags, complete with contents.  
-    blacklist = ["script", "style"]  
+    blacklist = ["script", "style", "link", "{"]  
   
     whitelist = [  
         "div", "span", "p", "br", "pre",  
@@ -22,7 +22,7 @@ def safe_html(html):
         "blockquote",  
         "ul", "li", "ol",  
         "b", "em", "i", "strong", "u", "font"  
-        ]  
+        ] 
   
     try:  
         # BeautifulSoup is catching out-of-order and unclosed tags, so markup  
