@@ -1,9 +1,10 @@
 from operator import itemgetter
 
-import file_reader
 import nltk
 from nltk.tag.stanford import NERTagger
 from nltk.tag.stanford import POSTagger
+
+import file_reader
 
 
 def german_pos(text):
@@ -59,9 +60,6 @@ def german_ner(text):
 	""" Moves the list of words through the NER tagger"""
 
 	text = text.encode('utf8')  
-	#print text
-	#print text.split()
-
 
 	st = NERTagger('/Users/Lena/src/context/stanford-ner/classifiers/german/dewac_175m_600.crf.ser.gz',
                 '/Users/Lena/src/context/stanford-ner/stanford-ner.jar', 'utf8') 

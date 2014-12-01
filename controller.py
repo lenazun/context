@@ -8,8 +8,8 @@ import file_reader
 import text_processing
 import german_processing as german
 import spanish_processing as spanish
-import wikipedia_linker3 as wikipedia
-import geocoding2 as geocoding
+import wikipedia_linker as wikipedia
+import geocoding as geocoding
 
 
 UPLOAD_FOLDER = 'static/uploads'
@@ -59,6 +59,7 @@ def upload_file():
 
 	if sourcelang != 'en':
 		session['target_lang'] = 'en'
+		session['target_name'] = langcodes[session['target_lang']]
 
 	#saves an uploaded text file to the uploads folder
 	if request.files['filename']:
@@ -71,8 +72,8 @@ def upload_file():
 			
 			return redirect(url_for('editor'))
 		else:
-			flash ("Make sure you're uploading a %s file" % [i for i in ALLOWED_EXTENSIONS])
-			return render_template("upload.html")
+			#flash ("Make sure you're uploading a %s file" % [i for i in ALLOWED_EXTENSIONS])
+			return render_template("index.html")
 
 	#grabs a URL and saves it as a temporary file in the uploads folder
 	elif request.form.get("url"):
@@ -84,8 +85,8 @@ def upload_file():
 		return redirect(url_for('editor'))
 
 	else:
-		flash ("Enter a source file or URL")
-		return render_template("upload.html")
+		#flash ("Enter a source file or URL")
+		return render_template("index.html")
 
 
 @app.route('/editor', methods=["GET", "POST"])
@@ -134,17 +135,6 @@ def get_entities():
 
 	return json.dumps(fullset)
 
-
-
-
-
-# @app.route('/geocodes')
-# def get_geocodes():
-
-# 	text = file_reader.read_file(session['filepath'])
-# 	organizations, locations, people = text_processing.ner_tagger(text)
-# 	geocodes = geocoding.geocode(locations)
-# 	return json.dumps(geocodes)
 
 
 @app.route('/get_places', methods=["POST"])

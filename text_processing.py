@@ -2,8 +2,9 @@ from operator import itemgetter
 
 import file_reader
 
-import nltk, re, pprint
+import nltk
 import ner
+from nltk.tag.stanford import NERTagger
 
 
 def preprocess(text):

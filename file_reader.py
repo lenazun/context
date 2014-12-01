@@ -8,7 +8,7 @@ import csv
 
 
 from clean_html  import safe_html, plaintext 
-# an open soure html sanitizer I found here http://chase-seibert.github.io/blog/2011/01/28/sanitize-html-with-beautiful-soup.html
+# an open soure html sanitizer here http://chase-seibert.github.io/blog/2011/01/28/sanitize-html-with-beautiful-soup.html
 
 
 UPLOAD_FOLDER = 'static/uploads'
@@ -53,6 +53,9 @@ def read_url(url):
 	lines = text.splitlines()
 	lines = [line for line in lines if line.strip() != '']
 	lines = [line for line in lines if line.startswith('<') == False]
+	lines = [line for line in lines if ('{') not in line]
+
+	print lines
  
 	text ='\n'.join(line for line in lines)
 
@@ -123,7 +126,7 @@ def main():
 	#print read_file_pretty('sample.txt')
 	#output = read_url('http://www.newyorker.com/culture/cultural-comment/pills-difficult-birth')
 	#print read_url_all('http://www.theguardian.com/world/2014/nov/14/putin-russia-oil-price-collapse-sanctions-g20')
-	print read_url_all('http://internacional.elpais.com/internacional/2014/11/28/actualidad/1417195929_767998.html')
+	read_url('http://internacional.elpais.com/internacional/2014/11/28/actualidad/1417195929_767998.html')
 	#dictionary = {'3390': {'targetlang': 'fr', 'targetwiki': 'Bible', 'title': 'The Bible'}, '844': {'targetlang': 'fr', 'targetwiki': 'Amsterdam', 'title': 'Amsterdam'}, '10106': {'targetlang': 'fr', 'targetwiki': u'S\xe9isme', 'title': 'Earthquake'}, '8210131': {'targetlang': 'fr', 'targetwiki': u'\xc9tat de New York', 'title': 'New York'}, '534366': {'targetlang': 'fr', 'targetwiki': 'Barack Obama', 'title': 'Barack Obama'}}
 	#write_csv_file(dictionary)
 

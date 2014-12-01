@@ -1,0 +1,13 @@
+Flask==0.10.1
+Jinja2==2.7.3
+Werkzeug==0.9.6
+beautifulsoup4==4.3.2
+itsdangerous==0.24
+ner==0.1
+nltk==3.0.0
+numpy==1.9.1
+pygeocoder==1.2.5
+python-memcached==1.53
+requests==2.3.0
+simplejson==3.6.5
+wsgiref==0.1.2
