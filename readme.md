@@ -37,14 +37,18 @@ Installing NCE
 ---------------------
 
 + Better to start with a virtual environment.  To install virtualenv:
-<code>$ sudo pip install virtualenv
-$ cd ~/code/myproject/
-$ virtualenv env</code>
+
+	<code>$ sudo pip install virtualenv
+	$ cd ~/code/myproject/
+	$ virtualenv env</code>
+
 To activate the virtual environment:
-<code>$ source env/bin/activate</code>
+
+	<code>$ source env/bin/activate</code>
+
 
 + Once you have a virtual environment Pip install the required libraries with requirements.txt
-<code>$ env/bin/pip install -r requirements.txt</code>
+	<code>$ env/bin/pip install -r requirements.txt</code>
 
 + Most files, including the Stanford NER and POS taggers are included on this repo. Clone it in your project folder.
 
@@ -54,7 +58,7 @@ To activate the virtual environment:
 
 + Run the English NER file in java as a server in port 8080
 
-<code>java -mx1000m -cp stanford-ner.jar edu.stanford.nlp.ie.NERServer -loadClassifier classifiers/english.muc.7class.distsim.crf.ser.gz -port 8080 -outputFormat inlineXML</code>
+	<code>java -mx1000m -cp stanford-ner.jar edu.stanford.nlp.ie.NERServer -loadClassifier classifiers/english.muc.7class.distsim.crf.ser.gz -port 8080 -outputFormat inlineXML</code>
 
 The German and Spanish NER files are not running as a server, but they are noticeably  slower.  You can adapt the code to run either way.
 
@@ -69,11 +73,17 @@ Aknowledgments
 I used excellent code and examples from:
 
 [Stanford NLP](http://nlp.stanford.edu).
+
 [Wikipedia API](http://www.mediawiki.org/wiki/API:Main_page).
+
 [jQuery Highlight plugin](http://bartaz.github.io/sandbox.js/jquery.highlight.html).
+
 [Medium editor](https://github.com/daviferreira/medium-editor).
+
 [Magnific Popup](http://dimsemenov.com/plugins/magnific-popup/).
+
 [HTML sanitizer](http://chase-seibert.github.io/blog/2011/01/28/sanitize-html-with-beautiful-soup.html).
+
 [Front page tutorial](http://www.williamghelfi.com/blog/2013/08/04/bootstrap-in-practice-a-landing-page/).
 
 
