@@ -62,9 +62,9 @@ Installing NCE
 
 + You need to add 2 keys:  
 	- A Flask API key in controller.py
-	- A Google API key in geocoding.py and templates/places.html
+	- A Google API key in templates/base.html
 
-+ Download and unzip the [Stanford NER](http://nlp.stanford.edu/software/CRF-NER.shtml#Download) and [Stanford POS English tagger](http://nlp.stanford.edu/software/tagger.shtml#Download) on your project directory. I renamed them stanford-ner and stanford-postagger inside the app, but you should double check the routes in german_processing.py and spanish_processing.py
++ Download and unzip the [Stanford NER 3.5.0](http://nlp.stanford.edu/software/CRF-NER.shtml#Download) and [Stanford POS English tagger 3.5.0](http://nlp.stanford.edu/software/tagger.shtml#Download) on your project directory. I renamed them stanford-ner and stanford-postagger inside the app, but you should double check the routes in german_processing.py and spanish_processing.py
 
 + Run the English NER file in java as a server in port 8080
 
@@ -72,9 +72,11 @@ Installing NCE
 
 	The German and Spanish NER files are not running as a server, but they are noticeably slower.  You can adapt the code to run either way.
 
++ Create an 'uploads' and 'downloads' folder in your static directory.
+
 + Download and [install memcached](http://memcached.org/downloads) and run it.  If memcached is not running the app will still work but it will be slower and make more requests to the Wikipedia API.
 
-+ If you want to add or remove target languages, just add or remove the item from the templates/editor.html dropdown menu, and add new languages to the lancodes dictionary in controller.py.  Wikipedia has articles in 128 locales!
++ If you want to add or remove target languages, just add or remove the item from the templates/editor.html dropdown menu, and add new languages to the lancodes dictionary in controller.py.  Wikipedia has articles in 128 locales. 
 
 
 Aknowledgments

@@ -16,7 +16,7 @@ UPLOAD_FOLDER = 'static/uploads'
 ALLOWED_EXTENSIONS = frozenset(['txt'])
 
 app = Flask(__name__)
-app.secret_key = '23987ETFSDDF345560DFSASF45DFDF567' #Fake key
+app.secret_key = os.environ.get("FLASK_APP_KEY") 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
