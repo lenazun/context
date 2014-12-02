@@ -26,9 +26,9 @@ NCE requires:
 
 + Python 2.7.6 or later
 + Flask
-+ Java (JRE)
++ Java (JRE) is required to run the Stanford NES and POS taggers
 + A Google API key for geocoding and map display
-+ Memcache and memcached
++ Memcache and memcached to store entities in cache
 
 Python libraries listed in requirements.txt
 
@@ -85,9 +85,9 @@ I used excellent code and examples from:
 Screenshots
 ---------------------
 
-![Front page](/context/static/img/cover_ss.jpg "Front page")
+![Front page](/static/img/cover_ss.jpg "Front page")
 
-![Text processing](/context/static/img/inside_ss.jpg "Text processing")
+![Text processing](/static/img/inside_ss.jpg "Text processing")
 
 
 Contact info
