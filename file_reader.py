@@ -122,13 +122,8 @@ def write_csv_file(dictionary):
 def main():
 	""" Tests """
 	
-	#output = read_url('http://www.sfchronicle.com/bayarea/article/Throngs-of-fans-already-packing-Civic-Center-5860820.php')
-	#print read_file_pretty('sample.txt')
-	#output = read_url('http://www.newyorker.com/culture/cultural-comment/pills-difficult-birth')
-	#print read_url_all('http://www.theguardian.com/world/2014/nov/14/putin-russia-oil-price-collapse-sanctions-g20')
 	read_url('http://internacional.elpais.com/internacional/2014/11/28/actualidad/1417195929_767998.html')
-	#dictionary = {'3390': {'targetlang': 'fr', 'targetwiki': 'Bible', 'title': 'The Bible'}, '844': {'targetlang': 'fr', 'targetwiki': 'Amsterdam', 'title': 'Amsterdam'}, '10106': {'targetlang': 'fr', 'targetwiki': u'S\xe9isme', 'title': 'Earthquake'}, '8210131': {'targetlang': 'fr', 'targetwiki': u'\xc9tat de New York', 'title': 'New York'}, '534366': {'targetlang': 'fr', 'targetwiki': 'Barack Obama', 'title': 'Barack Obama'}}
-	#write_csv_file(dictionary)
+
 
 
 if __name__ == "__main__":

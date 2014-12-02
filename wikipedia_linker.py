@@ -116,35 +116,10 @@ def get_entity_info(namelist, target_lang, source_lang):
 
 def main():
 	#namelist = ["New York", "Barack Obama", "Earthquake", "President Obama", "North Carolina Board of Elections", "Amsterdam", "The Bible"]
-#	namelist = [u'Instituto', u'Sociales', u'Brasil', u'Bolsa', u'Data', u'Partido', u'Ipea', u'Pol\xedticas', u'Folha', u'Dilma', u'del', u'Familia', u'Gobierno', u'Popular', u'-LRB-', u'Estado', u'Rousseff']
+	pass
 	
-
-	# #Feeding the cache
-	text = open('uscities.txt')
-	raw = text.read()
-	namelist = [i for i in raw.splitlines()]
-	# #print place_list
-
-	print get_entity_info(namelist, 'de', 'en')
-	print get_entity_info(namelist, 'es', 'en')
-	print get_entity_info(namelist, 'zh', 'en')
-
-
-
 if __name__ == "__main__":
     main()
 
-
-
-
-
-# def twitter_search_query(entity_dict):
-# 	"""Creates a twitter search query separated by spaces and OR """
-
-# 	names = [key for key in entity_dict.keys()]
-# 	words = [i.replace(' ', '%20') for i in names]
-# 	query = "%20OR%20".join(words)
-
-# 	return query
 
 

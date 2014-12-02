@@ -96,16 +96,8 @@ def most_common_pos(tagged_words):
 def main():
 	""" Tests """
 
-	text = file_reader.read_file('sample.txt')
-	#prepro = preprocess(text)
-	#print prepro
-	#print most_common_pos(prepro)
-	#ner = ner_tagger(text)
-	#print ner
-	#dictionary = make_word_dict(prepro)
-	#print nouns_only(prepro)
-	#print dictionary
-	print single_set(ner_tagger(text))
+	#text = file_reader.read_file('sample.txt')
+	#print single_set(ner_tagger(text))
 
 	
 if __name__ == "__main__":

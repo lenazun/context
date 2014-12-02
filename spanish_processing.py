@@ -144,12 +144,7 @@ def pos(text):
 
 def main():
 	""" Tests """
-	text = file_reader.read_file('spanish_sample2.txt')
-
-	#print spanish_pos(text)
-	#print spanish_ner(text)
-	print join_items(spanish_ner(text), 'ORG')
-	
+	#text = file_reader.read_file('spanish_sample2.txt')
 	#print pos(text)
 	
 if __name__ == "__main__":

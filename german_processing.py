@@ -144,12 +144,8 @@ def pos(text):
 
 def main():
 	""" Tests """
-	text = file_reader.read_file('german_sample.txt')
-	#tokens = german_tokenize(text)
-	#print tokens
-	#print german_ner(text)
-	#print exclude_entities(german_nouns(german_pos(text)), text)
-	print ner(text)
+#	text = file_reader.read_file('german_sample.txt')
+#	print ner(text)
 
 	
 if __name__ == "__main__":
