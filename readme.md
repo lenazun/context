@@ -5,7 +5,7 @@ News Context Explorer
 About
 ---------------------
 
-News Context Explorer (NCE) helps to find people, places and nouns referenced by news articles (or any other text, but it works better with News articles).  It was built thinking of translators and news readers in a second language. After uploading a text file or providing an article URL, NCE will find names, places, organizations and other relevant words with their links to Wikipedia, as well as images, maps and other contextual information in 10 languages.
+News Context Explorer (NCE) helps to find people, places and nouns referenced in a given text file.  It was built thinking of translators and news readers in a second language. After uploading a text file or providing an article URL, NCE will find names, places, organizations and other relevant words with their links to Wikipedia, as well as images, maps and other contextual information in 10 languages.
 
 ### Features:
 
@@ -17,6 +17,13 @@ News Context Explorer (NCE) helps to find people, places and nouns referenced by
 + Allows the user to explore entities in a target language (10 languages currently supported) and download the references to a CSV file
 + Geocodes found locations and marks them on a google map
 + Retrieves photos of found entities and displays them on a gallery
+
+Screenshots
+---------------------
+
+![Front page](/static/img/cover_ss.jpg "Front page")
+
+![Text processing](/static/img/inside_ss.jpg "Text processing")
 
 
 Requirements
@@ -51,19 +58,21 @@ Installing NCE
 
 	<code>$ env/bin/pip install -r requirements.txt</code>
 
-+ Most files, including the Stanford NER and POS taggers are included on this repo. Clone it in your project folder.
++ Most files, including the Stanford NER and POS taggers are included on this repo. Clone it in your project directory.
 
 + You need to add 2 keys:  
 	- A Flask API key in controller.py
 	- A Google API key in geocoding.py and templates/places.html
 
++ Download and unzip the [Stanford NER](http://nlp.stanford.edu/software/CRF-NER.shtml#Download) and [Stanford POS English tagger](http://nlp.stanford.edu/software/tagger.shtml#Download) on your project directory. I renamed them stanford-ner and stanford-postagger inside the app, but you should double check the routes in german_processing.py and spanish_processing.py
+
 + Run the English NER file in java as a server in port 8080
 
 	<code>java -mx1000m -cp stanford-ner.jar edu.stanford.nlp.ie.NERServer -loadClassifier classifiers/english.muc.7class.distsim.crf.ser.gz -port 8080 -outputFormat inlineXML</code>
 
-	The German and Spanish NER files are not running as a server, but they are noticeably  slower.  You can adapt the code to run either way.
+	The German and Spanish NER files are not running as a server, but they are noticeably slower.  You can adapt the code to run either way.
 
-+ Donwload and [install memcached](http://memcached.org/downloads) and run it.  If memcached is not running the app will still work but it will be slower and make more requests to the Wikipedia API.
++ Download and [install memcached](http://memcached.org/downloads) and run it.  If memcached is not running the app will still work but it will be slower and make more requests to the Wikipedia API.
 
 + If you want to add or remove target languages, just add or remove the item from the templates/editor.html dropdown menu, and add new languages to the lancodes dictionary in controller.py.  Wikipedia has articles in 128 locales!
 
@@ -82,17 +91,9 @@ I used excellent code and examples from:
 [Front page tutorial](http://www.williamghelfi.com/blog/2013/08/04/bootstrap-in-practice-a-landing-page/).
 
 
-Screenshots
----------------------
-
-![Front page](/static/img/cover_ss.jpg "Front page")
-
-![Text processing](/static/img/inside_ss.jpg "Text processing")
-
-
 Contact info
 ---------------------
 
-This project was completed during Hackbright, a 10 week engineering fellowship for women.
+This project was completed during [Hackbright](http://www.hackbrightacademy.com/courses/fellowship), a 10 week engineering fellowship for women.
 
 If you want to know more about this project, find me on Twitter [@lenazun](https://twitter.com/lenazun)
