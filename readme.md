@@ -58,7 +58,7 @@ Installing NCE
 
 	<code>$ env/bin/pip install -r requirements.txt</code>
 
-+ Most files, including the Stanford NER and POS taggers are included on this repo. Clone it in your project directory.
++ Clone this repo into your project directory.
 
 + You need to add 2 keys:  
 	- A Flask API key in controller.py
