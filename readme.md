@@ -85,9 +85,9 @@ I used excellent code and examples from:
 Screenshots
 ---------------------
 
-![Front page](/static/img/cover_ss.jpg "Front page")
+![Front page](/context/static/img/cover_ss.jpg "Front page")
 
-![Text processing](/static/img/inside_ss.jpg "Text processing")
+![Text processing](/context/static/img/inside_ss.jpg "Text processing")
 
 
 Contact info
