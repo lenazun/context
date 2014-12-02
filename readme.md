@@ -46,7 +46,9 @@ Installing NCE
 + Better to start with a virtual environment.  To install virtualenv:
 
 	<code>$ sudo pip install virtualenv
+
 	$ cd ~/code/myproject/
+	
 	$ virtualenv env</code>
 
 	To activate the virtual environment:
