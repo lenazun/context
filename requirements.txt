@@ -9,6 +9,6 @@ nltk==3.0.0
 numpy==1.9.1
 pygeocoder==1.2.5
 python-memcached==1.53
-requests==2.3.0
+requests==2.20.0
 simplejson==3.6.5
 wsgiref==0.1.2
