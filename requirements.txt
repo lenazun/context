@@ -6,7 +6,7 @@ beautifulsoup4==4.3.2
 itsdangerous==0.24
 ner==0.1
 nltk==3.0.0
-numpy==1.9.1
+numpy==1.21.0
 pygeocoder==1.2.5
 python-memcached==1.53
 requests==2.3.0
